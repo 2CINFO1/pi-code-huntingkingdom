@@ -3,21 +3,33 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var bodyParser = require('body-parser')
 
 var indexRouter = require('./routes/index');
+var eventsRouter = require('./routes/events/events');
 var blogRouter = require('./routes/blogs/blog');
 var mapsRouter = require('./routes/maps/maps');
 var userRouter = require('./routes/user/user');
 var app = express();
 
 
+
 // connection to the database
 var mongoose = require('mongoose');
 var config = require('./db/db.json');
 mongoose.connect(config.mongo.uri,
-    () => { console.log('Connected to DB') }
+    (err) => {
+        if (err)
+            console.log('Error when connecting to DB : ' + err.message)
+        else
+            console.log('Connected to DB')
+    }
 );
 // connection to the database ended
+
+// Parse incoming request bodies in a middleware before your handlers, available under the req.body property.
+// parse application/json
+app.use(bodyParser.json())
 
 
 // view engine setup
@@ -30,7 +42,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//  routes management
 app.use('/', indexRouter);
+app.use('/events', eventsRouter);
+
 app.use('/blogs', blogRouter);
 app.use('/maps', mapsRouter);
 app.use('/user', userRouter);
