@@ -7,7 +7,9 @@ var bodyParser = require('body-parser')
 
 var indexRouter = require('./routes/index');
 var eventsRouter = require('./routes/events/events');
+var blogRouter = require('./routes/blogs/blog');
 var mapsRouter = require('./routes/maps/maps');
+var userRouter = require('./routes/user/user');
 var app = express();
 
 
@@ -44,7 +46,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/events', eventsRouter);
 
+app.use('/blogs', blogRouter);
 app.use('/maps', mapsRouter);
+app.use('/user', userRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -61,5 +65,8 @@ app.use(function(err, req, res, next) {
     res.status(err.status || 500);
     res.render('error');
 });
+app.listen("5000", () => {
+    console.log("Backend is running");
+})
 
 module.exports = app;
