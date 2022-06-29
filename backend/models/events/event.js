@@ -66,6 +66,103 @@ module.exports.getEventByName = function(name, callback) {
     Event.findOne(query, callback);
 }
 
+module.exports.getEventByStatus = function(status, callback) {
+    const query = {
+        status
+    }
+    Event.find(query, callback);
+}
+
 module.exports.addEvent = function(newEvent, callback) {
     newEvent.save(callback);
 }
+
+module.exports.updateEvent = function(newEvent, id, callback) {
+    this.getEventByID(id, (err, event) => {
+        if (err) {
+            res.json({ success: false, msg: 'Failed to find event' });
+        } else {
+            if ((event.status = 'OFFF') || (event.status = 'ARCH')) {
+                res.json({ success: false, msg: 'Not allowed to update event' });
+            } else {
+
+                event.type = newEvent.type;
+                event.category = newEvent.category;
+                event.description = newEvent.description;
+                event.detail = newEvent.detail;
+                event.location = newEvent.location;
+                event.startDate = newEvent.startDate;
+                event.endDate = newEvent.endDate;
+                event.guid = newEvent.guid;
+                event.tools = newEvent.tools;
+                event.save(callback);
+            }
+        }
+
+    });
+
+}
+
+
+module.exports.deleteEvent = function(id, callback) {
+    this.getEventByID(id, (err, event) => {
+        if (err) {
+            res.json({ success: false, msg: 'Failed to find event' });
+        } else {
+            event.status = 'OFFF';
+            event.save(callback);
+        }
+
+    });
+
+}
+
+
+module.exports.archiveEvent = function(id, callback) {
+    this.getEventByID(id, (err, event) => {
+        if (err) {
+            res.json({ success: false, msg: 'Failed to find event' });
+        } else {
+            event.status = 'ARCH';
+            event.save(callback);
+
+        }
+
+    });
+
+}
+
+/*
+module.exports.archiveEvent = function(id, callback) {
+        this.getEventByID(id, (err, event) => {
+            if (err) {
+                res.json({ success: false, msg: 'Failed to find event' });
+            } else {
+                if (event.status = "OPER")
+                    res.json({ success: false, msg: 'Not allowed to archive event' });
+                else if (event.status = "ARCH")
+                    res.json({ success: false, msg: 'event already archived' });
+                else {
+                    event.status = "ARCH";
+                    event.save(callback);
+                }
+            }
+        });
+
+    }
+    
+    // Method used only after archive
+    // to-do : develop archive method 
+    module.exports.archive = function(id, callback) {
+        this.getEventByStatus("ARCH"), (err, event) => {
+            if (err) {
+                res.json({ success: false, msg: 'Failed to find event' });
+            } else {
+                event.status = 'ARCH';
+                event.save(callback);
+            }
+         event.findAndDelete(id, callback);
+
+        }
+    }
+    */
