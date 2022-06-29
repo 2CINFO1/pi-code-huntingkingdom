@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
+var blogRouter = require('./routes/blogs/blog');
 var mapsRouter = require('./routes/maps/maps');
 var userRouter = require('./routes/user/user');
 var app = express();
@@ -30,6 +31,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+app.use('/blogs', blogRouter);
 app.use('/maps', mapsRouter);
 app.use('/user', userRouter);
 
@@ -48,5 +50,8 @@ app.use(function(err, req, res, next) {
     res.status(err.status || 500);
     res.render('error');
 });
+app.listen("5000", () => {
+    console.log("Backend is running");
+})
 
 module.exports = app;
