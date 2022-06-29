@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
-var blogSchema = new mongoose.schema ({
+var Schema = mongoose.Schema;
+var Blog = new Schema ({
     fullName: {
         type: String
     },
@@ -24,4 +25,4 @@ var blogSchema = new mongoose.schema ({
     }},
     { timestamps: true }
 );
-mongoose.model('Blog', blogSchema);
+module.exports = mongoose.model('Blog', Blog);

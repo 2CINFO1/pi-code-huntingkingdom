@@ -1,29 +1,25 @@
 var express = require('express');
 var router = express.Router();
-var Blog = require('../models/blogs/blog');
+var Blog = require('../../models/blogs/blog');
 
-/* show all blogs  */
 router.get('/show', function (req, res, next) {
     Blog.find(function (err, data) {
         if (err) throw err;
-        // res.json(data);
-        res.render("show.twig", { data });
+        res.json(data);
     });
 });
 
 // add action
 router.post('/add', function (req, res, next) {
-    // res.json(req.body); 
     var blog = new Blog({
         fullName: req.body.fullName,
         title: req.body.title,
         img: req.body.img,
         description: req.body.description,
         category: req.body.category,
-
     });
     blog.save();
-    // res.redirect("./show"); // sera actualisé automatiquement
+    res.json(blog);
 });
 
 /* modify produit */
@@ -34,8 +30,7 @@ router.get('/details/:id', function (req, res, next) {
         function (err, data) {
             if (err) throw err;
 
-            console.log(data);
-            // res.render('modify.twig', { data });
+            else res.json(data);
         }
     );
 });
@@ -49,16 +44,18 @@ router.post('/updateAction', function (req, res, next) {
         data.description = req.body.description;
         data.category = req.body.category;
         data.save();
+        res.json(data);
     });
-    // res.redirect('./show')
 });
 
 router.get('/delete/:id', function (req, res, next) {
     var id = req.params.id;
     Blog.findOneAndDelete({ "_id": id }, function (err) {
         if (err) throw err;
+        res.json({
+            "deleted": true
+        });
     });
-    res.redirect("/blog/show");
 });
 
 module.exports = router;
