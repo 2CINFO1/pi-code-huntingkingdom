@@ -10,7 +10,7 @@ router.get('/show', function (req, res, next) {
     });
 });
 
-router.post('/addAction', function (req, res, next) { 
+router.post('/add', function (req, res, next) { 
     var user = new User({
         name: req.body.name,
         lastname: req.body.lastname,
@@ -33,7 +33,7 @@ router.get('/details/:id', function (req, res, next) {
     );
 });
 
-router.post('/updateAction', function (req, res, next) {
+router.post('/update', function (req, res, next) {
     var id = req.body.id;
     User.findById({ _id: id }, function (err, data) {
         data.name = req.body.name;

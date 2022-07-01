@@ -26,7 +26,7 @@ router.post("/register" , async (req,res) => {
 router.post("/login", async (req,res) => {
     try {
     const user= await User.findOne({ Email: req.body.Email });
-    !user && res.status(401).json("Wrong credentials")
+    !user && res.status(401).json("email non existant")
     
     const HashedPassword = CryptoJS.AES.decrypt(
         user.Password ,
@@ -34,7 +34,7 @@ router.post("/login", async (req,res) => {
     );
     const Originalpassword = HashedPassword.toString(CryptoJS.enc.Utf8);
 
-    Originalpassword !== req.body.Password && res.status(401).json("Wrong credentials");
+    Originalpassword !== req.body.Password && res.status(401).json("Mot de passe erronée");
 
     const {Password , ...others} = user._doc ;
 

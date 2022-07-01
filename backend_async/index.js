@@ -8,6 +8,7 @@ const productRoute = require ("./routes/product");
 const authRoute = require ("./routes/auth");
 const userRoute = require ("./routes/user");
 const verifyToken = require ("./routes/verifyToken")
+const reclamationRoute = require ("./routes/reclamation");
 dotenv.config();
 mongoose.connect(process.env.Mongo_URL)
 .then (()=> console.log("db connection successfull"))
@@ -20,6 +21,7 @@ app.use("/api/user",userRoute);
 app.use("/api/product",productRoute);
 app.use("/api/cart",cartRoute);
 app.use("/api/order",orderRoute);
+app.use("/api/reclamation",reclamationRoute);
 
 app.listen(process.env.PORT || 5000,()=>{
     console.log("backend server is running");
