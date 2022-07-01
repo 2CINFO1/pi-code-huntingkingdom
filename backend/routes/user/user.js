@@ -1,59 +1,97 @@
-var express = require('express');
-var router = express.Router();
-var User = require('../../models/user/user');
+const router = require ("express").Router();
+const User = require("../../models/user/User");
+const verifyToken = require ("./verifyToken");
+const {verifyTokens,verifyTokenAndAuthorization,verifyTokenAndAdmin} = require ("./verifyToken")
 
-/* show all contacts  */
-router.get('/show', function (req, res, next) {
-    User.find(function (err, data) {
-        if (err) throw err;
-        res.json(data);
-    });
-});
-
-router.post('/addAction', function (req, res, next) { 
-    var user = new User({
-        name: req.body.name,
-        lastname: req.body.lastname,
-        email: req.body.email,
-        encry_password: req.body.encry_password,
-        role: req.body.role
-    });
-    user.save();
-    res.json(user);
-});
-
-router.get('/details/:id', function (req, res, next) {
-    var id = req.params.id
-    User.findById(
-        { _id: id },
-        function (err, data) {
-            if (err) throw err;
-            else res.json(data);
+//updateUser
+router.put ("/:id",verifyTokenAndAuthorization , async (req,res) => {
+        if(req.body.password){
+            password : CryptoJS.AES.encrypt(req.body.Password , process.env.Pass_sec).toString();
         }
-    );
-});
+        try {
+            const updatedUser = await User.findByIdAndUpdate(
+               req.params.id,
+               {
+                   $set: req.body
+               },
+               {new: true}
+            );
+            res.status(200).json(updatedUser)
+            }
+         catch (err) {
+            res.status(500).json(err);
+        }
 
-router.post('/updateAction', function (req, res, next) {
-    var id = req.body.id;
-    User.findById({ _id: id }, function (err, data) {
-        data.name = req.body.name;
-        data.lastname = req.body.lastname;
-        data.email = req.body.email;
-        data.encry_password = req.body.encry_password;
-        data.role = req.body.role;
-        data.save();
-        res.json(data);
-    });
-});
+    }
+)
 
-router.get('/delete/:id', function (req, res, next) {
-    var id = req.params.id;
-    User.findOneAndDelete({ "_id": id }, function (err) {
-        if (err) throw err;
-        else res.json({
-            'deleted': true
-        })
-    });
-});
+//DELETE 
+router.delete("/:id",verifyTokenAndAuthorization,async (req,res)=>{
+    try{
+       await User.findByIdAndDelete(req.params.id)
+       res.status(200).json("User has been deleted ...")
+    }
+    catch(err){
+        res.status(500).json(err)
+    }
+})
+//GET USER 
 
-module.exports = router;
+router.get("/find/:id",verifyTokenAndAdmin,async (req,res)=>{
+    try{
+     const user =  await User.findById(req.params.id)
+     const {Password , ...others} = user._doc ;
+
+       res.status(200).json(others)
+    }
+    catch(err){
+        res.status(500).json(err)
+    }
+})
+
+//GET ALL USERS
+
+router.get("/findall/",verifyTokenAndAdmin,async (req,res)=>{
+    try{
+     const users =  await User.find();
+       res.status(200).json(users)
+    }
+    catch(err){
+        res.status(500).json(err)
+    }
+}
+)
+//GET user stats
+
+router.get("/stats",verifyTokenAndAdmin,async (req,res)=>{
+  
+     const date = new Date()
+     const lastYear = new Date(date.setFullYear(date.getFullYear() - 1));
+     try{
+         const data = await User.aggregate([
+         {$match : {createdAt: {$gte : lastYear}}},
+            {
+                $project : {
+                    month : {
+                        $month:"$createdAt"
+                    },
+                },
+            },
+            {$group :{
+                _id:"$month",
+                total: { $sum: 1},
+            },
+            },
+
+        ]);
+        res.status(200).json(data)
+     }
+    catch(err){
+        res.status(500).json(err)
+    }
+}
+)
+
+
+
+module.exports  = router
