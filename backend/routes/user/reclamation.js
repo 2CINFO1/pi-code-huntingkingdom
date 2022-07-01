@@ -1,6 +1,6 @@
 const router = require ("express").Router();
-const Reclamation = require("../models/Reclamation");
-const { create } = require("../models/User");
+const Reclamation = require("../../models/user/Reclamation");
+const { create } = require("../../models/user/User");
 const verifyToken = require ("./verifyToken");
 const {verifyTokens,verifyTokenAndAuthorization,verifyTokenAndAdmin} = require ("./verifyToken")
 

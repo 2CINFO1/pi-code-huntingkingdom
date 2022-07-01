@@ -4,20 +4,26 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var bodyParser = require('body-parser')
+const dotenv = require ("dotenv");
+
+const cartRoute = require ("./routes/product/cart");
+const orderRoute = require ("./routes/product/order");
+const productRoute = require ("./routes/product/product");
+const authRoute = require ("./routes/user/auth");
+const userRoute = require ("./routes/user/user");
+const reclamationRoute = require ("./routes/user/reclamation");
 
 var indexRouter = require('./routes/index');
 var eventsRouter = require('./routes/events/events');
 var blogRouter = require('./routes/blogs/blog');
 var mapsRouter = require('./routes/maps/maps');
-var userRouter = require('./routes/user/user');
 var app = express();
 
-
+dotenv.config();
 
 // connection to the database
 var mongoose = require('mongoose');
-var config = require('./db/db.json');
-mongoose.connect(config.mongo.uri,
+mongoose.connect(process.env.Mongo_URL,
     (err) => {
         if (err)
             console.log('Error when connecting to DB : ' + err.message)
@@ -48,7 +54,13 @@ app.use('/events', eventsRouter);
 
 app.use('/blogs', blogRouter);
 app.use('/maps', mapsRouter);
-app.use('/user', userRouter);
+
+app.use("/api/auth",authRoute);
+app.use("/api/user",userRoute);
+app.use("/api/product",productRoute);
+app.use("/api/cart",cartRoute);
+app.use("/api/order",orderRoute);
+app.use("/api/reclamation",reclamationRoute);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
