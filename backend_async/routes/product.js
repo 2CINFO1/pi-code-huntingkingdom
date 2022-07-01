@@ -6,7 +6,7 @@ const {verifyTokens,verifyTokenAndAuthorization,verifyTokenAndAdmin} = require (
 
 //create product
 
-router.post("/add/",verifyTokenAndAdmin, async (req,res) => {
+router.post("/add/",verifyTokens, async (req,res) => {
    const newProduct = new Product(req.body)
    
     try {
