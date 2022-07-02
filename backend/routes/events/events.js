@@ -2,41 +2,129 @@ const express = require('express');
 const router = express.Router();
 
 const Event = require('../../models/events/Event');
+/* *******************************************************************************
+ ******************************* Read Methods *************************************
+ **********************************************************************************/
 
-// Show Events
-router.get('/show', function(req, res, next) {
-    Event.find(function(err, event) {
+// Show events *
+router.get('/show', (req, res, next) => {
+    Event.find((err, event) => {
         if (err) throw err;
         res.json(event);
     });
 });
 
-// Show Events
-router.get('/show/:status', function(req, res, next) {
+// Show events by status 
+router.get('/show/:status', (req, res, next) => {
     var status = req.params.status;
-    Event.getEventByStatus(status, function(err, event) {
+    const query = {
+        status
+    }
+    Event.find(query, (err, event) => {
         if (err) throw err;
         res.json(event);
     });
 });
-// Show Events
-router.get('/showEventById/:id', function(req, res, next) {
+
+
+// Show events by id
+router.get('/showEventById/:id', (req, res, next) => {
     var id = req.params.id;
-    Event.getEventByID(id, function(err, event) {
+    Event.findById(id, (err, event) => {
         if (err) throw err;
         res.json(event);
     });
 });
 
-// Show Events
-router.get('/showEvent/:name', function(req, res, next) {
+// Show events by name
+router.get('/showEvent/:name', (req, res, next) => {
     var name = req.params.name;
-    Event.getEventByName(name, function(err, event) {
+    const query = {
+        name
+    }
+    Event.find(query, (err, event) => {
+        if (err) throw err;
+        res.json(event);
+    });
+
+});
+
+// Show events by category
+router.get('/showEventByCategory/:category', (req, res, next) => {
+    var category = req.params.category;
+    const query = {
+        category
+    }
+    Event.find(query, (err, event) => {
         if (err) throw err;
         res.json(event);
     });
 });
 
+// Show events by guid
+router.get('/showEventByGuide/:guide', (req, res, next) => {
+    var guide = req.params.guide;
+    const query = {
+        guide
+    }
+    Event.find(query, (err, event) => {
+        if (err) throw err;
+        res.json(event);
+    });
+});
+
+// Show events by key
+router.get('/showEventBykey/:key', (req, res, next) => {
+    var key = req.params.key;
+
+
+    Event.find({
+        $or: [{
+            description: {
+                $regex: key,
+                $options: 'i'
+            }
+        }, {
+            detail: {
+                $regex: key,
+                $options: 'i'
+            }
+        }, {
+            tools: {
+                $regex: key,
+                $options: 'i'
+            }
+        }, {
+            guid: {
+                $regex: key,
+                $options: 'i'
+            }
+        }, {
+            location: {
+                $regex: key,
+                $options: 'i'
+            }
+        }, {
+            category: {
+                $regex: key,
+                $options: 'i'
+            }
+        }, {
+            type: {
+                $regex: key,
+                $options: 'i'
+            }
+        }, {
+            name: {
+                $regex: key,
+                $options: 'i'
+            }
+        }]
+    }, function(err, event) {
+        if (err) throw err;
+        res.json(event);
+    });
+});
 
 // Add Events
 router.post('/add', (req, res, next) => {
@@ -50,9 +138,11 @@ router.post('/add', (req, res, next) => {
         startDate: req.body.startDate,
         endDate: req.body.endDate,
         guid: req.body.guid,
-        tools: req.body.tools
+        tools: req.body.tools,
+        user: req.body.user.id
     })
 
+    //newEvent.save(callback);
     Event.addEvent(newsEvent, (err, event) => {
         if (err) {
             res.json({ success: false, msg: 'Failed to add event' + err.message });
@@ -62,10 +152,44 @@ router.post('/add', (req, res, next) => {
     });
 })
 
+/*
+
+router.post('/addPosition', function(req, res, next) {
+    var position = new Position({
+        user_id: req.body.user_id,
+        position_type: req.body.position_type,
+        lat: req.body.lat,
+        lng: req.body.lng,
+    });
+    position.save();
+    res.json(position)
+});
+
+router.post('/updatePosition', function(req, res, next) {
+    var id = req.body.id;
+    Position.findById({ _id: id }, function(err, data) {
+        data.user_id = req.body.user_id;
+        data.position_type = req.body.position_type;
+        data.lat = req.body.lat;
+        data.lng = req.body.lng;
+        data.save();
+        res.json(data)
+    });
+});
+
+router.get('/delete/:id', function(req, res, next) {
+    var id = req.params.id;
+    Position.findOneAndDelete({ "_id": id }, function(err) {
+        if (err) throw err;
+        else res.json({ "deleted": true });
+    });
+});
+
+
 
 
 // update Events
-router.post('/update', (req, res, next) => {
+router.put('/update', (req, res, next) => {
     var id = req.body.id;
     var newsEvent = new Event({
         type: req.body.type,
@@ -91,7 +215,7 @@ router.post('/update', (req, res, next) => {
 
 
 // Delete Events
-router.get('/delete/:id', (req, res, next) => {
+router.delete('/delete/:id', (req, res, next) => {
     var id = req.params.id;
     Event.deleteEvent(id, (err, event) => {
         if (err) {
@@ -104,7 +228,7 @@ router.get('/delete/:id', (req, res, next) => {
 
 
 // Archive Events
-router.get('/archive/:id', (req, res, next) => {
+router.delete('/archive/:id', (req, res, next) => {
     var id = req.params.id;
     Event.archiveEvent(id, (err, event) => {
         if (err) {
@@ -115,19 +239,19 @@ router.get('/archive/:id', (req, res, next) => {
     });
 })
 
-/*
+
 // Archive Events
-router.get('/archive', (req, res, next) => {
+router.delete('/finalArchive/:id', (req, res, next) => {
     var id = req.params.id;
-    Event.archive((err) => {
+    Event.findByIdAndDelete(id, (err) => {
         if (err) {
             res.json({ success: false, msg: 'Failed to archive events' + err.message });
         } else {
-            res.json({ success: true, msg: 'Event deleted' });
+            res.json({ success: true, msg: 'Event difenetly definitely from the DB' });
         }
     });
 })
-*/
+
 
 // Delete Event : TO-DO : Delete after Archive 
 /* 
