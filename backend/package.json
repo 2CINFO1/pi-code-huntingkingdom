@@ -24,6 +24,5 @@
         "mongoose": "^6.4.0",
         "node-cryptojs-aes": "^0.4.0",
         "nodemon": "^2.0.16"
-
     }
 }
