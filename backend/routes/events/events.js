@@ -1,169 +1,191 @@
 const express = require('express');
 const router = express.Router();
+const { create } = require("../../models/user/User");
+const verifyToken = require("../user/verifyToken");
+const { verifyTokens, verifyTokenAndAuthorization, verifyTokenAndAdmin } = require("../user/verifyToken")
+
 
 const Event = require('../../models/events/Event');
+
+/********* Implented Tested Methods ******
+ * /show
+ * /show/:status
+ * /showEventById/:id
+ * /showEvent/:name
+ * /showEventByCategory/:category
+ * /showEventByGuide/:guid
+ * /showEventBykey/:key
+ * /showEventByGuide/:guid
+ * 
+ **********************/
+
+/********* TO_DO ******
+ * FindByDates
+ * FindbyUser
+ * FindByConnectedUser
+ * AddTokenVerification
+ * 
+ **********************/
+
+
 /* *******************************************************************************
  ******************************* Read Methods *************************************
  **********************************************************************************/
 
-// Show events *
-router.get('/show', (req, res, next) => {
-    Event.find((err, event) => {
-        if (err) throw err;
-        res.json(event);
-    });
-});
+// // Show events *
+// router.get('/show', async(req, res, next) => {
+//     await Event.find((err, event) => {
+//         if (err) throw err;
+//         res.json(event);
+//     });
+// });
+
+
+router.get("/show", async(req, res) => {
+    try {
+        const event = await Event.find()
+
+        res.status(200).json(event)
+    } catch (err) {
+        res.status(500).json(err)
+    }
+})
 
 // Show events by status 
-router.get('/show/:status', (req, res, next) => {
-    var status = req.params.status;
-    const query = {
-        status
+router.get("/show/:status", async(req, res) => {
+    try {
+        var status = req.params.status;
+        const query = {
+            status
+        }
+        const event = await Event.find(query)
+        res.status(200).json(event)
+    } catch (err) {
+        res.status(500).json(err)
     }
-    Event.find(query, (err, event) => {
-        if (err) throw err;
-        res.json(event);
-    });
-});
+})
 
 
-// Show events by id
-router.get('/showEventById/:id', (req, res, next) => {
-    var id = req.params.id;
-    Event.findById(id, (err, event) => {
-        if (err) throw err;
-        res.json(event);
-    });
-});
-
-// Show events by name
-router.get('/showEvent/:name', (req, res, next) => {
-    var name = req.params.name;
-    const query = {
-        name
+// Show events by id 
+router.get("/showEventById/:id", async(req, res) => {
+    try {
+        var id = req.params.id;
+        const event = await Event.findById(id)
+        res.status(200).json(event)
+    } catch (err) {
+        res.status(500).json(err)
     }
-    Event.find(query, (err, event) => {
-        if (err) throw err;
-        res.json(event);
-    });
+})
 
-});
-
-// Show events by category
-router.get('/showEventByCategory/:category', (req, res, next) => {
-    var category = req.params.category;
-    const query = {
-        category
+// Show events by status 
+router.get("/showEvent/:name", async(req, res) => {
+    try {
+        var name = req.params.name;
+        const query = {
+            name
+        }
+        const event = await Event.findOne(query)
+        res.status(200).json(event)
+    } catch (err) {
+        res.status(500).json(err)
     }
-    Event.find(query, (err, event) => {
-        if (err) throw err;
-        res.json(event);
-    });
-});
+})
 
-// Show events by guid
-router.get('/showEventByGuide/:guide', (req, res, next) => {
-    var guide = req.params.guide;
-    const query = {
-        guide
+
+// Show events by category 
+router.get("/showEventByCategory/:category", async(req, res) => {
+    try {
+        var category = req.params.category;
+        const query = {
+            category
+        }
+        const event = await Event.find(query)
+        res.status(200).json(event)
+    } catch (err) {
+        res.status(500).json(err)
     }
-    Event.find(query, (err, event) => {
-        if (err) throw err;
-        res.json(event);
-    });
-});
+})
+
+
+// Show events by category 
+router.get("/showEventByGuide/:guid", async(req, res) => {
+    try {
+        var guid = req.params.guid;
+        const query = {
+            guid
+        }
+        const event = await Event.find(query)
+        res.status(200).json(event)
+    } catch (err) {
+        res.status(500).json(err)
+    }
+})
+
 
 // Show events by key
-router.get('/showEventBykey/:key', (req, res, next) => {
-    var key = req.params.key;
-
-
-    Event.find({
-        $or: [{
-            description: {
-                $regex: key,
-                $options: 'i'
-            }
-        }, {
-            detail: {
-                $regex: key,
-                $options: 'i'
-            }
-        }, {
-            tools: {
-                $regex: key,
-                $options: 'i'
-            }
-        }, {
-            guid: {
-                $regex: key,
-                $options: 'i'
-            }
-        }, {
-            location: {
-                $regex: key,
-                $options: 'i'
-            }
-        }, {
-            category: {
-                $regex: key,
-                $options: 'i'
-            }
-        }, {
-            type: {
-                $regex: key,
-                $options: 'i'
-            }
-        }, {
-            name: {
-                $regex: key,
-                $options: 'i'
-            }
-        }]
-    }, function(err, event) {
-        if (err) throw err;
-        res.json(event);
-    });
+router.get('/showEventBykey/:key', async(req, res) => {
+    try {
+        var key = req.params.key;
+        const event = await Event.find({
+            $or: [{
+                description: {
+                    $regex: key,
+                    $options: 'i'
+                }
+            }, {
+                detail: {
+                    $regex: key,
+                    $options: 'i'
+                }
+            }, {
+                location: {
+                    $regex: key,
+                    $options: 'i'
+                }
+            }, {
+                category: {
+                    $regex: key,
+                    $options: 'i'
+                }
+            }, {
+                type: {
+                    $regex: key,
+                    $options: 'i'
+                }
+            }, {
+                name: {
+                    $regex: key,
+                    $options: 'i'
+                }
+            }]
+        });
+        res.status(200).json(event)
+    } catch (err) {
+        res.status(500).json(err)
+    }
 });
-
-// Add Events
-router.post('/add', (req, res, next) => {
-    var newsEvent = new Event({
-        name: req.body.name,
-        type: req.body.type,
-        category: req.body.category,
-        description: req.body.description,
-        detail: req.body.detail,
-        location: req.body.location,
-        startDate: req.body.startDate,
-        endDate: req.body.endDate,
-        guid: req.body.guid,
-        tools: req.body.tools,
-        user: req.body.user.id
-    })
-
-    //newEvent.save(callback);
-    Event.addEvent(newsEvent, (err, event) => {
-        if (err) {
-            res.json({ success: false, msg: 'Failed to add event' + err.message });
-        } else {
-            res.json({ success: true, msg: 'Event Added' });
-        }
-    });
-})
 
 /*
 
-router.post('/addPosition', function(req, res, next) {
-    var position = new Position({
-        user_id: req.body.user_id,
-        position_type: req.body.position_type,
-        lat: req.body.lat,
-        lng: req.body.lng,
-    });
-    position.save();
-    res.json(position)
-});
+//create product
+
+router.post("/add/", verifyTokens, async(req, res) => {
+    const newsEvent = new Event(req.body)
+    try {
+        await newsEvent.save((err, event) => {
+            if (err) {
+                res.json({ success: false, msg: 'Failed to add event' + err.message });
+            } else {
+                res.json({ success: true, msg: 'Event Added' });
+            }
+        })
+    } catch (err) {
+        res.status(500).json(err.message)
+    }
+})
+
+
+
 
 router.post('/updatePosition', function(req, res, next) {
     var id = req.body.id;

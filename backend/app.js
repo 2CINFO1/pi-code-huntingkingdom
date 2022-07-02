@@ -4,16 +4,18 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var bodyParser = require('body-parser')
-const dotenv = require ("dotenv");
+const dotenv = require("dotenv");
 
-const cartRoute = require ("./routes/product/cart");
-const orderRoute = require ("./routes/product/order");
-const productRoute = require ("./routes/product/product");
-const authRoute = require ("./routes/user/auth");
-const userRoute = require ("./routes/user/user");
+const cartRoute = require("./routes/product/cart");
+const orderRoute = require("./routes/product/order");
+const productRoute = require("./routes/product/product");
+const authRoute = require("./routes/user/auth");
+const userRoute = require("./routes/user/user");
 
 var indexRouter = require('./routes/index');
 var eventsRouter = require('./routes/events/events');
+var toolsRouter = require('./routes/events/tools');
+
 var blogRouter = require('./routes/blogs/blog');
 var mapsRouter = require('./routes/maps/maps');
 var app = express();
@@ -50,15 +52,17 @@ app.use(express.static(path.join(__dirname, 'public')));
 //  routes management
 app.use('/', indexRouter);
 app.use('/events', eventsRouter);
+app.use('/tools', toolsRouter);
+
 
 app.use('/blogs', blogRouter);
 app.use('/maps', mapsRouter);
 
-app.use("/api/auth",authRoute);
-app.use("/api/user",userRoute);
-app.use("/api/product",productRoute);
-app.use("/api/cart",cartRoute);
-app.use("/api/order",orderRoute);
+app.use("/api/auth", authRoute);
+app.use("/api/user", userRoute);
+app.use("/api/product", productRoute);
+app.use("/api/cart", cartRoute);
+app.use("/api/order", orderRoute);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

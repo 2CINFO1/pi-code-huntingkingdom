@@ -35,9 +35,10 @@ const EventSchema = mongoose.Schema({
     guid: {
         type: String
     },
-    tools: {
-        type: String
-    },
+    tools: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Tool'
+    }],
     status: {
         type: String,
         enum: ['OPER', 'OFFF', 'STUD', 'ARCH'],
@@ -57,12 +58,7 @@ const EventSchema = mongoose.Schema({
     }
 });
 
-const Event = module.exports = mongoose.model('Event', EventSchema);
 
-
-module.exports.addEvent = function(newEvent, callback) {
-    newEvent.save(callback);
-}
 
 module.exports.updateEvent = function(newEvent, id, callback) {
     this.getEventByID(id, (err, event) => {
@@ -115,37 +111,5 @@ module.exports.archiveEvent = function(id, callback) {
 
 }
 
-/*
-module.exports.archiveEvent = function(id, callback) {
-        this.getEventByID(id, (err, event) => {
-            if (err) {
-                res.json({ success: false, msg: 'Failed to find event' });
-            } else {
-                if (event.status = "OPER")
-                    res.json({ success: false, msg: 'Not allowed to archive event' });
-                else if (event.status = "ARCH")
-                    res.json({ success: false, msg: 'event already archived' });
-                else {
-                    event.status = "ARCH";
-                    event.save(callback);
-                }
-            }
-        });
 
-    }
-    
-    // Method used only after archive
-    // to-do : develop archive method 
-    module.exports.archive = function(id, callback) {
-        this.getEventByStatus("ARCH"), (err, event) => {
-            if (err) {
-                res.json({ success: false, msg: 'Failed to find event' });
-            } else {
-                event.status = 'ARCH';
-                event.save(callback);
-            }
-         event.findAndDelete(id, callback);
-
-        }
-    }
-    */
+const Event = module.exports = mongoose.model('Event', EventSchema);
