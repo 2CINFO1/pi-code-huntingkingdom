@@ -1,0 +1,55 @@
+const router = require("express").Router();
+const CampingSpot = require("../../models/maps/camping_spot");
+
+router.post("/add", async (req, res) => {
+        const campingSpot = new CampingSpot(req.body)
+        try {
+            await campingSpot.save()
+            res.status(200).json(campingSpot);
+        } catch (err) {
+            res.status(500).json(err)
+        }
+    }
+)
+
+router.put("/:id", async (req, res) => {
+        try {
+            await CampingSpot.findByIdAndUpdate(
+                req.params.id, {$set: req.body}, {new: true}
+            );
+            res.status(200).json(req.body)
+        } catch (err) {
+            res.status(500).json(err);
+        }
+    }
+)
+
+router.delete("/:id", async (req, res) => {
+    try {
+        await CampingSpot.findByIdAndDelete(req.params.id)
+        res.status(200).json("Spot has been deleted.")
+    } catch (err) {
+        res.status(500).json(err)
+    }
+})
+
+router.get("/find/:id", async (req, res) => {
+    try {
+        const campingSpot = await CampingSpot.findById(req.params.id)
+        res.status(200).json(campingSpot)
+    } catch (err) {
+        res.status(500).json(err)
+    }
+})
+
+router.get("/fetch", async (req, res) => {
+        try {
+            let campingSpots = await CampingSpot.find()
+            res.status(200).json(campingSpots)
+        } catch (err) {
+            res.status(500).json(err)
+        }
+    }
+)
+
+module.exports = router

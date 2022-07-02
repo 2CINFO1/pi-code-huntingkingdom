@@ -2,15 +2,15 @@ const mongoose = require("mongoose")
 const Schema = mongoose.Schema;
 let Position = require("./common/position");
 
-const HuntSpot = new Schema(
+const Area = new Schema(
     {
         name: {type: String, required: true},
         address: {type: String, required: true},
-        hunt_type: {type: String, default: 'Fishing'},
-        animal_name: {type: String, default: 'Wild boar'},
+        category: {type: String, default: 'Forbidden'},
+        argument: {type: String, default: 'Protected species'},
         position: Position,
     },
     {timestamps: true}
 );
 
-module.exports = mongoose.model("HuntSpot", HuntSpot);
+module.exports = mongoose.model("Area", Area);
