@@ -50,7 +50,15 @@ const EventSchema = mongoose.Schema({
     creationUser: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
-    }
+    },
+    participant: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    }],
+    interested: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    }]
 }, {
     // Make Mongoose use Unix time (seconds since Jan 1, 1970)
     timestamps: {

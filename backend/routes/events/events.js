@@ -164,6 +164,26 @@ router.get('/showEventBykey/:key', async(req, res) => {
         res.status(500).json(err)
     }
 });
+/*
+// Show events by category 
+router.get("/showEventByDate", async(req, res) => {
+    var startDate = req.body.date;
+    var endDate = req.body.endDate;
+    try {
+
+        const event = await Event.find({ //query today up to tonight
+            created_on: {
+                $gte: new Date(startDate),
+                $lt: new Date(endDate)
+            }
+        })
+        res.status(200).json(event)
+    } catch (err) {
+        res.status(500).json(err)
+    }
+})
+*/
+
 
 /*
 
