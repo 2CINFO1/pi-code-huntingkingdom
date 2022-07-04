@@ -11,6 +11,7 @@ const orderRoute = require ("./routes/product/order");
 const productRoute = require ("./routes/product/product");
 const authRoute = require ("./routes/user/auth");
 const userRoute = require ("./routes/user/user");
+const reclamationRoute = require ("./routes/user/reclamation");
 
 var indexRouter = require('./routes/index');
 var eventsRouter = require('./routes/events/events');
@@ -59,6 +60,7 @@ app.use("/api/user",userRoute);
 app.use("/api/product",productRoute);
 app.use("/api/cart",cartRoute);
 app.use("/api/order",orderRoute);
+app.use("/api/reclamation",reclamationRoute);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
