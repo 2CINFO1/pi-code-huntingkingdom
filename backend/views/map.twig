@@ -3,7 +3,6 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
   <title>Generate data-driven visualization of unique values | Sample | ArcGIS API for JavaScript 4.24</title>
-
   <link rel="stylesheet" href="https://js.arcgis.com/4.24/esri/themes/light/main.css" />
 
   <style>
@@ -29,7 +28,14 @@
       "esri/widgets/BasemapGallery",
       "esri/widgets/Expand",
       "esri/core/reactiveUtils"
-    ], (Map, MapView, FeatureLayer, typeRendererCreator, Legend, BasemapGallery, Expand, reactiveUtils) => {
+    ], (Map,
+        MapView,
+        FeatureLayer,
+        typeRendererCreator,
+        Legend,
+        BasemapGallery,
+        Expand,
+        reactiveUtils) => {
       // Create a map and add it to a MapView
 
       const map = new Map({
@@ -37,10 +43,13 @@
       });
 
       const view = new MapView({
-        container: "viewDiv",
         map: map,
-        center: [-100, 39],
-        zoom: 4
+        center: [9.801302, 35.317366],
+        zoom: 8,
+        container: "viewDiv",
+        constraints: {
+          snapToZoom: false
+        }
       });
 
       // Add a legend to the view
@@ -70,92 +79,61 @@
 
       // Create FeatureLayer instance with popupTemplate
 
-      const fieldInfos = [
-        {
-          fieldName: "M172_07",
-          label: "Wheat",
-          format: {
-            digitSeparator: true,
-            places: 0
-          }
-        },
-        {
-          fieldName: "M188_07",
-          label: "Cotton",
-          format: {
-            digitSeparator: true,
-            places: 0
-          }
-        },
-        {
-          fieldName: "M193_07",
-          label: "Soybeans",
-          format: {
-            digitSeparator: true,
-            places: 0
-          }
-        },
-        {
-          fieldName: "M217_07",
-          label: "Vegetables",
-          format: {
-            digitSeparator: true,
-            places: 0
-          }
-        },
-        {
-          fieldName: "M163_07",
-          label: "Corn",
-          format: {
-            digitSeparator: true,
-            places: 0
-          }
-        }
-      ];
+      // const fieldInfos = [
+      //   {
+      //     fieldName: "M172_07",
+      //     label: "Deer",
+      //     format: {
+      //       digitSeparator: true,
+      //       places: 0
+      //     }
+      //   },
+      //   {
+      //     fieldName: "M188_07",
+      //     label: "Wild pig",
+      //     format: {
+      //       digitSeparator: true,
+      //       places: 0
+      //     }
+      //   }
+      // ];
 
-      const layer = new FeatureLayer({
-        url:
-                "https://services.arcgis.com/V6ZHFr6zdgNZuVG0/arcgis/rest/services/US_county_crops_2007_clean/FeatureServer/0",
-        outFields: [
-          "M172_07",
-          "M188_07",
-          "M193_07",
-          "M217_07",
-          "M163_07",
-          "TOT_CROP_ACRES",
-          "DOM_CROP_ACRES",
-          "COUNTY",
-          "STATE"
-        ],
-        title: "U.S. Counties - crop harvest",
-        popupTemplate: {
-          // autocasts as new PopupTemplate()
-          title: "{COUNTY}, {STATE}",
-          content: [
-            {
-              type: "text",
-              text:
-                      "{TOT_CROP_ACRES} acres of crops were harvested in {COUNTY}, {STATE}" +
-                      " in 2007. The table below breaks down the number of acres that were" +
-                      " harvested for each type of crop."
-            },
-            {
-              type: "fields",
-              fieldInfos: fieldInfos
-            }
-          ],
-          fieldInfos: [
-            {
-              fieldName: "TOT_CROP_ACRES",
-              label: "Total harvest acres of crops",
-              format: {
-                digitSeparator: true,
-                places: 0
-              }
-            }
-          ]
-        }
-      });
+      // const layer = new FeatureLayer({
+      //   url:
+      //           "https://services.arcgis.com/V6ZHFr6zdgNZuVG0/arcgis/rest/services/US_county_crops_2007_clean/FeatureServer/0",
+      //   outFields: [
+      //     "M172_07",
+      //     "M188_07",
+      //   ],
+      //   title: "Geo hunting areas",
+      //   popupTemplate: {
+      //     // autocasts as new PopupTemplate()
+      //     title: "{COUNTY}, {STATE}",
+      //     content: [
+      //       {
+      //         type: "text",
+      //         text:
+      //                 "{TOT_CROP_ACRES} acres of crops were harvested in {COUNTY}, {STATE}" +
+      //                 " in 2007. The table below breaks down the number of acres that were" +
+      //                 " harvested for each type of crop."
+      //       },
+      //       {
+      //         type: "fields",
+      //         fieldInfos: fieldInfos
+      //       }
+      //     ],
+      //     fieldInfos: [
+      //       {
+      //         fieldName: "TOT_CROP_ACRES",
+      //         label: "Total harvest acres of crops",
+      //         format: {
+      //           digitSeparator: true,
+      //           places: 0
+      //         }
+      //       }
+      //     ]
+      //   }
+      // });
 
       // Generate the renderer when the view becomes ready
       reactiveUtils.whenOnce(() => !view.updating).then(() => {
@@ -169,11 +147,11 @@
         // the appropriate default color scheme.
 
         const typeParams = {
-          layer: layer,
+          // layer: layer,
           view: view,
           field: "DOM_CROP_ACRES",
           legendOptions: {
-            title: "Dominant crop in harvested acres by county (2007)"
+            title: "Over all animal distribution "
           }
         };
 

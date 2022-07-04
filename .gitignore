@@ -1,3 +1,13 @@
 backend/node_modules
 backend/package-lock.json
 .idea
+
+crypto/node_modules
+crypto/.env
+crypto/coverage
+crypto/coverage.json
+crypto/typechain
+
+#Hardhat files
+crypto/cache
+crypto/artifacts
