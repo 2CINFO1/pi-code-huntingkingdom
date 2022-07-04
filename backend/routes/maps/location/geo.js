@@ -1,16 +1,14 @@
-const CampingSpot = require("../../../models/maps/camping_spot");
-const {createClient} = require('redis');
-const client = createClient();
+const Redis = require("ioredis")
+const redis = new Redis({})
 
-module.exports = async function add_camping_spot(campingSpot) {
-    await client.connect();
-    await client.on('error', (err) => console.log('Redis Client Error', err));
-    await client.geoAdd('camping_spots',
-        {
-            longitude: campingSpot.position.lng,
-            latitude: campingSpot.position.lat,
-            member: campingSpot.id
-        });
-    const value = await client.geoRadius('key', 10, 10, 10, 'km');
+const add_camping_spot = async (campingSpot) => {
+    await redis.geoadd('camping_spots',
+        campingSpot.position.lng,
+        campingSpot.position.lat,
+        campingSpot.id
+    );
+    const value = await redis.georadius('camping_spots', 18, 38, 100000, 'km');
     console.log(value)
-}
+};
+
+module.exports = add_camping_spot;
