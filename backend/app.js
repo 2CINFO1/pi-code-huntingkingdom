@@ -20,7 +20,7 @@ var app = express();
 
 dotenv.config();
 
-// connection to the database
+//--------------- connection to the database--------------------------------------------
 var mongoose = require('mongoose');
 mongoose.connect(process.env.Mongo_URL,
     (err) => {
@@ -30,14 +30,14 @@ mongoose.connect(process.env.Mongo_URL,
             console.log('Connected to DB')
     }
 );
-// connection to the database ended
+//------------- connection to the database ended----------------------------------------
 
 // Parse incoming request bodies in a middleware before your handlers, available under the req.body property.
 // parse application/json
 app.use(bodyParser.json())
 
 
-// view engine setup
+//-----------------------view engine setup---------------------------------------------------
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
@@ -47,11 +47,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-//  routes management
+//-----------------------------Routes Management---------------------------------------------------
 app.use('/', indexRouter);
 app.use('/events', eventsRouter);
 
 app.use('/blogs', blogRouter);
+// app.use('/category', categoryRouter);
 app.use('/maps', mapsRouter);
 
 app.use("/api/auth",authRoute);
@@ -75,6 +76,7 @@ app.use(function(err, req, res, next) {
     res.status(err.status || 500);
     res.render('error');
 });
+
 app.listen("5000", () => {
     console.log("Backend is running");
 })

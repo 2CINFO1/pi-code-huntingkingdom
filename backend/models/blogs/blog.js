@@ -1,11 +1,14 @@
 const mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-var Blog = new Schema ({
-    fullName: {
-        type: String
-    },
+const BlogSchema = new mongoose.Schema(
+    {
 
     title: {
+        type: String,
+        required:true,
+        unique: true
+    },
+
+    description: {
         type: String,
         required:true,
     },
@@ -15,14 +18,28 @@ var Blog = new Schema ({
         required:false,
     },
 
-    description: {
+    text: {
         type: String,
         required:true,
     },
     category: {
         type: Array,
         required:false,
-    }},
+    },
+    auth: {
+        id: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "User",
+        },
+        username: String,
+      },
+      comments: [
+        {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "Comment",
+        },
+      ],
+    },
     { timestamps: true }
 );
-module.exports = mongoose.model('Blog', Blog);
+module.exports = mongoose.model('blog', BlogSchema);

@@ -1,29 +1,32 @@
 var express = require('express');
 var router = express.Router();
 var Blog = require('../../models/blogs/blog');
+const { verifyTokens,verifyTokenAndAdmin, verifyTokenAndAuthorization } = require('../user/verifyToken');
 
-router.get('/show', function (req, res, next) {
-    Blog.find(function (err, data) {
+//--------------show All blogs -------------------------------
+router.get('/',  async (req, res, next) => {
+    await Blog.find(function (err, data) {
         if (err) throw err;
         res.json(data);
     });
 });
 
-// add action
-router.post('/add', function (req, res, next) {
-    var blog = new Blog({
-        fullName: req.body.fullName,
-        title: req.body.title,
-        img: req.body.img,
-        description: req.body.description,
-        category: req.body.category,
+//------------- add new blog ----------------------------
+router.post('/add', async (req, res, next) => {
+    const newBlog = new Blog(req.body);
+        try {
+            const savedBlog = await newBlog.save()
+            res.status(200).json(savedBlog);
+    
+        } catch(err){
+            res.status(500).json(err)
+        }
+    
     });
-    blog.save();
-    res.json(blog);
-});
 
-/* modify produit */
-router.get('/details/:id', function (req, res, next) {
+
+//--------------Search blog-------------------------------
+router.get('/search/:id', async (req, res, next)=> {
     var id = req.params.id
     Blog.findById(
         { _id: id },
@@ -35,27 +38,37 @@ router.get('/details/:id', function (req, res, next) {
     );
 });
 
-router.post('/updateAction', function (req, res, next) {
-    var id = req.body.id;
-    Blog.findById({ _id: id }, function (err, data) {
-        data.fullName = req.body.fullName;
-        data.title = req.body.title;
-        data.img = req.body.img;
-        data.description = req.body.description;
-        data.category = req.body.category;
-        data.save();
-        res.json(data);
-    });
-});
+//--------------Update blog-------------------------------
+router.put ("/:id", async (req,res) => {
+       
+        
+    try {
+        const updatedBlog = await Blog.findByIdAndUpdate(
+           req.params.id,
+           {
+               $set: req.body
+           },
+           {new: true}
+        );
+        res.status(200).json("Your blog has been updated")
+        }
+     catch (err) {
+        res.status(500).json(err);
+    }
 
-router.get('/delete/:id', function (req, res, next) {
-    var id = req.params.id;
-    Blog.findOneAndDelete({ "_id": id }, function (err) {
-        if (err) throw err;
-        res.json({
-            "deleted": true
-        });
-    });
-});
+}
+)
+
+//--------------Delete blog-------------------------------
+
+    router.delete("/:id",async (req,res)=>{
+        try{
+           await Blog.findByIdAndDelete(req.params.id)
+           res.status(200).json("Post has been deleted ...")
+        }
+        catch(err){
+            res.status(500).json(err)
+        }
+    })
 
 module.exports = router;
