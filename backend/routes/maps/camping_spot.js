@@ -1,14 +1,19 @@
 const router = require("express").Router();
 const CampingSpot = require("../../models/maps/camping_spot");
-const add_camping_spot = require("./location/geo");
+const {add_camping_spot, search_radius, remove_spot} = require("./location/geo");
 
 
-
-router.post("/add", async (req, res) => {
+router.post("/add", async (req, res, next) => {
         const campingSpot = new CampingSpot(req.body)
-        // await campingSpot.save()
-        await add_camping_spot(campingSpot)
-        res.status(200).json(campingSpot);
+        CampingSpot.find({name: campingSpot.name}, async function (err, docs) {
+            if (!docs.length) {
+                await campingSpot.save();
+                await add_camping_spot(campingSpot)
+                res.status(200).json(campingSpot);
+            } else {
+                res.status(500).json(err);
+            }
+        });
     }
 )
 
@@ -17,6 +22,9 @@ router.put("/:id", async (req, res) => {
             await CampingSpot.findByIdAndUpdate(
                 req.params.id, {$set: req.body}, {new: true}
             );
+            await remove_spot(req.params.id);
+            const campingSpot = new CampingSpot(req.body);
+            await add_camping_spot(campingSpot);
             res.status(200).json(req.body)
         } catch (err) {
             res.status(500).json(err);
@@ -27,6 +35,7 @@ router.put("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
     try {
         await CampingSpot.findByIdAndDelete(req.params.id)
+        await remove_spot(req.params.id);
         res.status(200).json("Spot has been deleted.")
     } catch (err) {
         res.status(500).json(err)
@@ -53,6 +62,12 @@ router.get("/fetch", async (req, res) => {
         } catch (err) {
             res.status(500).json(err)
         }
+    }
+)
+router.get("/position_fetch/:lng/:lat/:radius", async (req, res) => {
+            let campingSpots = await search_radius(req.params.lng, req.params.lat, req.params.radius)
+            const found_data = campingSpots.map(id => CampingSpot.findById(id));
+            console.log(found_data);
     }
 )
 
