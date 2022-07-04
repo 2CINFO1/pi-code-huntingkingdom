@@ -1,3 +1,13 @@
 backend/node_modules
 backend/package-lock.json
 .idea
+
+HuntKingdomCryptoToken/node_modules
+HuntKingdomCryptoToken/.env
+HuntKingdomCryptoToken/coverage
+HuntKingdomCryptoToken/coverage.json
+HuntKingdomCryptoToken/typechain
+
+#Hardhat files
+HuntKingdomCryptoToken/cache
+HuntKingdomCryptoToken/artifacts
