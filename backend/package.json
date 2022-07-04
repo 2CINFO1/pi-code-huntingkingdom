@@ -24,6 +24,7 @@
         "nodemon": "^2.0.16",
         "passport": "*",
         "passport-jwt": "*",
+        "redis": "^4.1.1",
         "twig": "^1.15.4"
     }
 }
