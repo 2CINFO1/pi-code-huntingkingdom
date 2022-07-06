@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const CampingSpot = require("../../models/maps/camping_spot");
-const {add_camping_spot, search_radius, remove_spot} = require("./location/geo");
+const {add_camping_spot, search_radius, remove_spot} = require("./location/camp_geo");
 const {get_camping_spots} = require("./location/map_requests");
 
 
