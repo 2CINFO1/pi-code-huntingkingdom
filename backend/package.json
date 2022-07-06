@@ -7,6 +7,7 @@
         "start": "nodemon ./bin/www"
     },
     "dependencies": {
+        "arcgis": "^1.0.2",
         "bcryptjs": "*",
         "coinbase-commerce-node": "^1.0.4",
         "body-parser": "*",
@@ -14,6 +15,7 @@
         "cors": "*",
         "debug": "~2.6.9",
         "dotenv": "^16.0.1",
+        "esri": "^0.0.1-security",
         "express": "~4.16.1",
         "ftp": "^0.3.10",
         "georedis": "^3.1.3",
@@ -29,8 +31,9 @@
         "nodemon": "^2.0.16",
         "passport": "*",
         "passport-jwt": "*",
-        "path": "^0.12.7",
+        "request": "^2.88.2",
         "twig": "^1.15.4",
+        "path": "^0.12.7",
         "uuid": "^8.3.2"
     }
 }

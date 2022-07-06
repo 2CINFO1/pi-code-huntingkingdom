@@ -8,6 +8,10 @@ const Area = new Schema(
         address: {type: String, required: true},
         category: {type: String, default: 'Forbidden'},
         argument: {type: String, default: 'Protected species'},
+        animal: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Animal'
+        },
         position: Position,
     },
     {timestamps: true}
