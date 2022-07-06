@@ -1,28 +1,45 @@
 const mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-var Blog = new Schema ({
-    fullName: {
-        type: String
-    },
+const BlogSchema = new mongoose.Schema(
+    {
 
-    title: {
-        type: String,
-        required:true,
-    },
+        title: {
+            type: String,
+            required: true,
+            unique: true
+        },
 
-    img: {
-        type: String,
-        required:false,
-    },
+        description: {
+            type: String,
+            required: true,
+        },
 
-    description: {
-        type: String,
-        required:true,
+        img: {
+            type: String,
+            required: false,
+        },
+
+        text: {
+            type: String,
+            required: true,
+        },
+        category: {
+            type: Array,
+            required: false,
+        },
+        auth: {
+            id: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "User",
+            },
+            username: String,
+        },
+        comments: [
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "Comment",
+            },
+        ],
     },
-    category: {
-        type: Array,
-        required:false,
-    }},
-    { timestamps: true }
+    {timestamps: true}
 );
-module.exports = mongoose.model('Blog', Blog);
+module.exports = mongoose.model('blog', BlogSchema);

@@ -1,9 +1,7 @@
 const User = require("../../models/user/User");
-const dotenv = require("dotenv");
-const router = require("express").Router();
-var node_cryptojs = require('node-cryptojs-aes');
-const res = require("express/lib/response");
-var CryptoJS = node_cryptojs.CryptoJS;
+const router = require ("express").Router();
+const node_cryptojs = require('node-cryptojs-aes');
+const CryptoJS = node_cryptojs.CryptoJS;
 const jwt = require("jsonwebtoken");
 
 //register
