@@ -1,5 +1,5 @@
+./backend/package-lock.json
 backend/node_modules
-backend/package-lock.json
 .idea
 
 crypto/node_modules
@@ -10,4 +10,5 @@ crypto/typechain
 
 #Hardhat files
 crypto/cache
-crypto/artifacts
+./crypto/artifacts
+./crypto/package-lock.json
