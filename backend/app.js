@@ -52,7 +52,7 @@ app.use('/', indexRouter);
 app.use('/events', eventsRouter);
 
 app.use('/blogs', blogRouter);
-// app.use('/category', categoryRouter);
+
 app.use('/maps', mapsRouter);
 
 app.use("/api/auth",authRoute);
@@ -77,8 +77,6 @@ app.use(function(err, req, res, next) {
     res.render('error');
 });
 
-app.listen("5000", () => {
-    console.log("Backend is running");
-})
+
 
 module.exports = app;
