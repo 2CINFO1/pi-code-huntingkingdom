@@ -1,5 +1,6 @@
 const mongoose = require("mongoose")
 const Schema = mongoose.Schema;
+let Position = require("./common/position");
 
 const campingSpot = new Schema(
     {
@@ -7,10 +8,7 @@ const campingSpot = new Schema(
         address: {type: String, required: true},
         category: {type: String, default: 'Campground'},
         rate: {type: [Number], required: true, min: 0, max: 5},
-        position: {
-            lat: {type: Number, required: true},
-            lng: {type: Number, required: true},
-        },
+        position: Position,
     },
     {timestamps: true}
 );

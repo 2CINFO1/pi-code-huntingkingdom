@@ -4,19 +4,30 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var bodyParser = require('body-parser')
-const dotenv = require ("dotenv");
+const dotenv = require("dotenv");
 
-const cartRoute = require ("./routes/product/cart");
-const orderRoute = require ("./routes/product/order");
-const productRoute = require ("./routes/product/product");
-const authRoute = require ("./routes/user/auth");
-const userRoute = require ("./routes/user/user");
+
+const cartRoute = require("./routes/product/cart");
+const orderRoute = require("./routes/product/order");
+const productRoute = require("./routes/product/product");
+const authRoute = require("./routes/user/auth");
+const userRoute = require("./routes/user/user");
 
 var indexRouter = require('./routes/index');
 var eventsRouter = require('./routes/events/events');
-var blogRouter = require('./routes/blogs/blog');
-var mapsRouter = require('./routes/maps/maps');
+var toolsRouter = require('./routes/events/tools');
+
+const blogRouter = require('./routes/blogs/blog');
+const mapsRouter = require('./routes/maps/maps');
+
+const reclamationRoute = require("./routes/user/reclamation");
+
+const campRouter = require('./routes/maps/camping_spot');
+const areaRouter = require('./routes/maps/area');
+const huntRouter = require('./routes/maps/hunt_spot');
+
 var app = express();
+
 
 dotenv.config();
 
@@ -50,17 +61,23 @@ app.use(express.static(path.join(__dirname, 'public')));
 //-----------------------------Routes Management---------------------------------------------------
 app.use('/', indexRouter);
 app.use('/events', eventsRouter);
+app.use('/tools', toolsRouter);
+
 
 app.use('/blogs', blogRouter);
 
 app.use('/maps', mapsRouter);
 
-app.use("/api/auth",authRoute);
-app.use("/api/user",userRoute);
-app.use("/api/product",productRoute);
-app.use("/api/cart",cartRoute);
-app.use("/api/order",orderRoute);
+app.use("/api/auth", authRoute);
+app.use("/api/user", userRoute);
+app.use("/api/product", productRoute);
+app.use("/api/cart", cartRoute);
+app.use("/api/order", orderRoute);
 
+app.use("/api/reclamation", reclamationRoute);
+app.use('/camp', campRouter);
+app.use('/area', areaRouter);
+app.use('/hunt', huntRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
     next(createError(404));
