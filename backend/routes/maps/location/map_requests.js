@@ -1,6 +1,6 @@
 const request = require("request");
 
-const get_camping_spots = async () => {
+const get_camping_spots = () => {
     let points = []
     request('http://localhost:3000/camp/fetch', function (error, response, body) {
         if (!error && response.statusCode === 200) {

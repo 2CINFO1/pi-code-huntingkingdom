@@ -56,6 +56,7 @@ router.get("/find/:id", async (req, res) => {
     }
 })
 
+
 router.get("/fetch", async (req, res) => {
         try {
             await get_camping_spots()
@@ -66,10 +67,18 @@ router.get("/fetch", async (req, res) => {
         }
     }
 )
-router.get("/position_fetch/:lng/:lat/:radius", async (req, res) => {
+
+router.get("/position_fetch/:lng/:lat/:radius",
+    async (req, res) =>
+    {
+        const pois = {}
         let campingSpots = await search_radius(req.params.lng, req.params.lat, req.params.radius)
-        const found_data = campingSpots.map(id => CampingSpot.findById(id));
-        console.log(found_data);
+        for (const id of campingSpots) {
+            const contents = await CampingSpot.findById(id);
+            console.log(contents);
+            pois[id] = contents
+        }
+        res.status(200).json(pois)
     }
 )
 
