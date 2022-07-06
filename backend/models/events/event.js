@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
+
+
+
 // event Schema 
 
 const EventSchema = mongoose.Schema({
@@ -58,7 +61,10 @@ const EventSchema = mongoose.Schema({
     interested: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
-    }]
+    }],
+    coverImagePath: {
+        type: String
+    }
 }, {
     // Make Mongoose use Unix time (seconds since Jan 1, 1970)
     timestamps: {
