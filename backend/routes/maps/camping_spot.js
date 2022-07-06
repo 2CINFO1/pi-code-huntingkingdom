@@ -1,7 +1,6 @@
 const router = require("express").Router();
 const CampingSpot = require("../../models/maps/camping_spot");
 const {add_camping_spot, search_radius, remove_spot} = require("./location/camp_geo");
-const {get_camping_spots} = require("./location/map_requests");
 
 
 router.post("/add", async (req, res, next) => {
@@ -46,10 +45,6 @@ router.delete("/:id", async (req, res) => {
 router.get("/find/:id", async (req, res) => {
     try {
         const campingSpot = await CampingSpot.findById(req.params.id);
-        geo.location(req.params.id, async function (err, location) {
-            if (err) console.error(err)
-            else console.log(`Location for ${req.params.id} is:`, location.latitude, location.longitude)
-        })
         res.status(200).json(campingSpot);
     } catch (err) {
         res.status(500).json(err)
@@ -59,7 +54,6 @@ router.get("/find/:id", async (req, res) => {
 
 router.get("/fetch", async (req, res) => {
         try {
-            await get_camping_spots()
             let campingSpots = await CampingSpot.find()
             res.status(200).json(campingSpots)
         } catch (err) {
