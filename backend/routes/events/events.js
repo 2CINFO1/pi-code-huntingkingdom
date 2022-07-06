@@ -3,9 +3,25 @@ const router = express.Router();
 const { create } = require("../../models/user/User");
 const verifyToken = require("../user/verifyToken");
 const { verifyTokens, verifyTokenAndAuthorization, verifyTokenAndAdmin } = require("../user/verifyToken")
-
+const multer = require('multer')
+const uuid = require('uuid').v4
+const path = require('path')
 
 const Event = require('../../models/events/Event');
+
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'public/');
+    },
+    filename: (req, file, cb) => {
+        const ext = path.extname(file.originalname);
+        const id = uuid();
+        const filePath = `images/${id}${ext}`
+        cb(null, filePath);
+    }
+})
+
+var upload = multer({ storage })
 
 /********* Implented Tested Methods ******
  * /show
@@ -164,6 +180,29 @@ router.get('/showEventBykey/:key', async(req, res) => {
         res.status(500).json(err)
     }
 });
+
+
+router.post('/uploadFiles', upload.array('media'), (req, res) => {
+    return res.json({ status: 'OK', uploaded: req.files.length })
+})
+
+router.post('/uploadCoverImage/:id', (req, res, next) => {
+    upload.single("file")(req, res, function(err) {
+        if (err) {
+            res.json({ success: false, message: err });
+        } else {
+            res.json({ success: true, message: "Photo was updated !" });
+
+        }
+        var id = req.params.id;
+        Event.findById({ _id: id }, function(err, event) {
+            event.coverImagePath = req.file.filename;
+            event.save();
+        });
+    });
+});
+
+
 /*
 // Show events by category 
 router.get("/showEventByDate", async(req, res) => {
