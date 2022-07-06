@@ -9,6 +9,7 @@
     "dependencies": {
         "arcgis": "^1.0.2",
         "bcryptjs": "*",
+        "coinbase-commerce-node": "^1.0.4",
         "body-parser": "*",
         "cookie-parser": "~1.4.4",
         "cors": "*",
@@ -16,8 +17,9 @@
         "dotenv": "^16.0.1",
         "esri": "^0.0.1-security",
         "express": "~4.16.1",
-        "georedis": "^3.1.3",
+        "helmet": "^5.1.0",
         "http-errors": "~1.6.3",
+        "georedis": "^3.1.3",
         "ioredis": "^5.1.0",
         "jade": "~1.11.0",
         "jsonwebtoken": "^8.5.1",
