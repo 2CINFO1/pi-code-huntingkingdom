@@ -11,7 +11,9 @@ const add_camping_spot = async (campingSpot) => {
 
 
 const search_radius = async (lng, lat, radius) => {
-    return redis.georadius('camping_spots', lng, lat, radius, 'km');
+    const data = redis.georadius('camping_spots', lng, lat, radius, 'km');
+    console.log(data)
+    return data
 };
 
 const remove_spot = async (id) => {
