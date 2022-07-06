@@ -26,6 +26,7 @@ const reclamationRoute = require("./routes/user/reclamation");
 const campRouter = require('./routes/maps/camping_spot');
 const areaRouter = require('./routes/maps/area');
 const huntRouter = require('./routes/maps/hunt_spot');
+const animalRouter = require('./routes/maps/entities/animal');
 
 var app = express();
 
@@ -79,6 +80,7 @@ app.use("/api/reclamation", reclamationRoute);
 app.use('/camp', campRouter);
 app.use('/area', areaRouter);
 app.use('/hunt', huntRouter);
+app.use('/animal', huntRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
     next(createError(404));
