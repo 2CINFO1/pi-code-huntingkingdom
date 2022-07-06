@@ -1,5 +1,4 @@
 const router = require ("express").Router();
-var bodyParser = require('body-parser');
 const coinbase = require('coinbase-commerce-node');
 
 

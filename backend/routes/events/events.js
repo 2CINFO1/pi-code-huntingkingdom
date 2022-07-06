@@ -106,7 +106,7 @@ router.get('/delete/:id', (req, res, next) => {
 // Archive Events
 router.get('/archive/:id', (req, res, next) => {
     var id = req.params.id;
-    Event.archiveEvent(id, (err, event) => {
+    Event.archive(id, (err, event) => {
         if (err) {
             res.json({ success: false, msg: 'Failed to archive event' + err.message });
         } else {
