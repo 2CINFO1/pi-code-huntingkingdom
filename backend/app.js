@@ -48,7 +48,6 @@ mongoose.connect(process.env.Mongo_URL,
 app.use(bodyParser.json())
 
 
-//-----------------------view engine setup---------------------------------------------------
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
@@ -58,7 +57,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-//-----------------------------Routes Management---------------------------------------------------
 app.use('/', indexRouter);
 app.use('/events', eventsRouter);
 app.use('/tools', toolsRouter);
@@ -94,6 +92,8 @@ app.use(function(err, req, res, next) {
     res.render('error');
 });
 
-
+app.listen("5000", () => {
+    console.log("Backend is running");
+})
 
 module.exports = app;
