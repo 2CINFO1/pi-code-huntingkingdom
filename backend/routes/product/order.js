@@ -1,8 +1,5 @@
 const router = require ("express").Router();
-const Cart = require("../../models/products/Cart");
-const { create } = require("../../models/user/User");
 const Order = require("../../models/products/Order");
-const verifyToken = require ("../user/verifyToken");
 const {verifyTokens,verifyTokenAndAuthorization,verifyTokenAndAdmin} = require ("../user/verifyToken")
 
 //create order
