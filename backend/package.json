@@ -7,22 +7,24 @@
         "start": "nodemon ./bin/www"
     },
     "dependencies": {
-        "cookie-parser": "~1.4.4",
-        "debug": "~2.6.9",
-        "express": "~4.16.1",
-        "http-errors": "~1.6.3",
-        "jade": "~1.11.0",
-        "morgan": "~1.9.1",
         "bcryptjs": "*",
+        "body-parser": "^1.20.0",
+        "coinbase-commerce-node": "^1.0.4",
+        "cookie-parser": "~1.4.4",
         "cors": "*",
-        "body-parser": "*",
-        "passport": "*",
-        "passport-jwt": "*",
-        "twig": "^1.15.4",
+        "debug": "~2.6.9",
         "dotenv": "^16.0.1",
+        "express": "~4.16.1",
+        "helmet": "^5.1.0",
+        "http-errors": "~1.6.3",
+        "jade": "^0.29.0",
         "jsonwebtoken": "^8.5.1",
         "mongoose": "^6.4.0",
+        "morgan": "~1.9.1",
         "node-cryptojs-aes": "^0.4.0",
-        "nodemon": "^2.0.16"
+        "nodemon": "^2.0.16",
+        "passport": "*",
+        "passport-jwt": "*",
+        "twig": "^1.15.4"
     }
 }

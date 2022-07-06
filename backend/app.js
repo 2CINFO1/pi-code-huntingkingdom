@@ -3,19 +3,29 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
+const coinbase = require('coinbase-commerce-node');
+
 const dotenv = require ("dotenv");
+const helmet = require ("helmet");
+
+
+
+
 
 const cartRoute = require ("./routes/product/cart");
 const orderRoute = require ("./routes/product/order");
 const productRoute = require ("./routes/product/product");
 const authRoute = require ("./routes/user/auth");
 const userRoute = require ("./routes/user/user");
+const cryptoRoute = require ("./routes/product/crypto");
 
 var indexRouter = require('./routes/index');
 var eventsRouter = require('./routes/events/events');
 var blogRouter = require('./routes/blogs/blog');
 var mapsRouter = require('./routes/maps/maps');
+
+
 var app = express();
 
 dotenv.config();
@@ -43,6 +53,7 @@ app.set('view engine', 'jade');
 
 app.use(logger('dev'));
 app.use(express.json());
+app.use(helmet())
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
@@ -59,6 +70,9 @@ app.use("/api/user",userRoute);
 app.use("/api/product",productRoute);
 app.use("/api/cart",cartRoute);
 app.use("/api/order",orderRoute);
+app.use("/api/crypto",cryptoRoute);
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
