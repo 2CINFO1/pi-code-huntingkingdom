@@ -1,12 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const CampingSpot = require('../../models/maps/camping_spot');
 
-router.get('/show', function (req, res, next) {
-    CampingSpot.find(function (err, data) {
-        if (err) throw err;
-        res.json(data);
-    });
+router.get('/', function (req, res, next) {
+    res.sendFile("/mnt/d/cours ESPRIT/cours du soir/2CINFO1/PIDEV/pi-code-huntingkingdom/backend/views/map.html");
 });
 
 module.exports = router;

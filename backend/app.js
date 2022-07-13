@@ -3,34 +3,37 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var bodyParser = require('body-parser');
-const coinbase = require('coinbase-commerce-node');
-
-const dotenv = require ("dotenv");
 const helmet = require ("helmet");
+var bodyParser = require('body-parser')
+const dotenv = require("dotenv");
 
-
-
-
-
-const cartRoute = require ("./routes/product/cart");
-const orderRoute = require ("./routes/product/order");
-const productRoute = require ("./routes/product/product");
-const authRoute = require ("./routes/user/auth");
-const userRoute = require ("./routes/user/user");
 const cryptoRoute = require ("./routes/product/crypto");
+const cartRoute = require("./routes/product/cart");
+const orderRoute = require("./routes/product/order");
+const productRoute = require("./routes/product/product");
+const authRoute = require("./routes/user/auth");
+const userRoute = require("./routes/user/user");
 
 var indexRouter = require('./routes/index');
 var eventsRouter = require('./routes/events/events');
-var blogRouter = require('./routes/blogs/blog');
-var mapsRouter = require('./routes/maps/maps');
+var toolsRouter = require('./routes/events/tools');
 
+const blogRouter = require('./routes/blogs/blog');
+const mapsRouter = require('./routes/maps/maps');
+
+const reclamationRoute = require("./routes/user/reclamation");
+
+const campRouter = require('./routes/maps/camping_spot');
+const areaRouter = require('./routes/maps/area');
+const huntRouter = require('./routes/maps/hunt_spot');
+const animalRouter = require('./routes/maps/entities/animal');
 
 var app = express();
 
+
 dotenv.config();
 
-// connection to the database
+//--------------- connection to the database--------------------------------------------
 var mongoose = require('mongoose');
 mongoose.connect(process.env.Mongo_URL,
     (err) => {
@@ -40,14 +43,13 @@ mongoose.connect(process.env.Mongo_URL,
             console.log('Connected to DB')
     }
 );
-// connection to the database ended
+//------------- connection to the database ended----------------------------------------
 
 // Parse incoming request bodies in a middleware before your handlers, available under the req.body property.
 // parse application/json
 app.use(bodyParser.json())
 
 
-// view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
@@ -58,11 +60,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-//  routes management
 app.use('/', indexRouter);
 app.use('/events', eventsRouter);
+app.use('/tools', toolsRouter);
+
 
 app.use('/blogs', blogRouter);
+
 app.use('/maps', mapsRouter);
 
 app.use("/api/auth",authRoute);
@@ -72,8 +76,11 @@ app.use("/api/cart",cartRoute);
 app.use("/api/order",orderRoute);
 app.use("/api/crypto",cryptoRoute);
 
-
-
+app.use("/api/reclamation", reclamationRoute);
+app.use('/camp', campRouter);
+app.use('/area', areaRouter);
+app.use('/hunt', huntRouter);
+app.use('/animal', huntRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
     next(createError(404));
@@ -89,6 +96,7 @@ app.use(function(err, req, res, next) {
     res.status(err.status || 500);
     res.render('error');
 });
+
 app.listen("5000", () => {
     console.log("Backend is running");
 })

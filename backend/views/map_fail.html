@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>ArcGIS API for JavaScript Tutorials: Add a point, line, and polygon</title>
+    <style>
+        html, body, #viewDiv {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+    <link rel="stylesheet" href="https://js.arcgis.com/4.24/esri/themes/light/main.css">
+    <script src="https://js.arcgis.com/4.24/"></script>
+    <script>
+
+        require([
+            "esri/config",
+            "esri/Map",
+            "esri/views/MapView",
+            "esri/Graphic",
+            "esri/layers/GraphicsLayer",
+            "esri/geometry/SpatialReference",
+            "esri/geometry/Multipoint"
+        ], function (esriConfig, Map, MapView, Graphic, GraphicsLayer, SpatialReference, Multipoint) {
+
+            esriConfig.apiKey = "AAPK2aba26d806e5462d9d7162ce34f9ecea3D3c7iP3ODnZemWApR914yTNemDMPHesmSrg9KLctdnrFhtTwwF-ER7tnPQINLeQ";
+
+            const map = new Map({
+                basemap: "arcgis-topographic" //Basemap layer service
+            });
+
+            const view = new MapView({
+                map: map,
+                center: [9.801302, 35.317366], //Longitude, latitude
+                zoom: 7,
+                container: "viewDiv",
+            });
+
+            const graphicsLayer = new GraphicsLayer();
+            map.add(graphicsLayer);
+
+            const simpleMarkerSymbol = {
+                type: "simple-marker",
+                color: [226, 119, 40],  // Orange
+                outline: {
+                    color: [255, 255, 255], // White
+                    width: 1
+                }
+            };
+
+            const point = { //Create a point
+                type: "point",
+                longitude: 9.801302,
+                latitude: 35.317366
+            };
+
+            // var myMultiPoint = {
+            //     geometry:
+            //         {
+            //             points:
+            //                 [[9.801302, 35.317366], [9.801302, 35.315366], [9.801302, 35.316366]],
+            //             // "spatialReference": 4326
+            //         },
+            //     symbol: {
+            //         color: [255, 255, 255, 64],
+            //         size: 12, angle: 0, xoffset: 0, yoffset: 0, type: "esriSMS", style: "esriSMSCircle",
+            //         outline: {
+            //             color: [0, 0, 0, 255], width: 1, type: "esriSLS", style: "esriSLSSolid"}
+            //         }
+            //     };
+
+            const pointGraphic = new Graphic({
+                geometry: point,
+                symbol: simpleMarkerSymbol
+            });
+            graphicsLayer.add(pointGraphic);
+
+        });
+    </script>
+</head>
+<body>
+<div id="viewDiv"></div>
+</body>
+</html>
