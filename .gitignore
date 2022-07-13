@@ -1,4 +1,7 @@
 backend/node_modules
 package-lock.json
+backend/index.js
+db/db.json
+app.js
 
 .idea
