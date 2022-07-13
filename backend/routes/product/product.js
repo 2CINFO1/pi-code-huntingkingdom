@@ -70,7 +70,7 @@ router.get("/findall/",async (req,res)=>{
     try{
         let products
     if(qNew){
-        products = await Product.find().sort({createdAT: -1}).limit(2)
+        products = await Product.find().sort({createdAT: -1}).limit(5)
 
     }else if (qCategorie){
         
