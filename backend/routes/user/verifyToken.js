@@ -12,6 +12,7 @@ const verifyTokens = (req,res,next) => {
              if (err) res.status(403).json("Token is not right");
              req.user = user;
              next();
+             
         
         });
     } else {
