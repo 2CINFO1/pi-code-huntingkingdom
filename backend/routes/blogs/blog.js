@@ -1,10 +1,10 @@
 var express = require('express');
 var router = express.Router();
 var Blog = require('../../models/blogs/blog');
-const { verifyTokens,verifyTokenAndAdmin, verifyTokenAndAuthorization } = require('../user/verifyToken');
+const {verifyTokens, verifyTokenAndAdmin, verifyTokenAndAuthorization} = require('../user/verifyToken');
 
 //--------------show All blogs -------------------------------
-router.get('/',  async (req, res, next) => {
+router.get('/', async (req, res, next) => {
     await Blog.find(function (err, data) {
         if (err) throw err;
         res.json(data);
@@ -12,6 +12,7 @@ router.get('/',  async (req, res, next) => {
 });
 
 //------------- add new blog ----------------------------
+
 
     router.post('/addBlog', async(req, res) => {
         // Check if blog title was provided
@@ -61,11 +62,12 @@ router.get('/',  async (req, res, next) => {
       );
 
 
+
 //--------------Search blog-------------------------------
-router.get('/search/:id', async (req, res, next)=> {
+router.get('/search/:id', async (req, res, next) => {
     var id = req.params.id
     Blog.findById(
-        { _id: id },
+        {_id: id},
         function (err, data) {
             if (err) throw err;
 
@@ -75,6 +77,7 @@ router.get('/search/:id', async (req, res, next)=> {
 });
 
 //--------------Update blog-------------------------------
+
 
 router.put ("/:id", async (req,res) => {
        
@@ -180,5 +183,6 @@ router.put ("/:id", async (req,res) => {
           });
         }
       });
+
 
 module.exports = router;

@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
+
+
+
 // event Schema 
 
 const EventSchema = mongoose.Schema({
@@ -35,9 +38,10 @@ const EventSchema = mongoose.Schema({
     guid: {
         type: String
     },
-    tools: {
-        type: String
-    },
+    tools: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Tool'
+    }],
     status: {
         type: String,
         enum: ['OPER', 'OFFF', 'STUD', 'ARCH'],
@@ -45,6 +49,21 @@ const EventSchema = mongoose.Schema({
     },
     maxmumbers: {
         type: Number
+    },
+    creationUser: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    },
+    participant: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    }],
+    interested: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    }],
+    coverImagePath: {
+        type: String
     }
 }, {
     // Make Mongoose use Unix time (seconds since Jan 1, 1970)
@@ -53,50 +72,24 @@ const EventSchema = mongoose.Schema({
     }
 });
 
-const Event = module.exports = mongoose.model('Event', EventSchema);
 
-module.exports.getEventByID = function(id, callback) {
-    Event.findById(id, callback);
-}
-
-module.exports.getEventByName = function(name, callback) {
-    const query = {
-        name
-    }
-    Event.findOne(query, callback);
-}
-
-module.exports.getEventByStatus = function(status, callback) {
-    const query = {
-        status
-    }
-    Event.find(query, callback);
-}
-
-module.exports.addEvent = function(newEvent, callback) {
-    newEvent.save(callback);
-}
 
 module.exports.updateEvent = function(newEvent, id, callback) {
     this.getEventByID(id, (err, event) => {
         if (err) {
             res.json({ success: false, msg: 'Failed to find event' });
         } else {
-            if ((event.status = 'OFFF') || (event.status = 'ARCH')) {
-                res.json({ success: false, msg: 'Not allowed to update event' });
-            } else {
+            event.type = newEvent.type;
+            event.category = newEvent.category;
+            event.description = newEvent.description;
+            event.detail = newEvent.detail;
+            event.location = newEvent.location;
+            event.startDate = newEvent.startDate;
+            event.endDate = newEvent.endDate;
+            event.guid = newEvent.guid;
+            event.tools = newEvent.tools;
+            event.save(callback);
 
-                event.type = newEvent.type;
-                event.category = newEvent.category;
-                event.description = newEvent.description;
-                event.detail = newEvent.detail;
-                event.location = newEvent.location;
-                event.startDate = newEvent.startDate;
-                event.endDate = newEvent.endDate;
-                event.guid = newEvent.guid;
-                event.tools = newEvent.tools;
-                event.save(callback);
-            }
         }
 
     });
@@ -132,37 +125,5 @@ module.exports.archiveEvent = function(id, callback) {
 
 }
 
-/*
-module.exports.archiveEvent = function(id, callback) {
-        this.getEventByID(id, (err, event) => {
-            if (err) {
-                res.json({ success: false, msg: 'Failed to find event' });
-            } else {
-                if (event.status = "OPER")
-                    res.json({ success: false, msg: 'Not allowed to archive event' });
-                else if (event.status = "ARCH")
-                    res.json({ success: false, msg: 'event already archived' });
-                else {
-                    event.status = "ARCH";
-                    event.save(callback);
-                }
-            }
-        });
 
-    }
-    
-    // Method used only after archive
-    // to-do : develop archive method 
-    module.exports.archive = function(id, callback) {
-        this.getEventByStatus("ARCH"), (err, event) => {
-            if (err) {
-                res.json({ success: false, msg: 'Failed to find event' });
-            } else {
-                event.status = 'ARCH';
-                event.save(callback);
-            }
-         event.findAndDelete(id, callback);
-
-        }
-    }
-    */
+const Event = module.exports = mongoose.model('Event', EventSchema);

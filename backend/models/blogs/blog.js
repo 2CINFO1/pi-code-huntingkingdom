@@ -4,6 +4,7 @@ mongoose.Promise = global.Promise;
 const BlogSchema = new mongoose.Schema(
     {
 
+
     title: {
         type: String,
         required:true,
@@ -86,6 +87,7 @@ const BlogSchema = new mongoose.Schema(
     },
     { timestamps: true }
     
+
 );
     // Validate Function to check blog title length
     let titleLengthChecker = (title) => {

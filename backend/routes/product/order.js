@@ -1,7 +1,5 @@
 const router = require ("express").Router();
-const Cart = require("../../models/products/Cart");
-const { create } = require("../../models/user/User");
-const verifyToken = require ("../user/verifyToken");
+const Order = require("../../models/products/Order");
 const {verifyTokens,verifyTokenAndAuthorization,verifyTokenAndAdmin} = require ("../user/verifyToken")
 
 //create order
@@ -77,19 +75,19 @@ res.status(200).json(Orders)
     router.get("/income",verifyTokenAndAdmin, async (req,res)=>{
         const date = new Date()
         const lastMonth = new Date(date.setMonth(date.getMonth() - 1));
-        const previousMonth = new Date(new date().setMonth(lastMonth.getMonth() - 1));
+        const previousMonth = new Date(new Date().setMonth(lastMonth.getMonth() - 1));
     try{
         const income = await Order.aggregate([
         {$match : {createdAt: {$gte : previousMonth}}},
            {
                $project : {
                    month : {$month:"$createdAt", },
-                   sales : "$amount"
+                   sales : "$amount",
                },
            },
            {$group :{
-               _id:"$month",
-               total: { $sum: $sales},
+               _id: "$month",
+               total: { $sum:"$sales"},
            },
            },
 
