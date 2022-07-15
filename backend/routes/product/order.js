@@ -12,7 +12,7 @@ router.post("/add/",verifyTokens, async (req,res) => {
         res.status(200).json(savedOrder);
 
     } catch(err){
-        res.status(500).json(err)
+        res.status(400).json(err)
     }
 }
 )
@@ -51,7 +51,6 @@ router.delete("/:id",verifyTokenAndAdmin,async (req,res)=>{
 router.get("/find/:userid",verifyTokenAndAuthorization,async (req,res)=>{
     try{
      const Orders =  await Order.find({userId : req.params.userId})
-
        res.status(200).json(Orders)
     }
     catch(err){
