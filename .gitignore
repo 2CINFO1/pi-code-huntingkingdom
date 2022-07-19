@@ -12,3 +12,4 @@ crypto/typechain
 crypto/cache
 ./crypto/artifacts
 ./crypto/package-lock.json
+frontend/node_modules
