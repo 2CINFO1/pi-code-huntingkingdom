@@ -32,7 +32,9 @@ var app = express();
 
 
 dotenv.config();
-
+helmet({
+    crossOriginResourcePolicy: false,
+  });
 //--------------- connection to the database--------------------------------------------
 var mongoose = require('mongoose');
 mongoose.connect(process.env.Mongo_URL,
@@ -48,8 +50,6 @@ mongoose.connect(process.env.Mongo_URL,
 // Parse incoming request bodies in a middleware before your handlers, available under the req.body property.
 // parse application/json
 app.use(bodyParser.json())
-
-
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
