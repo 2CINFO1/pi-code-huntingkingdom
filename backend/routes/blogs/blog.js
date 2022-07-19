@@ -4,8 +4,8 @@ var Blog = require('../../models/blogs/blog');
 const {verifyTokens, verifyTokenAndAdmin, verifyTokenAndAuthorization} = require('../user/verifyToken');
 
 //--------------show All blogs -------------------------------
-router.get('/', async (req, res, next) => {
-    await Blog.find(function (err, data) {
+router.get('/', (req, res, next) => {
+    Blog.find(function (err, data) {
         if (err) throw err;
         res.json(data);
     });
