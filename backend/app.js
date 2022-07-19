@@ -6,6 +6,7 @@ var logger = require('morgan');
 const helmet = require ("helmet");
 var bodyParser = require('body-parser')
 const dotenv = require("dotenv");
+const cors = require('cors')
 
 const cryptoRoute = require ("./routes/product/crypto");
 const cartRoute = require("./routes/product/cart");
@@ -32,6 +33,7 @@ var app = express();
 
 
 dotenv.config();
+app.use(cors())
 
 //--------------- connection to the database--------------------------------------------
 var mongoose = require('mongoose');
