@@ -9,7 +9,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
 import {AgmCoreModule} from "@agm/core";
 import {MapComponent} from './components/maps/map/map.component';
-import {CampComponent} from './components/camping/camp/camp.component';
+import {CampComponent} from './components/maps/camping/camp/camp.component';
 // import * as dotenv from 'dotenv';
 // dotenv.config();
 

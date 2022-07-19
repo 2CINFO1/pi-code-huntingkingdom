@@ -30,15 +30,15 @@
   <!-- map -->
   <div style="height: 10px;"></div>
 
-  <agm-map
-    [latitude]="lat"
-    [longitude]="lng"
-    [zoom]="zoom"
-    [disableDefaultUI]="true"
-    (mapReady)="onMapLoad($event)"
-  >
-  </agm-map>
 </div>
+<agm-map
+  [latitude]="lat"
+  [longitude]="lng"
+  [zoom]="zoom"
+  [disableDefaultUI]="true"
+  (mapReady)="onMapLoad($event)"
+>
+</agm-map>
 <table class="table table-striped">
   <thead>
   <tr>

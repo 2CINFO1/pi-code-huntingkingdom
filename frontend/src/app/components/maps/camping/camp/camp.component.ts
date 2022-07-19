@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {CampSpot} from "../../../models/maps/camp_spot";
-import {CampSpotService} from "../../../services/maps/camp-spot.service";
+import {CampSpot} from "../../../../models/maps/camp_spot";
+import {CampSpotService} from "../../../../services/maps/camp-spot.service";
 
 
 @Component({
