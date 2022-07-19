@@ -1,0 +1,23 @@
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">title</th>
+    <th scope="col">description</th>
+    <th scope="col">img</th>
+    <th scope="col">text</th>
+    <th scope="col">category</th>
+    <th scope="col">auth</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <tr *ngFor="let blog of blogList">
+    <td>{{blog.title}}</td>
+    <td>{{blog.description}}</td>
+    <td>{{blog.img}}</td>
+    <td>{{blog.text}}</td>
+    <td>{{blog.category}}</td>
+    <td>{{blog.auth}}</td>
+  </tr>
+  </tbody>
+</table>
