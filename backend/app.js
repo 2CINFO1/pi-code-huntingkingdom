@@ -55,7 +55,7 @@ app.use(bodyParser.json())
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
-
+app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(helmet())
@@ -100,8 +100,8 @@ app.use(function(err, req, res, next) {
     res.render('error');
 });
 
-app.listen("5000", () => {
-    console.log("Backend is running");
-})
+// app.listen("5000", () => {
+//     console.log("Backend is running");
+// })
 
 module.exports = app;
