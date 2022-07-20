@@ -31,15 +31,23 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'admin', component: AdminLayoutComponent, children: [
+    path: 'dashboard', component: AdminLayoutComponent, children: [
       {
-        path: 'login',
-        loadChildren: () => import('./views/admin/admin-login/admin-login.module').then(m => m.AdminLoginModule)
-      },
-      {
-        path: 'dashboard',
-        loadChildren: () => import('./views/admin/admin-dashboard/admin-dashboard.module').then(m => m.AdminDashboardModule)
-      },
+        path: 'blogs',
+        loadChildren: () => import('./views/admin/admin-blogs/admin-blogs.module').then(m => m.AdminBlogsModule)
+      }
+      ,{
+        path: 'store',
+        loadChildren: () => import('./views/admin/admin-store/admin-store.module').then(m => m.AdminStoreModule)
+      }
+      ,{
+        path: 'events',
+        loadChildren: () => import('./views/admin/admin-events/admin-events.module').then(m => m.AdminEventsModule)
+      }
+      ,{
+        path: 'maps',
+        loadChildren: () => import('./views/admin/admin-maps/admin-maps.module').then(m => m.AdminMapsModule)
+      }
     ]
   },
 ];

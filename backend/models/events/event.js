@@ -35,8 +35,10 @@ const EventSchema = mongoose.Schema({
     endDate: {
         type: Date
     },
+    /*
     guid: {
-        type: String
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
     },
     tools: [{
         type: mongoose.Schema.Types.ObjectId,
@@ -50,7 +52,7 @@ const EventSchema = mongoose.Schema({
     maxmumbers: {
         type: Number
     },
-    creationUser: {
+     creationUser: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     },
@@ -62,6 +64,7 @@ const EventSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     }],
+    */
     coverImagePath: {
         type: String
     }
@@ -71,6 +74,7 @@ const EventSchema = mongoose.Schema({
         currentTime: () => Math.floor(Date.now() / 1000)
     }
 });
+
 
 
 
