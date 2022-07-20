@@ -1,45 +1,6 @@
 const router = require ("express").Router();
 const Product = require("../../models/products/Product");
 const {verifyTokenAndAuthorization,verifyTokenAndAdmin} = require ("../user/verifyToken")
-const multer = require('multer')
-const uuid = require('uuid').v4
-const path = require('path')
-
-
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, 'public/');
-    },
-    filename: (req, file, cb) => {
-        const ext = path.extname(file.originalname);
-        const id = uuid();
-        const filePath = `images/${id}${ext}`
-        cb(null, filePath);
-    }
-})
-
-var upload = multer({ storage })
-
-router.post('/uploadFiles', upload.array('media'), (req, res) => {
-    return res.json({ status: 'OK', uploaded: req.files.length })
-})
-
-router.post('/uploadCoverImage/:id', (req, res, next) => {
-    upload.single("file")(req, res, function(err) {
-        if (err) {
-            res.json({ success: false, message: err });
-        } else {
-            res.json({ success: true, message: "Photo was updated !" });
-
-        }
-        var id = req.params.id;
-        Product.findById({ _id: id }, function(err, event) {
-        Product.coverImagePath = req.file.filename;
-        Product.save();
-        });
-    });
-});
-
 
 //create product
 
