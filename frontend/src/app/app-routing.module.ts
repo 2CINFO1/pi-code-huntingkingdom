@@ -1,23 +1,52 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './components/user/login/login.component';
-import { ProfileComponent } from './components/user/profile/profile.component';
-import { RegisterComponent } from './components/user/register/register.component';
-import { BlogAddComponent } from './components/blog/blog-add/blog-add.component';
-import { BlogDashboardComponent } from './components/blog/blog-dashboard/blog-dashboard.component';
-import { BlogListComponent } from './components/blog/blog-list/blog-list.component';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {UserLayoutComponent} from "./layouts/user-layout/user-layout.component";
+import {AdminLayoutComponent} from "./layouts/admin-layout/admin-layout.component";
 
 const routes: Routes = [
-  {path: "login", component: LoginComponent},
-  {path: "register", component: RegisterComponent},
-  {path: "profile", component: ProfileComponent},
-  {path: 'BlogDashBoard', component : BlogDashboardComponent},
-  {path: 'blogs', component : BlogListComponent},
-  {path: 'blogs/add', component : BlogAddComponent},
+  {
+    path: '', component: UserLayoutComponent, children: [
+      {
+        path: '',
+        loadChildren: () => import('./views/user/home/home.module').then(m => m.HomeModule)
+      }, {
+        path: 'sign_in',
+        loadChildren: () => import('./views/user/user-login/user-login.module').then(m => m.UserLoginModule)
+      }, {
+        path: 'sign_up',
+        loadChildren: () => import('./views/user/user-register/user-register.module').then(m => m.UserRegisterModule)
+      }, {
+        path: 'events',
+        loadChildren: () => import('./views/user/user-events/user-events.module').then(m => m.UserEventsModule)
+      }, {
+        path: 'blogs',
+        loadChildren: () => import('./views/user/user-blogs/user-blogs.module').then(m => m.UserBlogsModule)
+      }, {
+        path: 'maps',
+        loadChildren: () => import('./views/user/user-maps/user-maps.module').then(m => m.UserMapsModule)
+      }, {
+        path: 'products',
+        loadChildren: () => import('./views/user/user-products/user-products.module').then(m => m.UserProductsModule)
+      },
+    ]
+  },
+  {
+    path: 'admin', component: AdminLayoutComponent, children: [
+      {
+        path: 'login',
+        loadChildren: () => import('./views/admin/admin-login/admin-login.module').then(m => m.AdminLoginModule)
+      },
+      {
+        path: 'dashboard',
+        loadChildren: () => import('./views/admin/admin-dashboard/admin-dashboard.module').then(m => m.AdminDashboardModule)
+      },
+    ]
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}
