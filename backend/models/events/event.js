@@ -35,6 +35,14 @@ const EventSchema = mongoose.Schema({
     endDate: {
         type: Date
     },
+    status: {
+        type: String,
+        enum: ['OPER', 'OFFF', 'STUD', 'ARCH'],
+        default: 'OPER'
+    },
+    maxmumbers: {
+        type: Number
+    },
     /*
     guid: {
         type: mongoose.Schema.Types.ObjectId,
@@ -44,14 +52,6 @@ const EventSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Tool'
     }],
-    status: {
-        type: String,
-        enum: ['OPER', 'OFFF', 'STUD', 'ARCH'],
-        default: 'OPER'
-    },
-    maxmumbers: {
-        type: Number
-    },
      creationUser: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
