@@ -10,9 +10,8 @@ const PostsSchema = mongoose.Schema({
         default: 'Event',
         required: true
     },
-
     // The context of post creation , for exemple if it's a post of an event , 
-    // context = Event and 
+    // context = 
     // contextId must be an event id
     contextId: {
         type: mongoose.Schema.Types.ObjectId,

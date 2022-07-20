@@ -203,6 +203,71 @@ router.post('/uploadCoverImage/:id', (req, res, next) => {
 });
 
 
+// Archive Events
+router.delete('/archive', (req, res, next) => {
+
+    try {
+        var counter = 0;
+        var status = "OFFF";
+        const query = {
+            status
+        }
+        var events = Event.find(query);
+        console.log(events)
+
+        for (var element in events) {
+            // console.log(event)
+            counter++;
+            // event.update({ _id: event._id }, { "$set": { "status": "ARCH" } });
+
+        };
+
+        console.log(counter)
+
+    } catch (err) {
+        res.json({ status: 500, success: false, message: err.message });
+
+    }
+})
+
+//create Event
+
+router.post("/add/", (req, res) => {
+    const newsEvent = new Event(req.body)
+    try {
+        newsEvent.save((err, event) => {
+            if (err) {
+                res.json({ success: false, msg: 'Failed to add event' + err.message });
+            } else {
+                res.json({ success: true, msg: 'Event Added' });
+            }
+        })
+    } catch (err) {
+        res.status(500).json(err.message)
+    }
+})
+
+// Delete Events
+router.delete("/delete/:id", async(req, res) => {
+    try {
+        await Event.findByIdAndDelete(req.params.id)
+        res.json({ success: true, msg: 'Event deleted' });
+    } catch (err) {
+        res.json({ success: false, msg: 'Failed to delete event' + err.message });
+    }
+})
+
+router.put("/update/:id", async(req, res) => {
+    try {
+        await Event.findByIdAndUpdate(
+            req.params.id, { $set: req.body }, { new: true }
+        );
+        res.status(200).json(req.body)
+    } catch (err) {
+        res.status(500).json(err);
+    }
+})
+
 /*
 // Show events by category 
 router.get("/showEventByDate", async(req, res) => {
@@ -226,25 +291,6 @@ router.get("/showEventByDate", async(req, res) => {
 
 /*
 
-//create product
-
-router.post("/add/", verifyTokens, async(req, res) => {
-    const newsEvent = new Event(req.body)
-    try {
-        await newsEvent.save((err, event) => {
-            if (err) {
-                res.json({ success: false, msg: 'Failed to add event' + err.message });
-            } else {
-                res.json({ success: true, msg: 'Event Added' });
-            }
-        })
-    } catch (err) {
-        res.status(500).json(err.message)
-    }
-})
-
-
-
 
 router.post('/updatePosition', function(req, res, next) {
     var id = req.body.id;
@@ -258,67 +304,9 @@ router.post('/updatePosition', function(req, res, next) {
     });
 });
 
-router.get('/delete/:id', function(req, res, next) {
-    var id = req.params.id;
-    Position.findOneAndDelete({ "_id": id }, function(err) {
-        if (err) throw err;
-        else res.json({ "deleted": true });
-    });
-});
 
 
 
-
-// update Events
-router.put('/update', (req, res, next) => {
-    var id = req.body.id;
-    var newsEvent = new Event({
-        type: req.body.type,
-        category: req.body.category,
-        description: req.body.description,
-        detail: req.body.detail,
-        location: req.body.location,
-        startDate: req.body.startDate,
-        endDate: req.body.endDate,
-        guid: req.body.guid,
-        tools: req.body.tools
-    })
-
-    Event.updateEvent(newsEvent, id, (err, event) => {
-        if (err) {
-            res.json({ success: false, msg: 'Failed to update event' + err.message });
-        } else {
-            res.json({ success: true, msg: 'Event Updated' });
-        }
-    });
-})
-
-
-
-// Delete Events
-router.delete('/delete/:id', (req, res, next) => {
-    var id = req.params.id;
-    Event.deleteEvent(id, (err, event) => {
-        if (err) {
-            res.json({ success: false, msg: 'Failed to delete event' + err.message });
-        } else {
-            res.json({ success: true, msg: 'Event deleted' });
-        }
-    });
-})
-
-
-// Archive Events
-router.delete('/archive/:id', (req, res, next) => {
-    var id = req.params.id;
-    Event.archiveEvent(id, (err, event) => {
-        if (err) {
-            res.json({ success: false, msg: 'Failed to archive event' + err.message });
-        } else {
-            res.json({ success: true, msg: 'Event archived' });
-        }
-    });
-})
 
 
 // Archive Events
