@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import {UserService} from "../../../../services/user/user.service";
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
-  selector: 'app-login-user',
-  templateUrl: './login-user.component.html',
-  styleUrls: ['./login-user.component.css']
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
-export class LoginUserComponent implements OnInit {
-
+export class LoginComponent implements OnInit {
   constructor(private userservice: UserService,private router:Router) { }
 
   ngOnInit(): void {
@@ -19,7 +18,7 @@ export class LoginUserComponent implements OnInit {
     this.userservice.Login(f).subscribe(()=>{
       console.log(f.value)
       this.router.navigate(['/'])
-
     })
   }
+
 }

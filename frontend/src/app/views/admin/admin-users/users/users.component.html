@@ -1,0 +1,22 @@
+<table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">Nom</th>
+      <th scope="col">Prenom</th>
+      <th scope="col">Email</th>
+      <th scope="col">Action</th>  
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{user.Nom}}</td>
+      <td>{{user.Prenom}}</td>
+      <td>{{user.Email}}</td>
+      <td>
+        <button class="btn-warning" (click)="delete([user._id])">delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>users works!users works!users works!users works!users works!users works!</p>

@@ -10,11 +10,8 @@ const routes: Routes = [
         path: '',
         loadChildren: () => import('./views/user/home/home.module').then(m => m.HomeModule)
       }, {
-        path: 'sign_in',
-        loadChildren: () => import('./views/user/user-login/user-login.module').then(m => m.UserLoginModule)
-      }, {
-        path: 'sign_up',
-        loadChildren: () => import('./views/user/user-register/user-register.module').then(m => m.UserRegisterModule)
+        path: 'user',
+        loadChildren: () => import('./views/user/user/user.module').then(m => m.UserModule)
       }, {
         path: 'events',
         loadChildren: () => import('./views/user/user-events/user-events.module').then(m => m.UserEventsModule)
@@ -47,6 +44,10 @@ const routes: Routes = [
       ,{
         path: 'maps',
         loadChildren: () => import('./views/admin/admin-maps/admin-maps.module').then(m => m.AdminMapsModule)
+      }
+      ,{
+        path: 'users',
+        loadChildren: () => import('./views/admin/admin-users/admin-users.module').then(m => m.AdminUsersModule)
       }
     ]
   },
