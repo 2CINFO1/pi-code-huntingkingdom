@@ -8,7 +8,7 @@ import { BlogListComponent } from './components/blog/blog-list/blog-list.compone
 const routes: Routes = [
   {path: 'BlogDashBoard', component : BlogDashboardComponent},
   {path: 'blogs', component : BlogListComponent},
-  {path: 'blogs/add', component : BlogAddComponent},
+  {path: 'blogadd', component : BlogAddComponent},
 ];
 
 @NgModule({

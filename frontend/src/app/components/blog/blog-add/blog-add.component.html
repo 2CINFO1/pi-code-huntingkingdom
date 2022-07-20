@@ -1,7 +1,8 @@
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!--back to blog list-->
     <button type="button" class="btn btn-light" routerLink="/blogs">Return to map</button>
-  </div>
+  
 </div>
 
 <form>
@@ -20,6 +21,8 @@
   <br>
   <input type="text" placeholder="auth" [(ngModel)]="blog.auth" name="auth"/>
   <br>
+
+
   <button (click)="save()">save</button>
 
 </form>
