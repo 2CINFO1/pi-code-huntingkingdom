@@ -32,6 +32,7 @@ $(function () {
         var scroll = $(window).scrollTop();
         //adjust menu background
         if (scroll > 80) {
+          console.log('hey there')
             if (scroll > scrollTop) {
                 $('.smart-scroll').addClass('scrolling').removeClass('up');
             } else {
