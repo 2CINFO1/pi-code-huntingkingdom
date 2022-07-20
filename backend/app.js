@@ -6,6 +6,7 @@ var logger = require('morgan');
 const helmet = require ("helmet");
 var bodyParser = require('body-parser')
 const dotenv = require("dotenv");
+const cors = require('cors')
 
 const cryptoRoute = require ("./routes/product/crypto");
 const cartRoute = require("./routes/product/cart");
@@ -32,6 +33,7 @@ var app = express();
 
 
 dotenv.config();
+app.use(cors())
 
 //--------------- connection to the database--------------------------------------------
 var mongoose = require('mongoose');
@@ -52,7 +54,7 @@ app.use(bodyParser.json())
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
-
+app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(helmet())
@@ -97,8 +99,8 @@ app.use(function(err, req, res, next) {
     res.render('error');
 });
 
-app.listen("5000", () => {
-    console.log("Backend is running");
-})
+// app.listen("5000", () => {
+//     console.log("Backend is running");
+// })
 
 module.exports = app;
