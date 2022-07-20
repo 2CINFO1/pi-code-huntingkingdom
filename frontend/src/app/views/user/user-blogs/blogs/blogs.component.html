@@ -1,0 +1,58 @@
+<br><br><br><br><br><br><br><br>
+<section class="py-7 py-md-0 bg-login" id="login">
+  <div class="col-md-8 col-sm-10 col-12 mx-auto my-auto text-center align-baseline">
+    <div class="row vh-md-100">
+
+      <form class="mx-1 mx-md-4">
+        <input type="text" placeholder="title" name="title"
+               [(ngModel)]="blog.title" required minlength="3">
+        <br>
+        <input type="text" placeholder="description" name="description"
+               [(ngModel)]="blog.description" required>
+        <br>
+        <input type="text" placeholder="img" name="img"
+               [(ngModel)]="blog.img" required>
+        <br>
+        <input type="text" placeholder="text" name="text" [(ngModel)]="blog.text">
+        <br>
+        <input type="text" placeholder="category" [(ngModel)]="blog.category" name="category"/>
+        <br>
+        <input type="text" placeholder="auth" [(ngModel)]="blog.auth" name="auth"/>
+        <br>
+        <button (click)="save()">save</button>
+
+      </form>
+
+
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th scope="col">title</th>
+          <th scope="col">description</th>
+          <th scope="col">img</th>
+          <th scope="col">text</th>
+          <th scope="col">category</th>
+          <th scope="col">auth</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr *ngFor="let blog of blogList">
+          <td>{{blog.title}}</td>
+          <td>{{blog.description}}</td>
+          <td>{{blog.img}}</td>
+          <td>{{blog.text}}</td>
+          <td>{{blog.category}}</td>
+          <td>{{blog.auth}}</td>
+          <!--    <td>-->
+          <!--      <button (click)="update(blog._id)">delete</button>-->
+          <!--    </td>-->
+          <td>
+            <button (click)="delete(blog._id)">delete</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
