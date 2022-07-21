@@ -1,7 +1,7 @@
 const router = require ("express").Router();
 const User = require("../../models/user/User");
 const verifyToken = require ("./verifyToken");
-const {verifyTokens,verifyTokenAndAuthorization,verifyTokenAndAdmin} = require ("./verifyToken")
+const {verifyTokenAndAuthorization,verifyTokenAndAdmin} = require ("./verifyToken")
 
 //updateUser
 router.put ("/:id",verifyTokenAndAuthorization , async (req,res) => {
@@ -19,7 +19,7 @@ router.put ("/:id",verifyTokenAndAuthorization , async (req,res) => {
             res.status(200).json(updatedUser)
             }
          catch (err) {
-            res.status(500).json(err);
+            res.status(400).json(err);
         }
 
     }
@@ -32,7 +32,7 @@ router.delete("/:id",verifyTokenAndAuthorization,async (req,res)=>{
        res.status(200).json("User has been deleted ...")
     }
     catch(err){
-        res.status(500).json(err)
+        res.status(400).json(err)
     }
 })
 //GET USER 
@@ -44,19 +44,19 @@ router.get("/find/:id",verifyTokenAndAdmin,async (req,res)=>{
        res.status(200).json(others)
     }
     catch(err){
-        res.status(500).json(err)
+        res.status(400).json(err)
     }
 })
 
 //GET ALL USERS
 
-router.get("/findall/",verifyTokenAndAdmin,async (req,res)=>{
+router.get("/findall/",async (req,res)=>{
     try{
      const users =  await User.find();
        res.status(200).json(users)
     }
     catch(err){
-        res.status(500).json(err)
+        res.status(400).json(err)
     }
 }
 )
@@ -86,7 +86,7 @@ router.get("/stats",verifyTokenAndAdmin,async (req,res)=>{
         res.status(200).json(data)
      }
     catch(err){
-        res.status(500).json(err)
+        res.status(400).json(err)
     }
 }
 )

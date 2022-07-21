@@ -1,1 +1,48 @@
-<p>camp works!</p>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <button type="button" class="btn btn-light" routerLink="/map">Return to map</button>
+  </div>
+</div>
+
+<form>
+  <input type="text" placeholder="name" name="name"
+         [(ngModel)]="campSpot.name" required minlength="3">
+  <br>
+  <input type="text" placeholder="address" name="address"
+         [(ngModel)]="campSpot.address" required minlength="3" >
+  <br>
+  <input type="text" placeholder="category" name="category"
+         [(ngModel)]="campSpot.category" required minlength="3" >
+  <br>
+  <input type="text" placeholder="rate" name="rate" [(ngModel)]="campSpot.rate" required  #a="ngModel">
+  <br>
+  <input type="text" placeholder="Latitude" [(ngModel)]="camp_lat" name="camp_latitude" disabled/>
+  <br>
+  <input type="text" placeholder="Longitude" [(ngModel)]="camp_lng" name="camp_longitude" disabled/>
+  <br>
+  <button (click)="save()">save</button>
+  <agm-map
+    [latitude]="lat"
+    [longitude]="lng"
+    [zoom]="zoom"
+    [disableDefaultUI]="false"
+    (mapReady)="mapClicked($event)">
+    <agm-marker>
+      <agm-info-window>
+        <strong>InfoWindow content</strong>
+      </agm-info-window>
+    </agm-marker>
+  </agm-map>
+</form>
+
+<!--  <div class="form-group row">-->
+<!--    <div class="col-sm-6">-->
+<!--      <label class="control-label">Lat.:</label>-->
+<!--      <input type="text" class="form-control" [(ngModel)]="camp_lat" disabled />-->
+<!--    </div>-->
+<!--    <div class="col-sm-6">-->
+<!--      <label>Long.:</label>-->
+<!--      <input type="text" class="form-control" [(ngModel)]="camp_lng" disabled/>-->
+<!--    </div>-->
+<!--  </div>-->
+

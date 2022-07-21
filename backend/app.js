@@ -6,7 +6,8 @@ var logger = require('morgan');
 const helmet = require ("helmet");
 var bodyParser = require('body-parser')
 const dotenv = require("dotenv");
-const cors = require('cors')
+const cors = require('cors');
+
 
 const cryptoRoute = require ("./routes/product/crypto");
 const cartRoute = require("./routes/product/cart");

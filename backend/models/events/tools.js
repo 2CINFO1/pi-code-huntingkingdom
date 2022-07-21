@@ -96,15 +96,16 @@ const ToolSchema = mongoose.Schema({
         type: Boolean,
         required: true
     },
-    proprietor: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
-    },
     status: {
         type: String,
         enum: ['OPER', 'OFFF', 'STUD', 'ARCH'],
         default: 'OPER'
     }
+    /*,
+        proprietor: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User'
+        }*/
 }, {
     // Make Mongoose use Unix time (seconds since Jan 1, 1970)
     timestamps: {

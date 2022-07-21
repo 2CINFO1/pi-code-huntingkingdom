@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {UserService} from "../../../../services/user/user.service";
-import {Router} from "@angular/router";
+import { Router } from '@angular/router';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-register',
@@ -21,5 +21,4 @@ export class RegisterComponent implements OnInit {
 
     })
   }
-
 }
