@@ -15,9 +15,8 @@ export class LoginComponent implements OnInit {
 
   Login(f: any)
   {
-    this.userservice.Login(f).subscribe(()=>{
-      console.log(f.value)
-      this.router.navigate(['/'])
+    this.userservice.Login(f).subscribe((user_id)=>{
+      this.router.navigate(['/user/profile'])
     })
   }
 
