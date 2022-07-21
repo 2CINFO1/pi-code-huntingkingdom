@@ -1,8 +1,5 @@
-
-
-
 .bg-hero {
-  background-color: #EEEEEE;
+  background-color: #000000;
   background-image: url("src/assets/img/HomePage1.jpg");
   /* background by SVGBackgrounds.com */
   background-attachment: fixed;
@@ -20,7 +17,7 @@
   left: 0;
   top: 0;
   content: "";
-  background-color: rgba(255, 255, 255, 0.7); }
+  background-color: rgba(0, 0, 0, 0.7); }
 .bg-hero .container {
   z-index: 2;
   position: relative; }

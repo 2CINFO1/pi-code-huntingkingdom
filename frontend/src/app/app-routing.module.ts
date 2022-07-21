@@ -10,11 +10,8 @@ const routes: Routes = [
         path: '',
         loadChildren: () => import('./views/user/home/home.module').then(m => m.HomeModule)
       }, {
-        path: 'sign_in',
-        loadChildren: () => import('./views/user/user-login/user-login.module').then(m => m.UserLoginModule)
-      }, {
-        path: 'sign_up',
-        loadChildren: () => import('./views/user/user-register/user-register.module').then(m => m.UserRegisterModule)
+        path: 'user',
+        loadChildren: () => import('./views/user/user/user.module').then(m => m.UserModule)
       }, {
         path: 'events',
         loadChildren: () => import('./views/user/user-events/user-events.module').then(m => m.UserEventsModule)
@@ -31,15 +28,27 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'admin', component: AdminLayoutComponent, children: [
+    path: 'dashboard', component: AdminLayoutComponent, children: [
       {
-        path: 'login',
-        loadChildren: () => import('./views/admin/admin-login/admin-login.module').then(m => m.AdminLoginModule)
-      },
-      {
-        path: 'dashboard',
-        loadChildren: () => import('./views/admin/admin-dashboard/admin-dashboard.module').then(m => m.AdminDashboardModule)
-      },
+        path: 'blogs',
+        loadChildren: () => import('./views/admin/admin-blogs/admin-blogs.module').then(m => m.AdminBlogsModule)
+      }
+      ,{
+        path: 'store',
+        loadChildren: () => import('./views/admin/admin-store/admin-store.module').then(m => m.AdminStoreModule)
+      }
+      ,{
+        path: 'events',
+        loadChildren: () => import('./views/admin/admin-events/admin-events.module').then(m => m.AdminEventsModule)
+      }
+      ,{
+        path: 'maps',
+        loadChildren: () => import('./views/admin/admin-maps/admin-maps.module').then(m => m.AdminMapsModule)
+      }
+      ,{
+        path: 'users',
+        loadChildren: () => import('./views/admin/admin-users/admin-users.module').then(m => m.AdminUsersModule)
+      }
     ]
   },
 ];

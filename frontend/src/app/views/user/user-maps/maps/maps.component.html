@@ -1,1 +1,38 @@
-<p>maps works!</p>
+<br><br><br><br><br>
+<section class="contact-us">
+  <div class="container">
+    <div >
+      <div >
+        <div class="section-title">
+          <h2>Discover based On your preferences</h2>
+        </div>
+      </div>
+    </div>
+    <div >
+      <div >
+        <div >
+          <div >
+            <button type="button" class="btn btn-dark" (click)="changeOpacity()">Change Opacity</button>
+            <button type="button" class="btn btn-dark" (click)="changeRadius()">Change Radius</button>
+            <button type="button" class="btn btn-dark" (click)="toggleHeatmap()">Toggle Heatmap</button>
+            <button type="button" class="btn btn-dark" (click)="toggleMarkers()">Toggle Markers</button>
+            <button type="button" class="btn btn-success" routerLink="camp/add">Add your spot</button>
+          </div>
+        </div>
+      <div>
+        <div class="map" >
+          <agm-map
+            [latitude]="lat"
+            [longitude]="lng"
+            [zoom]="zoom"
+            [disableDefaultUI]="true"
+            (mapReady)="onMapLoad($event)"
+          >
+          </agm-map>
+        </div>
+      </div>
+      </div>
+
+    </div>
+  </div>
+</section>
