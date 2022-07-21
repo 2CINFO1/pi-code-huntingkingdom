@@ -1,1 +1,35 @@
-<p>products works!</p>
+<div class="bg-white">
+    <div class="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
+      <h2 class="sr-only">Products</h2>
+
+      <div class="grid grid-cols-1 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8" >
+        <div class="group" *ngFor="let product of products">
+          <div class="container mx-auto max-w w-full ">
+            <div class="card flex flex-col justify-center p-10 bg-white rounded-lg shadow-2xl">
+              <div class="prod-title">
+                <p class="text-2xl uppercase text-gray-900 font-bold">{{product.Nom}}</p>
+                <p class="uppercase text-sm text-gray-400">
+                  The best shoes in the marketplace
+                </p>
+              </div>
+              <div class="prod-img">
+                <img src="https://unsplash.com/photos/IJjfPInzmdk/download?force=true&w=1920"
+                     class="w-full object-cover object-center" />
+              </div>
+              <div class="prod-info">
+
+                <div class="flex flex-col   items-center text-gray-900">
+                  <p class="font-bold text-xl">{{product.prix}} $</p>
+                  <button
+                          class="px-6 py-2 transition ease-in duration-200 uppercase rounded-full hover:bg-gray-800 hover:text-white border-2 border-gray-900 focus:outline-none">Add
+                    to cart</button>
+                </div>
+
+            </div>
+          </div>
+        </div>
+
+
+        <!-- products... -->
+      </div>
+    </div>
