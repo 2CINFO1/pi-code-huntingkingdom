@@ -1,1 +1,67 @@
-<p>blog-details works!</p>
+
+
+      <div class="py-5 text-center container">
+        <div class="row py-lg-5">
+          <div class="col-lg-8 col-md- mx-auto">
+
+            <p class="lead text-muted"> Blog Quelque chose de court et de principal sur la collection ci-dessous - son contenu, le créateur, etc. Faites-le court et doux, mais pas trop court pour que les gens ne le sautent pas complètement.</p>
+            <p>
+              <a routerLink="/blogs/add" class="btn btn-primary my-2">Ajouter Blog</a>
+
+              <!--<a href="#" class="btn btn-secondary my-2">Secondary action</a>-->
+
+
+            </p>
+          </div>
+        </div>
+        </div>
+        <form class="mx-1 mx-md-4">
+        <input type="text" placeholder="title" name="title"
+               [(ngModel)]="blog.title" required minlength="3">
+        <br>
+        <input type="text" placeholder="description" name="description"
+               [(ngModel)]="blog.description" required>
+        <br>
+        <input type="text" placeholder="img" name="img"
+               [(ngModel)]="blog.img" required>
+        <br>
+        <input type="text" placeholder="text" name="text" [(ngModel)]="blog.text">
+        <br>
+        <input type="text" placeholder="category" [(ngModel)]="blog.category" name="category"/>
+        <br>
+        <input type="text" placeholder="auth" [(ngModel)]="blog.auth" name="auth"/>
+        <br>
+        <button (click)="save()">save</button>
+
+      </form>
+
+
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th scope="col">title</th>
+          <th scope="col">description</th>
+          <th scope="col">img</th>
+          <th scope="col">text</th>
+          <th scope="col">category</th>
+          <th scope="col">auth</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr *ngFor="let blog of blogList">
+          <td>{{blog.title}}</td>
+          <td>{{blog.description}}</td>
+          <td>{{blog.img}}</td>
+          <td>{{blog.text}}</td>
+          <td>{{blog.category}}</td>
+          <td>{{blog.auth}}</td>
+        <!--  <td>
+            <button (click)="update(blog._id)">update</button>
+          </td>-->
+          <td>
+            <button (click)="delete(blog._id)">delete</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>

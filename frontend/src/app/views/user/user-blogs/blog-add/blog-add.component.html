@@ -1,1 +1,54 @@
-<p>blog-add works!</p>
+<br><br><br><br><br><br><br><br>
+<section class="py-7 py-md-0 bg-login" id="login">
+  <div class="col-md-8 col-sm-10 col-12 mx-auto my-auto text-center align-baseline">
+    <div class="row vh-md-100">
+
+      <body>
+        <div class="creerblog">
+          <h1>Creer un nouveau blog</h1>
+          <p>Ajoutez ci-dessous des informations sur le blog, l'auteur ou tout autre contexte d'arrière-plan. Faites-en quelques phrases pour que les gens puissent ramasser quelques informations.</p>
+          <form action="/page-traitement-donnees" method="post">
+          <div>
+          <label for="nom1">Le titre: </label>
+          <input type="text" id="title" name="titre" placeholder="Le titre du blog :"
+          [(ngModel)]="blog.title" required minlength="3">
+          </div>
+
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" id="customFile">
+            <label class="custom-file-label" for="customFile" placeholder="exemple image, fichier pdf ....">Choisir un fichier</label>
+          </div>
+          <div>
+            <label for="nom">La description : </label>
+            <input type="text" id="description" name="description" placeholder="Une coute description :" required>
+            </div>
+            <div>
+              <label for="message">Votre contenu du blog</label>
+              <textarea id="message" name="message" placeholder="La chasse au gibier est un problème à grande échelle qui va exiger une stratégie globale. ...." required></textarea>
+              </div>
+          <div>
+          <label for="sujet">Quel est la catégorie de ce blog ?</label>
+          <select name="sujet" id="sujet" required>
+          <option value="" disabled selected hidden>Choisissez la catégorie</option>
+          <option value="probleme-compte">La pêche </option>
+          <option value="question-produit">La chasse</option>
+          <option value="suivi-commande">Camping</option>
+          <option value="autre">Autre...</option>
+          </select>
+          </div>
+
+          <div>
+            <div class="d-grid gap-2 col-6 mx-auto">
+             <button type="submit" class="btn btn-primary" type="button" (click)="save()">Publier</button>
+              <button  type="reset" class="btn btn-primaryy" type="button" routerLink="/blogs">Annuler</button>
+
+
+            </div>
+
+          </div>
+          </form>
+          </div>
+      </body>
+
+
+
