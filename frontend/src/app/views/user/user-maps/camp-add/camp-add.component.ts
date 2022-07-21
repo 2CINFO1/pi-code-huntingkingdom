@@ -3,11 +3,11 @@ import {CampSpot} from "../../../../models/maps/camp_spot";
 import {CampSpotService} from "../../../../services/maps/camp-spot.service";
 
 @Component({
-  selector: 'app-camp',
-  templateUrl: './camp.component.html',
-  styleUrls: ['./camp.component.css']
+  selector: 'app-camp-add',
+  templateUrl: './camp-add.component.html',
+  styleUrls: ['./camp-add.component.css']
 })
-export class CampComponent implements OnInit {
+export class CampAddComponent implements OnInit {
 
   address: string;
   name: string;

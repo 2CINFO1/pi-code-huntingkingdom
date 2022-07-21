@@ -16,3 +16,7 @@
     font-weight: 500;
     margin: 18px
 }
+
+agm-map {
+  height: 300px;
+}
