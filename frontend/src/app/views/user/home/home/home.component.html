@@ -1,38 +1,46 @@
-
 <!--hero header-->
 <section class="py-7 py-md-0 bg-hero" id="home">
   <div class="container">
     <div class="row vh-md-100">
 
       <div class="col-md-8 col-sm-10 col-12 mx-auto my-auto text-center">
-        <!--        <h1 class="heading-black text-capitalize">Quickly build landing pages with Knight</h1>-->
-        <!--        <p class="lead py-3">Knight is a platform that helps freelancers and companies build beautiful landing-->
-        <!--          pages in minutes. Sign up for free.</p>-->
-        <button class="btn btn-primary d-inline-flex flex-row align-items-center" routerLink="/user/sign_in">
+        <button type="button" class="btn btn-success btn-login d-inline-flex flex-row align-items-center"
+                routerLink="/user/sign_in">
           Get started now
           <em class="ml-2" data-feather="arrow-right"></em>
         </button>
       </div>
+      <!--Themes Navigation-->
+      <nav class="navbar navbar-expand navbar-dark justify-content-center ">
+        <div class="nav justify-content-center">
+          <div class="container px-4 px-lg-5">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span
+              class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+              <ul>
+                <a class="active" href="#"><img width="30" height="50" alt="" class="d-inline-block align-middle mr-2"
+                                                data-toggle="tooltip" data-placement="top"
+                                                title="Chasse dans les forets"
+                                                src="../../../../../assets/img/forest-Icon-W.png"/></a>
+                <a href="#"><img width="30" height="50" alt="" class="d-inline-block align-middle mr-2"
+                                 data-toggle="tooltip" data-placement="top" title="pêche"
+                                 src="../../../../../assets/img/sea-icon-W.png"/> </a>
+                <a href="#"><img width="30" height="50" alt="" class="d-inline-block align-middle mr-2"
+                                 data-toggle="tooltip" data-placement="top" title="Chasse dans les deserts"
+                                 src="../../../../../assets/img/desert-Icon-W.png"/></a>
+                <a href="#"><img width="30" height="50" alt="" class="d-inline-block align-middle mr-2"
+                                 data-toggle="tooltip" data-placement="top" title="Chasse des oiseaux"
+                                 src="../../../../../assets/img/sky-Icon-W.png"/></a>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
     </div>
   </div>
 </section>
 
-<!--Themes Navigation-->
-<nav class="navbar navbar-expand navbar-dark  fixed-bottom  justify-content-center ">
-  <div class="nav justify-content-center">
-    <div class="container px-4 px-lg-5">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul>
-          <a class="active" href="#"><img width="30" height="50" alt="" class="d-inline-block align-middle mr-2" data-toggle="tooltip" data-placement="top" title="Chasse dans les forets" src="../../../../../assets/img/forest-Icon-W.png" /></a>
-          <a href="#"><img width="30" height="50" alt="" class="d-inline-block align-middle mr-2" data-toggle="tooltip" data-placement="top" title="pêche" src="../../../../../assets/img/sea-icon-W.png" /> </a>
-          <a href="#"><img width="30" height="50" alt="" class="d-inline-block align-middle mr-2" data-toggle="tooltip" data-placement="top" title="Chasse dans les deserts" src="../../../../../assets/img/desert-Icon-W.png" /></a>
-          <a href="#"><img width="30" height="50" alt="" class="d-inline-block align-middle mr-2" data-toggle="tooltip" data-placement="top" title="Chasse des oiseaux" src="../../../../../assets/img/sky-Icon-W.png" /></a>
-        </ul>
-      </div>
-    </div>
-  </div>
-</nav>
 
 <!--news section-->
 <section class="py-7 bg-dark section-angle top-left bottom-left" id="blog">
