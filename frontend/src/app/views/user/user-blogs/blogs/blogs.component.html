@@ -95,8 +95,12 @@
                 <button type="button" class="btn btn-sm btn-outline-success">Modifier</button>
                 <button type="button" class="btn btn-sm btn-outline-secondary" (click)="delete(blog._id)">Supprimer</button>
               </div>
-              <small class="text-muted">9 mins</small>
+              <div>
+              <small class="text-muted">{{myDate| date}}</small>
+             <div> <small class="text-muted">{{myDate| date:'shortTime'}}</small>
             </div>
+          </div>
+
 
           </div>
 

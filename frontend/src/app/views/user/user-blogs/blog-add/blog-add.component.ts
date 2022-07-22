@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { Blog } from 'src/app/models/blog/blog';
 import {BlogService} from "../../../../services/blogs/blog.service";
 
+
+
 @Component({
   selector: 'app-blog-add',
   templateUrl: './blog-add.component.html',
@@ -11,8 +13,9 @@ import {BlogService} from "../../../../services/blogs/blog.service";
 export class BlogAddComponent implements OnInit {
   blog: Blog;
   public blogList: Blog[];
+  blogService: any;
 
-  constructor(private blogService: BlogService) { }
+  constructor(private bs: BlogService) { }
 
   ngOnInit(): void {
     this.blog = new Blog();
@@ -20,7 +23,7 @@ export class BlogAddComponent implements OnInit {
   }
 
   getBlogList() {
-    this.blogService.listBlogs().subscribe((response: Blog[]) => {
+    this.bs.listBlogs().subscribe((response: Blog[]) => {
       this.blogList = response;
       console.log(response)
     })
@@ -32,7 +35,7 @@ export class BlogAddComponent implements OnInit {
     )
   }
 
-  save() {
+ addBlog(f:any) {
     this.blogService.addBlog(this.blog).subscribe(
       ()=>{this.getBlogList()}
     );
