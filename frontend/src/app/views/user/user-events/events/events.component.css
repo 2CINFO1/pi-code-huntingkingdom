@@ -1,0 +1,21 @@
+#eventHeader {
+    background-image: linear-gradient(to right, #0B2518 0%, 8.862433582544327%, #0B2518 17.724867165088654%, 49.669311195611954%, #0D0D0D 81.61375522613525%);
+}
+
+.primarHKBtn {
+    background-color: transparent;
+    border-color: #11BFAE;
+    color: #11BFAE;
+}
+
+.primarHKBtn:hover {
+    background-color: #11BFAE;
+    color: #0B2518;
+}
+
+@media (min-width: 700px) {
+    .primarHKBtn {
+        font-size: 1.125rem;
+        padding: 1rem 2rem;
+    }
+}
