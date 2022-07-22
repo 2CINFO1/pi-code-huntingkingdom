@@ -9,6 +9,7 @@ import {CampSpotService} from "../../../../services/maps/camp-spot.service";
 })
 export class CampComponent implements OnInit {
 
+
   address: string;
   name: string;
 

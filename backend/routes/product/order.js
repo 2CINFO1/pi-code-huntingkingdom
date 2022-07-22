@@ -4,7 +4,7 @@ const {verifyTokens,verifyTokenAndAuthorization,verifyTokenAndAdmin} = require (
 
 //create order
 
-router.post("/add/",verifyTokens, async (req,res) => {
+router.post("/add",verifyTokens, async (req,res) => {
    const newOrder = new Order(req.body)
    
     try {
@@ -58,7 +58,7 @@ router.get("/find/:userid",verifyTokenAndAuthorization,async (req,res)=>{
     }
 })
 
-//GET ALL products
+//GET ALL orders
 
 router.get("/findall/",verifyTokenAndAdmin,async (req,res)=>{
 try{

@@ -8,6 +8,7 @@ const routes: Routes = [
   {path: '', component: MapsComponent},
   {path: 'camp', component: CampComponent},
   {path: 'camp/add', component: CampAddComponent},
+
 ];
 
 @NgModule({
