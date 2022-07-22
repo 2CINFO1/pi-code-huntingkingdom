@@ -12,12 +12,14 @@ import { BlogDetailsComponent } from './blog-details/blog-details.component';
   declarations: [
     BlogsComponent,
     BlogDetailsComponent,
-    BlogAddComponent
+    BlogAddComponent,
+
   ],
   imports: [
     CommonModule,
     FormsModule,
-    UserBlogsRoutingModule
+    UserBlogsRoutingModule,
+
   ]
 })
 export class UserBlogsModule { }

@@ -77,10 +77,10 @@
       <div class="col" *ngFor="let blog of blogList">
 
         <div class="card shadow-sm">
-          <a href="#">
+          <a style="color: azure ;" href="#">
           <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Paul_Childerley_driven_hunt_Finland_04.png/1024px-Paul_Childerley_driven_hunt_Finland_04.png" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
           <div class="card-title">
-                <p>{{blog.title}}</p>
+                <p style="color:rgb(7, 5, 26); font-size:25px ; font-weight: bold;" >{{blog.title}}</p>
             <div class="d-flex justify-content-between align-items-center"></div>
           </div>
         </a>
@@ -89,9 +89,11 @@
           </div>
           <div class="card-body">
             <p class="card-text">{{blog.description}}</p>
+            <a routerLink="/blogs/details"  style="color: rgb(54, 18, 255); font-size:18px ;">Lire suite</a>
+            <div><p>{{blog.text}}</p></div>
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group">
-                <a routerLink="/blogs/details" button type="button" class="btn btn-sm btn-outline-secondary">Lire suite</a>
+
                 <button type="button" class="btn btn-sm btn-outline-success">Modifier</button>
                 <button type="button" class="btn btn-sm btn-outline-secondary" (click)="delete(blog._id)">Supprimer</button>
               </div>
