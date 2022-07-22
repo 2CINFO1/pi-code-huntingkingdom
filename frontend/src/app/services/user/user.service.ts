@@ -6,6 +6,9 @@ import { User } from 'src/app/models/user/user';
   providedIn: 'root'
 })
 export class UserService {
+  updatedUser(id: any) {
+    throw new Error('Method not implemented.');
+  }
 
   url: string = "http://localhost:3000/api/auth/register"
 

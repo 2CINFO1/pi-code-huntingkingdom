@@ -8,6 +8,7 @@
   <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css' rel='stylesheet'>
   <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet'>
   <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+  
 
 
 </head>
@@ -124,7 +125,7 @@
                         <td class="pt-3">{{user.type}}</td>
                         <td class="pt-3">{{user.isValidated}}</td>
                         <td class="pt-3">{{user.isAdmin}}</td>
-                        <td class="pt-3"><button type="button" class="btn btn-primary">Editer</button></td>
+                        <td class="pt-3"><button type="button" class="btn btn-primary" (click)="update([user._id])">Editer</button></td>
                         <td class="pt-3"><button class="btn btn-danger" (click)="delete([user._id])">Supprimer</button></td>
 
                       </tr>
