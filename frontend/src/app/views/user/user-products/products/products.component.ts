@@ -23,7 +23,7 @@ import { trigger, transition, animate, style } from '@angular/animations'
 
 })
 export class ProductsComponent implements OnInit {
-  visible = false;
+  visible = true;
 
   toggle() {
     this.visible = !this.visible;}
