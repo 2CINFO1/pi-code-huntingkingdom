@@ -20,7 +20,9 @@ export class UserService {
     return this.http.post("http://localhost:3000/api/auth/login", user);
   }
 
-
+  getUser(id: String) {
+    return this.http.get<User>(`http://localhost:3000/api/user/find/${id}`)
+  }
 
   updateUser(user: any) {
     return this.http.put(this.url + user, user);

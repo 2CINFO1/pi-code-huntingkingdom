@@ -7,6 +7,8 @@ const jwt = require("jsonwebtoken");
 //register
 router.post("/register", async (req, res) => {
         const newUser = new User({
+            Nom: req.body.Nom,
+            Prenom: req.body.Prenom,
             Email: req.body.Email,
             Password: CryptoJS.AES.encrypt(req.body.Password, process.env.Pass_sec).toString(),
         })
@@ -41,7 +43,7 @@ router.post("/login", async (req, res) => {
             isAdmin: user.isAdmin
         }, process.env.Jwt_sec, {expiresIn: "3d"})
 
-        res.status(200).json({...others, accessToken});
+        res.status(200).json(user._id);
 
     } catch (err) {
         res.status(500).json(err);
