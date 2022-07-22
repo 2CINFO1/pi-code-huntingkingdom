@@ -1,12 +1,10 @@
 const router = require ("express").Router();
-const Product = require("../../models/products/Product");
-const { create } = require("../../models/user/User");
-const verifyToken = require ("../user/verifyToken");
+
 const {verifyTokens,verifyTokenAndAuthorization,verifyTokenAndAdmin} = require ("../user/verifyToken")
 
 //create cart
 
-router.post("/add/",verifyTokens, async (req,res) => {
+router.post("/add",verifyTokens, async (req,res) => {
    const newCart = new Cart(req.body)
    
     try {
@@ -14,11 +12,11 @@ router.post("/add/",verifyTokens, async (req,res) => {
         res.status(200).json(savedCart);
 
     } catch(err){
-        res.status(500).json(err)
+        res.status(400).json(err)
     }
 }
 )
-//updateProduct
+//updateCart
 router.put ("/:id",verifyTokenAndAuthorization , async (req,res) => {
                
         try {
@@ -32,7 +30,7 @@ router.put ("/:id",verifyTokenAndAuthorization , async (req,res) => {
             res.status(200).json(updatedcart)
             }
          catch (err) {
-            res.status(500).json(err);
+            res.status(400).json(err);
         }
 
     }
@@ -45,7 +43,7 @@ router.delete("/:id",verifyTokenAndAuthorization,async (req,res)=>{
        res.status(200).json("Cart has been deleted ...")
     }
     catch(err){
-        res.status(500).json(err)
+        res.status(400).json(err)
     }
 })
 //GET USER Cart
@@ -57,18 +55,18 @@ router.get("/find/:userid",verifyTokenAndAuthorization,async (req,res)=>{
        res.status(200).json(cart)
     }
     catch(err){
-        res.status(500).json(err)
+        res.status(400).json(err)
     }
 })
 
-//GET ALL products
+//GET ALL carts
 
 router.get("/findall/",verifyTokenAndAdmin,async (req,res)=>{
 try{
 const carts = await Cart.find()
 res.status(200).json(carts)
 }catch(err){
-    res.status(500).json(err)
+    res.status(400).json(err)
 
 }
 

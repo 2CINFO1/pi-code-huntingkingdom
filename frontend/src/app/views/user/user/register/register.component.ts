@@ -17,7 +17,7 @@ export class RegisterComponent implements OnInit {
   addUser(f: any) {
     this.userservice.addUser(f).subscribe(()=>{
       console.log(f.value)
-      this.router.navigate(['/login'])
+      this.router.navigate(['user/sign_in'])
 
     })
   }

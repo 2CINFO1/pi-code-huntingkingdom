@@ -1,3 +1,38 @@
 agm-map {
   height: 750px;
 }
+
+
+.btn-dark {
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
+.btn-success {
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
+
+.contact-us {
+  padding: 150px 0px;
+  background: #2c3034;
+}
+
+.section-title h2 {
+  color: #ffffff;
+  font-size: 30px;
+  font-weight: normal;
+  text-transform: uppercase;
+  letter-spacing: 8px;
+  padding-bottom: 50px;
+}
+
+.section-title p {
+  color: #e8e8e8;
+  margin-bottom: 30px;
+}
+
+.map {
+  margin-top: 50px;
+}
