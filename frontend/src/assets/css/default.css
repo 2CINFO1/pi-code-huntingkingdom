@@ -560,6 +560,13 @@ body {
   .section-angle.bottom-left:after, .section-angle.top-left:before {
     border-top-width: 1rem; } }
 
+.container-fluid {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto; }
+
 /*smart scrolling*/
 .smart-scroll {
   position: fixed;
