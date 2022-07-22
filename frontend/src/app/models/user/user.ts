@@ -5,11 +5,11 @@ export class User {
   Age: Number
   type: String
   img: String
-  // Bio: String
+   Bio: String
   Email: String
   Password: String
-  // isAdmin: Boolean
-  // LicenceImg: String
+  isAdmin: Boolean
+  LicenceImg: String
   isValidated: Boolean
   // ProductsAcheter: String
 }

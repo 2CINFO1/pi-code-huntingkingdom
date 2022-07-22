@@ -1,52 +1,63 @@
-<div class="page-content page-container" id="page-content">
-    <div class="padding">
-        <div class="row container d-flex justify-content-center">
-<div class="col-xl-6 col-md-12">
-                                                <div class="card user-card-full">
-                                                    <div class="row m-l-0 m-r-0">
-                                                        <div class="col-sm-4 bg-c-lite-green user-profile">
-                                                            <div class="card-block text-center text-white">
-                                                                <div class="m-b-25">
-                                                                    <!-- <img src= class="img-radius" alt="User-Profile-Image"> -->
-                                                                </div>
-                                                                <h6 class="f-w-600">"{{user.Prenom}}+"{{user.Nom}}""</h6>
-                                                                <p>Web Designer</p>
-                                                                <i class=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-8">
-                                                            <div class="card-block">
-                                                                <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Information</h6>
-                                                                <div class="row">
-                                                                    <div class="col-sm-6">
-                                                                        <p class="m-b-10 f-w-600">Email</p>
-                                                                        <h6 class="text-muted f-w-400">"{{user.Email}}</h6>
-                                                                    </div>
-                                                                    <div class="col-sm-6">
-                                                                        <p class="m-b-10 f-w-600">Date d'inscription</p>
-                                                                        <h6 class="text-muted f-w-400">dd-mm-aaaa</h6>
-                                                                    </div>
-                                                                </div>
-                                                                <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">"{{user.Prenom}}"</h6>
-                                                                <div class="row">
-                                                                    <div class="col-sm-6">
-                                                                        <p class="m-b-10 f-w-600">Recent</p>
-                                                                        <h6 class="text-muted f-w-400">Sam Disuja</h6>
-                                                                    </div>
-                                                                   
-                                                                    <div class="form-check form-switch">
-                                                                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-                                                                        <label class="form-check-label" for="flexSwitchCheckDefault">Validation du compte</label>
-                                                                      </div>
-                                                                      <div class="form-check form-switch">
-                                                                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
-                                                                        <label class="form-check-label" for="flexSwitchCheckChecked">Admin</label>
-                                                                      </div>
-                                                            
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                             </div>
-                                                </div>
-                                            </div>
+<section class="py-7 py-md-0 bg-login" id="login">
+    <div class="container">
+      <div class="row vh-md-100">
+  
+        <div class="col-md-8 col-sm-10 col-12 mx-auto my-auto text-center">
+          <div class="card-body p-md-5">
+            <div class="row justify-content-center">
+          
+                <div class="container rounded bg-white mt-5" >
+                    <div class="row">
+                        <div class="col-md-4 border-right">
+                            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" src="https://i.imgur.com/0eg0aG0.jpg" width="90"><span class="font-weight-bold">{{user.Nom}}</span><span class="text-black-50"></span><span>{{user.type}}</span></div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="p-3 py-5">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <div class="d-flex flex-row align-items-center back"><i class="fa fa-long-arrow-left mr-1 mb-1"></i>
+                                        <h6>Shop</h6>
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-md-6"><input type="text" class="form-control" placeholder="first name" value="{{user.Nom}}+{{user.Prenom}}"></div>
+                                    <div class="col-md-6"><input type="text" class="form-control" placeholder="Email" value="{{user.Email}}"></div>
+                                </div>
+                                <!-- <div class="row mt-3">
+                                    <div class="col-md-6"><input type="text" class="form-control" placeholder="Email" value="{{user.Email}}"></div>
+                                    <div class="col-md-6"><input type="text" class="form-control"  placeholder="Bio" value="{{user.Bio}}"></div>
+                                </div> -->
+                                <div class="row mt-3">
+                                <SELECT>
+                                    <OPTION Value="isAdmin">Admin</OPTION>
+                                    <OPTION Value="N'est pas Admin">Utilisateur normal</OPTION>
+                                </SELECT>
+                            </div>
+                            <div class="row mt-3">
+                                <SELECT>
+                                    <OPTION Value="Ce compte est validé">Compte validé</OPTION>
+                                    <OPTION Value="Ce compte n'est pas validé">Comte nom validé</OPTION>
+                                </SELECT>
+                            </div>
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                                            <script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js'></script>
+                                            <script type='text/javascript' src='#'></script>
+                                            <script type='text/javascript' src='#'></script>
+                                            <script type='text/javascript' src='#'></script>
+                                            <script type='text/javascript'></script>
+                                            <script type='text/javascript'>var myLink = document.querySelector('a[href="#"]');
+                                            myLink.addEventListener('click', function(e) {
+                                              e.preventDefault();
+                                            });</script>
+                                        
+             
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
