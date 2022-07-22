@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CampSpotService} from "../../../../services/maps/camp-spot.service";
 import {CampSpot} from "../../../../models/maps/camp_spot";
 
@@ -9,13 +9,14 @@ import {CampSpot} from "../../../../models/maps/camp_spot";
 })
 export class MapsComponent implements OnInit {
 
+
   constructor(private campService: CampSpotService) {
   }
 
   public campList: CampSpot[]
 
   ngOnInit(): void {
-    this.campService.listCampSpot().subscribe((response: CampSpot[])=> {
+    this.campService.listCampSpot().subscribe((response: CampSpot[]) => {
       this.campList = response
     })
   }
@@ -60,7 +61,7 @@ export class MapsComponent implements OnInit {
   }
 
   setMarker(): void {
-    var myLatlng = new google.maps.LatLng(parseFloat(String(this.rl_lat)),parseFloat(String(this.rl_lng)));
+    var myLatlng = new google.maps.LatLng(parseFloat(String(this.rl_lat)), parseFloat(String(this.rl_lng)));
     this.marker.setPosition(myLatlng)
   }
 
@@ -77,10 +78,9 @@ export class MapsComponent implements OnInit {
   }
 
   toggleMarkers(): void {
-    const image =
-      "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png";
+    const image = "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png";
     this.coordsList.forEach(data => {
-      var myLatlng = new google.maps.LatLng(parseFloat(String(data.lat())),parseFloat(String(data.lng())))
+      var myLatlng = new google.maps.LatLng(parseFloat(String(data.lat())), parseFloat(String(data.lng())))
       new google.maps.Marker({
         position: myLatlng,
         // label: (this.labels)[this.labelIndex++ % this.labels.length],

@@ -14,14 +14,19 @@ export class UsersComponent implements OnInit {
   constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
+    this.getUserList()
+  }
+
+  getUserList() {
     this.userService.listUser().subscribe((data) => {
       this.users = data
       console.log(data)
     })
   }
+
   delete(id: any) {
     this.userService.deleteUser(id).subscribe(() => {
-      this.router.navigate(['/listusers'])
+      this.getUserList()
     })
   }
 

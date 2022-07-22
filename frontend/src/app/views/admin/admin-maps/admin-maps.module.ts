@@ -6,12 +6,14 @@ import { MapsComponent } from './maps/maps.component';
 import { CampComponent } from './camp/camp.component';
 import {AgmCoreModule} from "@agm/core";
 import {FormsModule} from "@angular/forms";
+import { CampDetailsComponent } from './camp-details/camp-details.component';
 
 
 @NgModule({
   declarations: [
     MapsComponent,
-    CampComponent
+    CampComponent,
+    CampDetailsComponent
   ],
   imports: [
     CommonModule,

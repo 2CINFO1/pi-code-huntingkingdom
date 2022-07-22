@@ -12,7 +12,7 @@ router.get('/', (req, res, next) => {
 });
 
 //------------- add new blog ----------------------------
-router.post('/addBlog', async (req, res, next) => {
+router.post('/add', async (req, res, next) => {
     const newBlog = new Blog(req.body);
     try {
         const savedBlog = await newBlog.save()
