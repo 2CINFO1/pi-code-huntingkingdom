@@ -9,6 +9,7 @@ import {CampSpot} from "../../../../models/maps/camp_spot";
 })
 export class MapsComponent implements OnInit {
 
+
   constructor(private campService: CampSpotService) {
   }
 

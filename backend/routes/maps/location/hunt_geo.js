@@ -1,5 +1,8 @@
 const Redis = require("ioredis")
-const redis = new Redis()
+const redis = new Redis({
+    host: '192.168.1.25',
+    port: 6379
+},)
 
 const add_hunting_spot = async (huntSpot) => {
     await redis.geoadd('hunt_spots',
