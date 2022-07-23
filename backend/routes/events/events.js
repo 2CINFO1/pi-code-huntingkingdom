@@ -11,7 +11,7 @@ const Event = require('../../models/events/Event');
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, '/public/');
+        cb(null, 'public/');
     },
     filename: (req, file, cb) => {
         const ext = path.extname(file.originalname);
@@ -55,11 +55,6 @@ var upload = multer({ storage })
 //         res.json(event);
 //     });
 // });
-
-router.get("/getImage/:name", (req, res) => {
-    const img_name = req.params.name;
-    res.sendFile(path.join(__dirname, `../../public/images/${img_name}`))
-})
 
 
 router.get("/show", async(req, res) => {
@@ -208,6 +203,7 @@ router.post('/uploadCoverImage/:id', (req, res, next) => {
 });
 
 
+
 // Archive Events
 router.delete('/archive', (req, res, next) => {
 
@@ -328,6 +324,15 @@ router.put("/removeParticipant/:id", async(req, res) => {
         res.status(500).json(err);
     }
 })
+
+
+router.get("/getImage/:folderName/:image_name", (req, res) => {
+    const folder_name = req.params.folderName;
+    const img_name = req.params.image_name;
+
+    res.sendFile(path.join(__dirname, `../../public/${folder_name}/${img_name}`))
+})
+
 
 /*
 // Show events by category 

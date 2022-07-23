@@ -22,9 +22,10 @@
         <div class="col" *ngFor="let event of eventList">
             <div class="col">
                 <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg" crossorigin="anonymous" style="background-image: url('http://localhost:3000/events/getImage/0795ac43-c10e-49a1-93b4-b59583919e49.png'); ">
+                    <img class="card d-flex h-100 flex-column h-100 overflow-hidden p-5 pb-3 text-shadow-1" crossorigin="anonymous" src="http://localhost:3000/events/getImage/{{event.coverImagePath}}">
+
                     <button class="border-0 bg-dark text-white">
                       <!--  event.coverImagePath -->
-                   <!-- <img class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1" crossorigin="anonymous" src="http://localhost:3000/events/getImage/0795ac43-c10e-49a1-93b4-b59583919e49.png"> -->
                         <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">{{event.name}}</h2>
                         <ul class="d-flex list-unstyled mt-auto">
                             <li class="me-auto">
