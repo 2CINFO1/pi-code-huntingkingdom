@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {CampSpot} from "../../../../models/maps/camp_spot";
 import {CampSpotService} from "../../../../services/maps/camp-spot.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-camp-add',
@@ -29,7 +30,7 @@ export class CampAddComponent implements OnInit {
   }
 
 
-  constructor(private campService: CampSpotService) {
+  constructor(private campService: CampSpotService, private router: Router) {
   }
 
 
@@ -57,6 +58,7 @@ export class CampAddComponent implements OnInit {
     // \nlongitude: ${this.campSpot.position.lng}`
     // )
     this.campService.addCampSpot(this.campSpot);
+    this.router.navigate(['/maps/'])
   }
 
 }
