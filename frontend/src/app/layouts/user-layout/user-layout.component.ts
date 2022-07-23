@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserLayoutComponent implements OnInit {
 
+  visible = false;
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  toggle() {
+    this.visible = !this.visible;}
+  products : any;
 }
