@@ -7,13 +7,17 @@ import { CampComponent } from './camp/camp.component';
 import {AgmCoreModule} from "@agm/core";
 import {FormsModule} from "@angular/forms";
 import { CampDetailsComponent } from './camp-details/camp-details.component';
+import { HuntComponent } from './hunt/hunt.component';
+import { HuntDetailsComponent } from './hunt-details/hunt-details.component';
 
 
 @NgModule({
   declarations: [
     MapsComponent,
     CampComponent,
-    CampDetailsComponent
+    CampDetailsComponent,
+    HuntComponent,
+    HuntDetailsComponent
   ],
   imports: [
     CommonModule,

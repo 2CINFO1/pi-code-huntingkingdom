@@ -1,5 +1,5 @@
 .contact-us {
-  padding: 70px 0px;
+  padding: 150px;
   background: #343a40;
 }
 .section-title h2 {
@@ -9,12 +9,12 @@
   text-transform: uppercase;
   letter-spacing: 8px;
   border-bottom: 5px solid #4f5050 ;
-  padding-bottom: 10px;
+  padding-bottom: 25px;
   display: inline-block;
 }
 .section-title p {
   color: #e8e8e8;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
 }
 .contact-us input,
 .contact-us textarea {
@@ -29,5 +29,6 @@
   border-radius: 4px;
 }
 agm-map {
+  padding-top: 20px;
   height: 300px;
 }

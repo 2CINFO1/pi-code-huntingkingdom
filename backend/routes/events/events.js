@@ -11,7 +11,7 @@ const Event = require('../../models/events/Event');
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, 'public/');
+        cb(null, '/public/');
     },
     filename: (req, file, cb) => {
         const ext = path.extname(file.originalname);
@@ -55,6 +55,11 @@ var upload = multer({ storage })
 //         res.json(event);
 //     });
 // });
+
+router.get("/getImage/:name", (req, res) => {
+    const img_name = req.params.name;
+    res.sendFile(path.join(__dirname, `../../public/images/${img_name}`))
+})
 
 
 router.get("/show", async(req, res) => {
@@ -232,7 +237,7 @@ router.delete('/archive', (req, res, next) => {
 
 //create Event
 
-router.post("/add/", (req, res) => {
+router.post("/add", (req, res) => {
     const newsEvent = new Event(req.body)
     try {
         newsEvent.save((err, event) => {
@@ -262,6 +267,62 @@ router.put("/update/:id", async(req, res) => {
         await Event.findByIdAndUpdate(
             req.params.id, { $set: req.body }, { new: true }
         );
+        res.status(200).json(req.body)
+    } catch (err) {
+        res.status(500).json(err);
+    }
+})
+
+router.put("/addInterested/:id", async(req, res) => {
+    try {
+        var id = req.params.id;
+        Event.findById({ _id: id }, function(err, event) {
+            event.interestedNumber = event.interestedNumber + 1;
+            event.save();
+        });
+        res.status(200).json(req.body)
+    } catch (err) {
+        res.status(500).json(err);
+    }
+})
+
+router.put("/addParticipant/:id", async(req, res) => {
+    var id = req.params.id;
+    Event.findById({ _id: id }, function(err, event) {
+        if ((event.participantNumber + 1) > event.maxmumbers) {
+            res.json({ success: false, msg: 'Nombre maximum des participant atteint' });
+        } else {
+            event.participantNumber = event.participantNumber + 1;
+            event.save();
+            res.status(200).json(req.body)
+
+        }
+    });
+
+})
+
+
+
+router.put("/removeInterested/:id", async(req, res) => {
+    try {
+        var id = req.params.id;
+        Event.findById({ _id: id }, function(err, event) {
+            event.interestedNumber = event.interestedNumber - 1;
+            event.save();
+        });
+        res.status(200).json(req.body)
+    } catch (err) {
+        res.status(500).json(err);
+    }
+})
+
+router.put("/removeParticipant/:id", async(req, res) => {
+    try {
+        var id = req.params.id;
+        Event.findById({ _id: id }, function(err, event) {
+            event.participantNumber = event.participantNumber - 1;
+            event.save();
+        });
         res.status(200).json(req.body)
     } catch (err) {
         res.status(500).json(err);

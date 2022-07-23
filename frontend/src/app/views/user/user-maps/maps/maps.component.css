@@ -13,9 +13,13 @@ agm-map {
   margin-bottom: 10px;
 }
 
+.btn-danger {
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
 
 .contact-us {
-  padding: 70px 0px;
+  padding: 150px 0px;
   background: #2c3034;
 }
 
@@ -25,7 +29,14 @@ agm-map {
   font-weight: normal;
   text-transform: uppercase;
   letter-spacing: 8px;
-  padding-bottom: 10px;
+  padding-bottom: 25px;
+}
+
+.section-title h4 {
+  color: #6c757d;
+  font-size: 18px;
+  font-weight: inherit;
+  padding-top: 10px;
 }
 
 .section-title p {

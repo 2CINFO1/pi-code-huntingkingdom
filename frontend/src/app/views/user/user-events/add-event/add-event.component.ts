@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {EventsService} from "../../../../services/events/events.service";
+import {Event} from "../../../../models/events/events";
 
 @Component({
   selector: 'app-add-event',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddEventComponent implements OnInit {
 
-  constructor() { }
+  event: Event;
+  eventList : Event[];
+
+  constructor(private EventsService: EventsService) { }
 
   ngOnInit(): void {
+    this.event = new Event();
+    this.eventList = [];
+
   }
 
+  save() {
+    console.log(this.event);
+    this.EventsService.addEvent(this.event);
+  }
 }

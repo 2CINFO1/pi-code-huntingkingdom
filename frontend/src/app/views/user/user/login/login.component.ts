@@ -8,16 +8,14 @@ import { UserService } from 'src/app/services/user/user.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  constructor(private userservice: UserService,private router:Router) { }
+  constructor(private userservice: UserService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  Login(f: any)
-  {
-    this.userservice.Login(f).subscribe(()=>{
-      console.log(f.value)
-      this.router.navigate(['/'])
+  Login(f: any) {
+    this.userservice.Login(f).subscribe((user_id) => {
+      this.router.navigate(['/user/profile', user_id])
     })
   }
 
