@@ -9,7 +9,7 @@
   text-transform: uppercase;
   letter-spacing: 8px;
   border-bottom: 5px solid #4f5050 ;
-  padding-bottom: 25px;
+  padding-bottom: 15px;
   display: inline-block;
 }
 .section-title p {
@@ -37,19 +37,19 @@ agm-map {
 
 .container{
   position: relative;
+  /*display: flex;*/
+  /*justify-content: center;*/
+  /*align-items: center;*/
+  /*flex-direction: column;*/
+
+  /*border-radius: 10px;*/
+}
+
+.Skills{
+  background-color: #343a40;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  padding: 30px;
-  border-radius: 10px;
-}
-
-
-.container .Skills{
-  display: flex;
-  justify-content: center;
-  align-items: ;
   margin: 10px 0;
   padding-right: 10px ;
   transition: 0.5s;
@@ -57,10 +57,10 @@ agm-map {
 
 
 .container .Skills h3{
+  color: #343a40;
   min-width: 180px;
   text-align: right;
   padding-right:20px ;
-  color: #fff;
   font-size: 20px;
   font-weight: 400;
   letter-spacing: 2px;
@@ -81,6 +81,7 @@ agm-map {
   justify-content: center;
   align-items: center;
   -webkit-appearance: none;
+  background-color: #343a40;
   appearance: none;
   overflow: hidden;
 }
