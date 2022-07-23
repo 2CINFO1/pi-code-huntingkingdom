@@ -3,17 +3,17 @@ import { CommonModule } from '@angular/common';
 
 import { UserMapsRoutingModule } from './user-maps-routing.module';
 import { MapsComponent } from './maps/maps.component';
-import { CampComponent } from './camp/camp.component';
 import {FormsModule} from "@angular/forms";
 import {AgmCoreModule} from "@agm/core";
 import { CampAddComponent } from './camp-add/camp-add.component';
+import { HuntComponent } from './hunt-add/hunt.component';
 
 
 @NgModule({
   declarations: [
     MapsComponent,
-    CampComponent,
-    CampAddComponent
+    CampAddComponent,
+    HuntComponent
   ],
   imports: [
     CommonModule,
