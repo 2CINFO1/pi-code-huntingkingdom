@@ -119,13 +119,25 @@ export class MapsComponent implements OnInit {
 
   toggleCampMarkers(): void {
     const image = "http://maps.google.com/mapfiles/ms/icons/";
-    this.campCoordsList.forEach(data => {
-      var myLatlng = new google.maps.LatLng(parseFloat(String(data.lat())), parseFloat(String(data.lng())))
-      new google.maps.Marker({
+    this.campList.forEach(data => {
+      var myLatlng = new google.maps.LatLng(parseFloat(String(data.position.lat)), parseFloat(String(data.position.lng)))
+      const campMarker = new google.maps.Marker({
         position: myLatlng,
         // label: (this.labels)[this.labelIndex++ % this.labels.length],
         map: this.map,
         icon: `${image}hiker.png`
+      });
+      const infoWindow = new google.maps.InfoWindow({
+        content: data.name,
+      });
+
+      infoWindow.addListener('click', () => {
+        alert("yeah");
+        console.log("yeah");
+      });
+
+      campMarker.addListener('click', event => {
+        infoWindow.open(this.map, campMarker);
       });
     })
   }

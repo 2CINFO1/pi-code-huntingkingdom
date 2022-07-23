@@ -32,3 +32,98 @@ agm-map {
   padding-top: 20px;
   height: 300px;
 }
+
+
+
+.container{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 30px;
+  border-radius: 10px;
+}
+
+
+.container .Skills{
+  display: flex;
+  justify-content: center;
+  align-items: ;
+  margin: 10px 0;
+  padding-right: 10px ;
+  transition: 0.5s;
+}
+
+
+.container .Skills h3{
+  min-width: 180px;
+  text-align: right;
+  padding-right:20px ;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+
+.container .Skills .rating{
+  position: relative;
+  display: flex;
+  margin: 10px 0;
+  flex-direction: row-reverse ;
+}
+
+.container .Skills .rating input{
+  position: relative;
+  width: 20px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -webkit-appearance: none;
+  appearance: none;
+  overflow: hidden;
+}
+
+.container .Skills .rating input::before{
+  content: '\f005';
+  position: absolute;
+  font-family: fontAwesome;
+  font-size: 34px;
+  left: 4px;
+  color: #030b0f;
+  transition: 0.5s;
+}
+
+.container .Skills .rating input:nth-child(2n + 1)::before{
+  right: 4px;
+  left: initial;
+}
+
+.container .Skills .rating input:hover ~ input::before,
+.container .Skills .rating input:hover::before,
+.container .Skills .rating input:checked ~ input::before,
+.container .Skills .rating input:checked::before{
+  color: gold;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
