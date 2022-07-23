@@ -9,25 +9,32 @@ var Schema = mongoose.Schema;
 const EventSchema = mongoose.Schema({
     name: {
         type: String,
-        required: true
+        required: false
     },
     type: {
         type: String,
-        required: true
+        required: false
     },
     category: {
         type: String,
-        required: true
+        required: false
     },
     description: {
         type: String,
-        required: true
+        required: false
     },
     detail: {
         type: String
     },
     location: {
         type: String
+    },
+    pays: {
+        type: String
+    },
+    codePostal: {
+        type: Number
+
     },
     startDate: {
         type: Date
@@ -42,6 +49,23 @@ const EventSchema = mongoose.Schema({
     },
     maxmumbers: {
         type: Number
+    },
+    participantNumber: {
+        type: Number,
+        default: 0
+    },
+    interestedNumber: {
+        type: Number,
+        default: 0
+    },
+    paiement: {
+        type: String,
+        enum: ['Y', 'N'],
+        default: 'N'
+    },
+    creditCard: {
+        type: String,
+        default: 'XXXXXX'
     },
     /*
     guid: {
