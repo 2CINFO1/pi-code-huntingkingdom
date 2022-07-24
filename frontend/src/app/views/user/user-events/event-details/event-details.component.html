@@ -1,0 +1,26 @@
+<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center headercmp text-light">
+    <div class="col-md-5 p-lg-5 mx-auto my-5">
+        <h1 class="display-4 fw-normal">{{event.name}}</h1>
+        <p class="lead fw-normal">{{event.description}}</p>
+        <nav class="navbar navbar-expand navbar-dark  justify-content-center ">
+            <div class="nav justify-content-center">
+                <div class="container px-4 px-lg-5">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse" id="navbarResponsive">
+                        <ul>
+                            <button class="bg-transparent border-0" (click)="gereInteresses()">
+                              <img width="50" height="50" alt="" class="d-inline-block align-middle mr-2 " data-toggle="tooltip" data-placement="top" title="Je suis interessé(e)" src="../../../../../assets/img/146-label-outline (1).gif"/>
+                            </button>{{event.interestedNumber}}
+                            <button class="bg-transparent border-0" (click)="gereParticipant()">
+                              <img width="50" height="50" alt="" class="d-inline-block align-middle mr-2" data-toggle="tooltip" data-placement="top" title="Je participe" src="../../../../../assets/img/48-favorite-heart-outline (4).gif" />
+                            </button>{{event.participantNumber}}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="product-device shadow-sm d-none d-md-block"></div>
+    <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+</div>
