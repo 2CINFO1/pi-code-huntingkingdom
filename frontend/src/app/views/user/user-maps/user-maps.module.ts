@@ -7,13 +7,15 @@ import {FormsModule} from "@angular/forms";
 import {AgmCoreModule} from "@agm/core";
 import { CampAddComponent } from './camp-add/camp-add.component';
 import { HuntComponent } from './hunt-add/hunt.component';
+import { CampDetailsComponent } from './camp-details/camp-details.component';
 
 
 @NgModule({
   declarations: [
     MapsComponent,
     CampAddComponent,
-    HuntComponent
+    HuntComponent,
+    CampDetailsComponent
   ],
   imports: [
     CommonModule,
