@@ -6,6 +6,19 @@ label {
     background-image: url("src/assets/img/HomePage2.jpg");
   }
   
+.row {
+    background-color: gray;
+  
+}
+
+
+.section {
+    background-color: gray;
+}
+
+.container {
+    background-color: gray;
+}
 
   .bg-login:before {
     position: absolute;
@@ -23,7 +36,7 @@ label {
 
 
     body{
-      background-color: #eee;
+      background-color: gray;
   }
   .container{
       height: 80vh;
