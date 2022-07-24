@@ -3,8 +3,8 @@ const UserSchema = new mongoose.Schema(
 {
     Nom:{type : String , required:false},
     Prenom: {type: String , required:false},
-    Age: {type : Number, },
-    type : {type : Array , default : 'visiteur'},
+    Age: {type : Number, required : false},
+    type : {type : String , default : 'visiteur'},
     img:{type : String , required : false},
     Bio : {type : String,required :false},
     Email :  {type : String,required :true},

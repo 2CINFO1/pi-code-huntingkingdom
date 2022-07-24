@@ -24,10 +24,10 @@ export class UsersComponent implements OnInit {
     })
   }
   update(id: any) {
-    this.userService.updateUser(id).subscribe(() => {
-      this.getUserList()
-    })
-  }
+    this.router.navigate(['dashboard/users/details/'+id])
+
+    }
+  
 
   delete(id: any) {
     this.userService.deleteUser(id).subscribe(() => {

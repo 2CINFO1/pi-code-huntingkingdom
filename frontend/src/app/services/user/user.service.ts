@@ -27,8 +27,8 @@ export class UserService {
     return this.http.get<User>(`http://localhost:3000/api/user/find/${id}`)
   }
 
-  updateUser(user: any) {
-    return this.http.put(this.url + user, user);
+  updateUser(id: any,user:any) {
+    return this.http.put("http://localhost:3000/api/user/" + id,user);
   }
 
   listUser() {
