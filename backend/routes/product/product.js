@@ -62,36 +62,67 @@ router.get("/find/:id",async (req,res)=>{
 
 //GET ALL products
 
+ 
+
 router.get("/findall/",async (req,res)=>{
+
     const qNew = req.query.new;
+
     const qCategorie = req.query.Categorie;
+
     const qSousCategorie =req.query.SousCategorie;
 
+ 
+
     try{
+
         let products
+
     if(qNew){
+
         products = await Product.find().sort({createdAT: -1}).limit(5)
 
-    }else if (qCategorie){
-        
-        
-        products = await Product.find({Categorie:{
-            $in: [qCategorie],
-        }})
-    }else if (qSousCategorie){
-        products = await Product.find({SousCategorie:{
-            $in: [qSousCategorie],
-        }})
-      
-    }else{
-        products = await Product.find()
-    }
-    res.status(200).json(products)
-    }
-    catch(err){
-        res.status(500).json(err)
-    }
-}
-)
+ 
 
+    }else if (qCategorie){
+
+       
+
+        
+
+        products = await Product.find({Categorie:{
+
+            $in: [qCategorie],
+
+        }})
+
+    }else if (qSousCategorie){
+
+        products = await Product.find({SousCategorie:{
+
+            $in: [qSousCategorie],
+
+        }})
+
+     
+
+    }else{
+
+        products = await Product.find()
+
+    }
+
+    res.status(200).json(products)
+
+    }
+
+    catch(err){
+
+        res.status(500).json(err)
+
+    }
+
+}
+
+)
 module.exports  = router

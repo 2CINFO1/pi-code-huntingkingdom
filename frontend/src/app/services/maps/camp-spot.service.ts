@@ -30,12 +30,12 @@ export class CampSpotService {
     return this.http.get<CampSpot[]>(`${this.url}/fetch`);
   }
 
-  getCampSpot(id: string) {
+  getCampSpot(id: String) {
 
-    return this.http.get(`${this.url}/find/${id}`)
+    return this.http.get<CampSpot>(`${this.url}/find/${id}`)
   }
 
-  deleteCampSpot(id: string) {
+  deleteCampSpot(id: String) {
     console.log(this.http.delete(`${this.url}/${id}`))
     return this.http.delete(`${this.url}/${id}`);
   }
