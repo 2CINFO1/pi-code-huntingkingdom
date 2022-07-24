@@ -5,8 +5,7 @@ import {AppComponent} from './app.component';
 import {LayoutsModule} from "./layouts/layouts.module";
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -14,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
     AppRoutingModule,
