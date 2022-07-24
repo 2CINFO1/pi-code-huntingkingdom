@@ -59,11 +59,7 @@ app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(helmet())
-<<<<<<< HEAD
     //allow cross origin requests
-=======
-//allow cross origin requests
->>>>>>> 89a755b4608ed5607af071e4265854fa755ec697
 app.use(function(req, res, next) {
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Methods", "POST, PUT, OPTIONS, DELETE, GET");

@@ -20,4 +20,10 @@ export class EventsComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
+  getEventDetails(_id: String) {
+    console.log(_id)
+    this.router.navigate(['events/details', _id])
+  }
+
 }
