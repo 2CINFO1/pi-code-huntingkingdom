@@ -33,6 +33,7 @@ export class MapsComponent implements OnInit {
     this.huntService.listHuntSpot().subscribe((response: HuntSpot[]) => {
       this.huntList = response
     })
+
   }
 
   // initial center position for the map
@@ -97,7 +98,9 @@ export class MapsComponent implements OnInit {
     });
 
     this.toggleHuntHeatmap();
-    this.toggleCampHeatmap()
+    this.toggleCampHeatmap();
+
+    this.infoTest()
   }
 
   changeRadius(): void {
@@ -121,14 +124,7 @@ export class MapsComponent implements OnInit {
   toggleCampMarkers(): void {
     const image = "http://maps.google.com/mapfiles/ms/icons/";
     this.campList.forEach(data => {
-      var contentWindow = "<h2>" + data.name + "</h2>"
-        + "<p>" + data.name + "</p>"
-        + "<p>" + data.address + "</p>"
-        + "<p>" + data.rate + "</p>"
-        + "<button class='btn btn-primary' id='clickableItem'>" +
-        "Details</button>"
 
-      var clickableItem = document.getElementById('clickableItem');
       var myLatlng = new google.maps.LatLng(parseFloat(String(data.position.lat)), parseFloat(String(data.position.lng)))
       const campMarker = new google.maps.Marker({
         position: myLatlng,
@@ -136,25 +132,48 @@ export class MapsComponent implements OnInit {
         map: this.map,
         icon: `${image}hiker.png`
       });
-      const infoWindow = new google.maps.InfoWindow({
-        content: contentWindow,
-      });
-
-      infoWindow.addListener('click', () => {
-        alert("yeah");
-        console.log("yeah");
-      });
-
-      campMarker.addListener('click', () => {
-        infoWindow.open(this.map, campMarker);
-      });
-
-      if (clickableItem)
-        clickableItem.addEventListener('click', () => {
-          this.router.navigate(['/maps/'])
-        })
 
     })
+  }
+
+
+  infoTest() {
+    var testLatlng = new google.maps.LatLng(parseFloat(String(this.lat)), parseFloat(String(this.lng)))
+    var contentWindow = "<h2>" + "test" + "</h2>"
+      + "<p>" + "test" + "</p>"
+      + "<p>" + "test" + "</p>"
+      + "<p>" + "test" + "</p>"
+      + "<button class='btn btn-primary' id='clickableItem' (click)='navigate()'>" +
+      "Details</button>"
+
+    const campMarker = new google.maps.Marker({
+      position: testLatlng,
+      // label: (this.labels)[this.labelIndex++ % this.labels.length],
+      map: this.map
+    });
+
+    const infoWindow = new google.maps.InfoWindow({
+      content: contentWindow,
+    });
+
+    google.maps.event.addListener(infoWindow, 'domready', () => {
+      //now my elements are ready for dom manipulation
+      var clickableItem = document.getElementById('clickableItem');
+      console.log(`Your clickable item: ${clickableItem}`)
+      if (clickableItem)
+        clickableItem.addEventListener('click', () => {
+          this.navigate()
+        });
+      console.log('Hola')
+    });
+
+    campMarker.addListener('click', () => {
+      infoWindow.open(this.map, campMarker);
+    });
+  }
+
+  navigate() {
+    console.log('Ouch...')
   }
 
   toggleHuntMarkers(): void {
