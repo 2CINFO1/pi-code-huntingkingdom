@@ -9,15 +9,19 @@
         </div>
 
         <form action="/" class="card p-2 bg-transparent">
-            <div class="col-md-4 order-md-2 mb-4">
-                <h4 class="d-flex justify-content-between align-items-center mb-3">
-                    <span class="text-muted">Categorie</span>
-                    <span class="badge badge-secondary badge-pill"></span>
-                </h4>
-                <div class="form-group">
-                    <input type="text" name="category" id="category" [(ngModel)]="event.category" class="form-control" placeholder="categorie">
+            <div class="input-group">
+                <select class="custom-select" name="category" id="category" [(ngModel)]="event.category">
+                <option selected value="pêche">pêche</option>
+                <option value="Chasse des oiseaux">Chasse des oiseaux</option>
+                <option value="Chasse dans les deserts">Chasse dans les deserts</option>
+                <option value="Chasse dans les forets">Chasse dans les forets</option>
+              </select>
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button">Ajouter catégorie</button>
                 </div>
             </div>
+
+
             <div class="col-md-8 order-md-1">
                 <div class="row">
                     <div class="form-group col-md-6 mb-3">
@@ -114,10 +118,10 @@
                 </div>
                 <hr class="mb-4">
 
+
                 <button class="btn btn-primary btn-lg btn-block" (click)="save()">Sauvegarder</button>
             </div>
         </form>
-
 
         <footer class="my-5 pt-5 text-muted text-center text-small">
             <p class="mb-1">© Hunting Kingdom</p>
