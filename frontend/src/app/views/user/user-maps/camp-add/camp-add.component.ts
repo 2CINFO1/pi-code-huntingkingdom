@@ -20,7 +20,7 @@ export class CampAddComponent implements OnInit {
   lat: number = 33.331050;
   lng: number = 10.489326;
 
-  zoom: number = 8;
+  zoom: number = 5.5;
   marker: google.maps.Marker;
   private mapClickListener: google.maps.MapsEventListener;
   private map: google.maps.Map;
@@ -50,15 +50,16 @@ export class CampAddComponent implements OnInit {
   }
 
   save() {
-    // console.log(`name: ${this.campSpot.name}
-    // \naddress: ${this.campSpot.address}
-    // \ncategory ${this.campSpot.category}
-    // \nrate: ${this.campSpot.rate}
-    // \nposition ${this.campSpot.position.lat}
-    // \nlongitude: ${this.campSpot.position.lng}`
-    // )
     this.campService.addCampSpot(this.campSpot);
     this.router.navigate(['/maps/'])
   }
 
+  home() {
+    this.router.navigate(['/maps/'])
+  }
+
+
+  onItemChange(value: any){
+    this.campSpot.rate = value.target.value
+  }
 }

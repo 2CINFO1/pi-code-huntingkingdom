@@ -22,18 +22,30 @@
           <div class="form-group">
             <input type="text" class="form-control" name="address" [(ngModel)]="campSpot.address"  id="address" placeholder="Address" />
           </div>
-          <div class="Skills">
+
+
+          <div class="Skills" >
             <div class="rating">
-              <input type="radio" name="html">
-              <input type="radio" name="html">
-              <input type="radio" name="html">
-              <input type="radio" name="html">
-              <input type="radio" name="html">
-              <input type="radio" name="html">
-              <input type="radio" name="html">
-              <input type="radio" name="html">
-              <input type="radio" name="html">
-              <input type="radio" name="html">
+              <input type="radio" name="html" value="5"
+                     (change)="onItemChange($event)">
+              <input type="radio" name="html" value="4.5"
+                     (change)="onItemChange($event)">
+              <input type="radio" name="html" value="4"
+                     (change)="onItemChange($event)">
+              <input type="radio" name="html" value="3.5"
+                     (change)="onItemChange($event)">
+              <input type="radio" name="html" value="3"
+                     (change)="onItemChange($event)">
+              <input type="radio" name="html" value="2.5"
+                     (change)="onItemChange($event)">
+              <input type="radio" name="html" value="2"
+                     (change)="onItemChange($event)">
+              <input type="radio" name="html" value="1.5"
+                     (change)="onItemChange($event)">
+              <input type="radio" name="html" value="1"
+                     (change)="onItemChange($event)">
+              <input type="radio" name="html" value="0.5"
+                     (change)="onItemChange($event)">
             </div>
           </div>
           <div class="form-group">
@@ -42,7 +54,8 @@
           <div class="form-group">
             <input type="text" class="form-control" placeholder="Longitude" [(ngModel)]="camp_lng" name="camp_longitude" disabled/>
           </div>
-          <button (click)="save()" class="btn btn-light">Add</button>
+          <button (click)="save()" type="button" class="btn btn-info">Add</button>
+          <button (click)="home()" type="button" class="btn btn-danger">Return</button>
         </form>
       </div>
 

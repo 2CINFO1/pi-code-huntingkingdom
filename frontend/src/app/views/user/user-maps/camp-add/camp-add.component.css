@@ -1,6 +1,6 @@
 .contact-us {
-  padding: 150px;
-  background: #343a40;
+  padding: 280px;
+  background-image: linear-gradient(to right, #0B2518 0%, 8.862433582544327%, #0B2518 17.724867165088654%, 49.669311195611954%, #0D0D0D 81.61375522613525%);
 }
 .section-title h2 {
   color: #ffffff;
@@ -46,7 +46,6 @@ agm-map {
 }
 
 .Skills{
-  background-color: #343a40;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -57,7 +56,6 @@ agm-map {
 
 
 .container .Skills h3{
-  color: #343a40;
   min-width: 180px;
   text-align: right;
   padding-right:20px ;
@@ -81,7 +79,7 @@ agm-map {
   justify-content: center;
   align-items: center;
   -webkit-appearance: none;
-  background-color: #343a40;
+  background-color: transparent;
   appearance: none;
   overflow: hidden;
 }
@@ -92,7 +90,7 @@ agm-map {
   font-family: fontAwesome;
   font-size: 34px;
   left: 4px;
-  color: #030b0f;
+  color: gray;
   transition: 0.5s;
 }
 
@@ -108,8 +106,13 @@ agm-map {
   color: gold;
 }
 
+.btn-info {
+  color: #EEEEEE;
+}
 
-
+.btn-danger {
+  margin-left: 10px;
+}
 
 
 
