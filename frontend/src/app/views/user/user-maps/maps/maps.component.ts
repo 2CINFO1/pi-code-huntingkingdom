@@ -99,8 +99,6 @@ export class MapsComponent implements OnInit {
 
     this.toggleHuntHeatmap();
     this.toggleCampHeatmap();
-
-    this.infoTest()
   }
 
   changeRadius(): void {
@@ -132,25 +130,18 @@ export class MapsComponent implements OnInit {
         map: this.map,
         icon: `${image}hiker.png`
       });
+      this.infoTest(data, campMarker)
 
     })
   }
 
 
-  infoTest() {
-    var testLatlng = new google.maps.LatLng(parseFloat(String(this.lat)), parseFloat(String(this.lng)))
-    var contentWindow = "<h2>" + "test" + "</h2>"
-      + "<p>" + "test" + "</p>"
-      + "<p>" + "test" + "</p>"
-      + "<p>" + "test" + "</p>"
+  infoTest(spot: CampSpot, marker: google.maps.Marker) {
+    var contentWindow = "<h2>" + spot.name + "</h2>"
+      + "<p>" + spot.address + "</p>"
+      + "<p>" + spot.rate + "</p>"
       + "<button class='btn btn-primary' id='clickableItem' (click)='navigate()'>" +
       "Details</button>"
-
-    const campMarker = new google.maps.Marker({
-      position: testLatlng,
-      // label: (this.labels)[this.labelIndex++ % this.labels.length],
-      map: this.map
-    });
 
     const infoWindow = new google.maps.InfoWindow({
       content: contentWindow,
@@ -162,18 +153,19 @@ export class MapsComponent implements OnInit {
       console.log(`Your clickable item: ${clickableItem}`)
       if (clickableItem)
         clickableItem.addEventListener('click', () => {
-          this.navigate()
+          this.goToDetails(spot._id)
         });
       console.log('Hola')
     });
 
-    campMarker.addListener('click', () => {
-      infoWindow.open(this.map, campMarker);
+    marker.addListener('click', () => {
+      infoWindow.open(this.map, marker);
     });
   }
 
-  navigate() {
-    console.log('Ouch...')
+  goToDetails(_id: String) {
+    console.log(_id)
+    this.router.navigate(['/maps/camp/details', _id])
   }
 
   toggleHuntMarkers(): void {

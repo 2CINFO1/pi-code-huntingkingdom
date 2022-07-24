@@ -93,4 +93,11 @@ export class CampComponent implements OnInit {
     console.log(_id)
     this.router.navigate(['dashboard/maps/camp/details', _id])
   }
+
+  delete(_id: String) {
+    this.campService.deleteCampSpot(_id).subscribe(() => {
+      this.router.navigate(['/dashboard/maps/camp'])
+    })
+    this.router.navigate(['/dashboard/maps/camp'])
+  }
 }

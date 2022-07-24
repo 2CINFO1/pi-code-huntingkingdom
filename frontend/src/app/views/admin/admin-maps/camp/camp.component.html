@@ -12,8 +12,8 @@
                             <p class="card-text">{{spot.name}}</p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
                                     <button type="button" class="btn btn-sm btn-outline-secondary" (click)="goToDetails(spot._id)">Edit</button>
+                                    <button type="button" class="btn btn-sm btn-outline-danger" (click)="delete(spot._id)">Delete</button>
                                 </div>
                                 <small class="text-muted">{{spot.rate}} ⭐</small>
                             </div>

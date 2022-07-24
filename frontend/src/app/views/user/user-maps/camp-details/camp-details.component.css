@@ -1,0 +1,34 @@
+.contact-us {
+  padding: 280px;
+  background: #343a40;
+}
+.section-title h2 {
+  color: #ffffff;
+  font-size: 30px;
+  font-weight: normal;
+  text-transform: uppercase;
+  letter-spacing: 8px;
+  border-bottom: 5px solid #4f5050 ;
+  padding-bottom: 25px;
+  display: inline-block;
+}
+.section-title p {
+  color: #e8e8e8;
+  margin-bottom: 50px;
+}
+.contact-us input,
+.contact-us textarea {
+  background: #fafafa;
+}
+.contact-us textarea {
+  min-height: 188px;
+  max-width: 100%;
+}
+.contact-us .map {
+  overflow: hidden;
+  border-radius: 4px;
+}
+agm-map {
+  padding-top: 20px;
+  height: 300px;
+}
