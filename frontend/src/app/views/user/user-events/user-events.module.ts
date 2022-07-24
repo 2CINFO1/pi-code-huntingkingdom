@@ -5,12 +5,14 @@ import { UserEventsRoutingModule } from './user-events-routing.module';
 import { EventsComponent } from './events/events.component';
 import {FormsModule} from "@angular/forms";
 import { AddEventComponent } from './add-event/add-event.component';
+import { EventDetailsComponent } from './event-details/event-details.component';
 
 
 @NgModule({
   declarations: [
     EventsComponent,
-    AddEventComponent
+    AddEventComponent,
+    EventDetailsComponent
   ],
   imports: [
     CommonModule,

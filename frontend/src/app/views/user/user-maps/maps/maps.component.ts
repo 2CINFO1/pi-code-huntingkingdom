@@ -3,6 +3,7 @@ import {CampSpotService} from "../../../../services/maps/camp-spot.service";
 import {CampSpot} from "../../../../models/maps/camp_spot";
 import {HuntSpot} from "../../../../models/maps/hunt_spot";
 import {HuntService} from "../../../../services/maps/hunt.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-maps',
@@ -12,7 +13,7 @@ import {HuntService} from "../../../../services/maps/hunt.service";
 export class MapsComponent implements OnInit {
 
 
-  constructor(private campService: CampSpotService, private huntService: HuntService) {
+  constructor(private campService: CampSpotService, private huntService: HuntService, private router: Router) {
   }
 
   public campList: CampSpot[]
@@ -119,16 +120,43 @@ export class MapsComponent implements OnInit {
 
   toggleCampMarkers(): void {
     const image = "http://maps.google.com/mapfiles/ms/icons/";
-    this.campCoordsList.forEach(data => {
-      var myLatlng = new google.maps.LatLng(parseFloat(String(data.lat())), parseFloat(String(data.lng())))
-      new google.maps.Marker({
+    this.campList.forEach(data => {
+      var contentWindow = "<h2>" + data.name + "</h2>"
+        + "<p>" + data.name + "</p>"
+        + "<p>" + data.address + "</p>"
+        + "<p>" + data.rate + "</p>"
+        + "<button class='btn btn-primary' id='clickableItem'>" +
+        "Details</button>"
+
+      var clickableItem = document.getElementById('clickableItem');
+      var myLatlng = new google.maps.LatLng(parseFloat(String(data.position.lat)), parseFloat(String(data.position.lng)))
+      const campMarker = new google.maps.Marker({
         position: myLatlng,
         // label: (this.labels)[this.labelIndex++ % this.labels.length],
         map: this.map,
         icon: `${image}hiker.png`
       });
+      const infoWindow = new google.maps.InfoWindow({
+        content: contentWindow,
+      });
+
+      infoWindow.addListener('click', () => {
+        alert("yeah");
+        console.log("yeah");
+      });
+
+      campMarker.addListener('click', () => {
+        infoWindow.open(this.map, campMarker);
+      });
+
+      if (clickableItem)
+        clickableItem.addEventListener('click', () => {
+          this.router.navigate(['/maps/'])
+        })
+
     })
   }
+
   toggleHuntMarkers(): void {
     const image = "http://maps.google.com/mapfiles/ms/icons/";
     this.huntCoordsList.forEach(data => {

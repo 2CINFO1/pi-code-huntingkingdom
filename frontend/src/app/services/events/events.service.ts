@@ -28,10 +28,25 @@ export class EventsService {
   updateEvent(event: Event) {
     return this.http.put(`${this.url}/update/${event._id}`, event);
   }
-  getEvent(id: string) {
 
-    return this.http.get(`${this.url}/showEventById/${id}`)
+  getEvent(id: string) {
+    return this.http.get<Event>(`${this.url}/showEventById/${id}`)
   }
+
+  addParticipant(event: Event) {
+    console.log(event._id);
+    console.log(`${this.url}/addParticipant/${event._id}`);
+    return this.http.put(`${this.url}/addParticipant/${event._id}`, event);
+  }
+
+
+
+  addInteressted(event: Event) {
+    console.log(event._id);
+    console.log(`${this.url}/addInterested/${event._id}`);
+    return this.http.put(`${this.url}/addInterested/${event._id}`, event);
+  }
+
   deleteEvent(id: string) {
     console.log(this.http.delete(`${this.url}/delete/${id}`))
     return this.http.delete(`${this.url}/delete/${id}`);

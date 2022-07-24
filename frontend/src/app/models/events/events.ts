@@ -10,8 +10,11 @@ startDate: String
 endDate: String
 status: String
 maxmumbers: Number
+interestedNumber: Number
+participantNumber: Number
 coverImagePath: String
 pays: String
 codePostal:Number
 creditCard:Number
+
 }
