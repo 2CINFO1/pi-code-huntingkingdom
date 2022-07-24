@@ -67,4 +67,8 @@ export class CampDetailsComponent implements OnInit {
       this.router.navigate(['/maps'])
     })
   }
+
+  onItemChange(value: any){
+    this.campSpot.rate = value.target.value
+  }
 }

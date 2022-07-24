@@ -3,6 +3,11 @@ import {CampSpot} from "../../../../models/maps/camp_spot";
 import {CampSpotService} from "../../../../services/maps/camp-spot.service";
 import {Router} from "@angular/router";
 
+interface CampingCategories {
+  value: string;
+  viewValue: string;
+}
+
 @Component({
   selector: 'app-camp-add',
   templateUrl: './camp-add.component.html',
@@ -13,6 +18,14 @@ export class CampAddComponent implements OnInit {
   address: string;
   name: string;
 
+  camping_categories: CampingCategories[] = [
+    {value: 'Tent Camping', viewValue: 'Tent Camping'},
+    {value: 'Hiking Camping', viewValue: 'Hiking Camping'},
+    {value: 'Car Camping', viewValue: 'Car Camping'},
+    {value: 'Van Camping', viewValue: 'Van Camping'},
+    {value: 'Bicycle Touring Camping', viewValue: 'Bicycle Touring Camping'},
+    {value: 'Ultralight Camping', viewValue: 'Ultralight Camping'},
+  ];
   campSpot: CampSpot;
   camp_lat: number;
   camp_lng: number;
@@ -61,5 +74,10 @@ export class CampAddComponent implements OnInit {
 
   onItemChange(value: any){
     this.campSpot.rate = value.target.value
+  }
+
+  campCategory(value: any) {
+    console.log(value.value)
+    this.campSpot.category = value.value
   }
 }
