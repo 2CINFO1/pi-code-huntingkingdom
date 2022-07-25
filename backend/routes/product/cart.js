@@ -22,8 +22,11 @@ router.post("/item/:id", async (req, res) => {
           cart.products[itemIndex] = productItem;
         } else {
           //product does not exists in cart, add new item
-          cart.products.push({ productId, quantity, Nom, price });
-        }
+         
+          cart.products.push({ productId, quantity, name , price });
+          cart.amount = cart.products.map(productItem => productItem.price).reduce((acc, next) => acc + next);
+            }
+        
         cart = await cart.save();
         return res.status(201).send(cart);
       } else {
@@ -88,10 +91,12 @@ router.delete("/:id",verifyTokenAndAuthorization,async (req,res)=>{
 router.get("/find/:id",async (req,res)=>{
   const userId = req.params.id;
   const products = [];
+  let amount = 0;
     try{
     let cart =  await Cart.findOne({userId});
      if(cart){
       console.log(cart.products)
+
       res.status(200).json(cart.products)}
      }
     catch(err){
@@ -113,6 +118,19 @@ res.status(200).json(carts)
 
 }
 )
+router.get("/findamount/:id",async (req,res)=>{
+  const userId = req.params.id;
+    try{
+    let cart =  await Cart.findOne({userId});
+     if(cart){
+      console.log(cart.amount)
+
+      res.status(200).json(cart.amount)}
+     }
+    catch(err){
+        res.status(400).json(err)
+    }
+})
 
 
 module.exports  = router

@@ -77,16 +77,7 @@
               <div class="flex-1 overflow-y-auto py-6 px-4 sm:px-6">
                 <div class="flex items-start justify-between mt-3 ">
                   <h2 class="text-lg font-medium text-gray-900 mt-3 " id="slide-over-title">Shopping cart</h2>
-                  <div class="ml-3  flex h-7 items-center">
-                    <button type="button" class=" text-gray-400 hover:text-gray-500 mt-4" (click)="toggle()">
-                      <span class="sr-only">Close panel</span>
-                      <!-- Heroicon name: outline/x -->
-                      <svg class="h-6 w-6 " xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                           stroke-width="2" stroke="currentColor" aria-hidden="true" (click)="toggle()">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
-                      </svg>
-                    </button>
-                  </div>
+
                 </div>
 
                 <div class="mt-8">
@@ -106,7 +97,7 @@
                               <h3>
                                 <a class="text-black"> {{product.name}} </a>
                               </h3>
-                              <p class="ml-4">{{product.price}}</p>
+                              <p class="ml-4">{{product.price}} $</p>
                             </div>
                             <p class="mt-1 text-sm text-gray-500">Salmon</p>
                           </div>
@@ -130,8 +121,8 @@
 
               <div class="border-t border-gray-200 py-6 px-4 sm:px-6">
                 <div class="flex justify-between text-base font-medium text-gray-900">
-                  <p>Subtotal</p>
-                  <p>$262.00</p>
+                  <p>Total</p>
+                  <p>{{amount}} $</p>
                 </div>
                 <p class="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
                 <div class="mt-6">
