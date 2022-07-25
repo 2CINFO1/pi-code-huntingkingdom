@@ -1,0 +1,158 @@
+.contact-us {
+  padding: 280px;
+  background-image: linear-gradient(to right, #0B2518 0%, 8.862433582544327%, #0B2518 17.724867165088654%, 49.669311195611954%, #0D0D0D 81.61375522613525%);
+}
+.section-title h2 {
+  color: #ffffff;
+  font-size: 30px;
+  font-weight: normal;
+  text-transform: uppercase;
+  letter-spacing: 8px;
+  border-bottom: 5px solid #4f5050 ;
+  padding-bottom: 15px;
+  display: inline-block;
+}
+.section-title  p {
+  color: #e8e8e8;
+  margin-bottom: 50px;
+}
+
+.form-label {
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 4px;
+  padding-bottom: 15px;
+  display: inline-block;
+}
+
+.label-output {
+  margin-left: 50px;
+  color: #e8e8e8;
+  text-transform: initial;
+}
+
+.contact-us input,
+.contact-us textarea {
+  background: #fafafa;
+}
+.contact-us textarea {
+  min-height: 188px;
+  max-width: 100%;
+}
+.contact-us .map {
+  overflow: hidden;
+  border-radius: 4px;
+}
+agm-map {
+  padding-top: 20px;
+  height: 300px;
+}
+
+
+
+.container{
+  position: relative;
+  /*display: flex;*/
+  /*justify-content: center;*/
+  /*align-items: center;*/
+  /*flex-direction: column;*/
+
+  /*border-radius: 10px;*/
+}
+
+.Skills{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+  padding-right: 10px ;
+  transition: 0.5s;
+}
+
+
+.container .Skills h3{
+  min-width: 180px;
+  text-align: right;
+  padding-right:20px ;
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+
+.container .Skills .rating{
+  position: relative;
+  display: flex;
+  margin: 10px 0;
+  flex-direction: row-reverse ;
+}
+
+.container .Skills .rating input{
+  position: relative;
+  width: 20px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -webkit-appearance: none;
+  background-color: transparent;
+  appearance: none;
+  overflow: hidden;
+}
+
+.container .Skills .rating input::before{
+  content: '\f005';
+  position: absolute;
+  font-family: fontAwesome;
+  font-size: 34px;
+  left: 4px;
+  color: gray;
+  transition: 0.5s;
+}
+
+.container .Skills .rating input:nth-child(2n + 1)::before{
+  right: 4px;
+  left: initial;
+}
+
+.container .Skills .rating input:hover ~ input::before,
+.container .Skills .rating input:hover::before,
+.container .Skills .rating input:checked ~ input::before,
+.container .Skills .rating input:checked::before{
+  color: gold;
+}
+
+.btn-warning {
+  color: #EEEEEE;
+}
+
+.btn-danger {
+  margin-left: 10px;
+}
+
+.rate-label {
+  text-align-all: center;
+  font-size: 30px;
+  padding-top: 25px;
+  padding-right: 50px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

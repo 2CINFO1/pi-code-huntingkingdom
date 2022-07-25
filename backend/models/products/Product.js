@@ -13,6 +13,7 @@ const ProductSchema = new mongoose.Schema(
     Size : {type : Array}
 
 },
+
 {timestamps: true }
 );
 

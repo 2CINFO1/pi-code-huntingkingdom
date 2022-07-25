@@ -10,17 +10,6 @@ import {Router} from "@angular/router";
 })
 export class CampComponent implements OnInit {
 
-  constructor(private campService: CampSpotService, private router: Router) {
-  }
-
-  public campList: CampSpot[]
-
-  ngOnInit(): void {
-    this.campService.listCampSpot().subscribe((response: CampSpot[])=> {
-      this.campList = response
-    })
-  }
-
   private map: google.maps.Map;
   private heatmap: google.maps.visualization.HeatmapLayer;
   marker: google.maps.Marker;
@@ -31,10 +20,17 @@ export class CampComponent implements OnInit {
   lat: number = 33.331050;
   lng: number = 10.489326;
 
-  rl_lat: number = 33.331050;
-  rl_lng: number = 10.489326;
-  private labelIndex: number = 0;
-  private labels: string = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  public campList: CampSpot[]
+  constructor(private campService: CampSpotService, private router: Router) {
+  }
+
+
+  ngOnInit(): void {
+    this.campService.listCampSpot().subscribe((response: CampSpot[])=> {
+      this.campList = response
+    })
+  }
+
 
 
   getCoords() {
@@ -96,5 +92,12 @@ export class CampComponent implements OnInit {
   goToDetails(_id: String) {
     console.log(_id)
     this.router.navigate(['dashboard/maps/camp/details', _id])
+  }
+
+  delete(_id: String) {
+    this.campService.deleteCampSpot(_id).subscribe(() => {
+      this.router.navigate(['/dashboard/maps/camp'])
+    })
+    this.router.navigate(['/dashboard/maps/camp'])
   }
 }
