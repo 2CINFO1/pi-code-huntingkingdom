@@ -25,6 +25,12 @@ export class EventsService {
     return this.http.get<Event[]>(`${this.url}/show`);
   }
 
+  listSearchedEventsByKey(key: string) {
+    console.log(this.http.get<Event[]>(`${this.url}/showEventBykey/${key}`))
+    return this.http.get<Event[]>(`${this.url}/showEventBykey/${key}`);
+  }
+
+
   updateEvent(event: Event) {
     console.log(`${this.url}/update/${event._id}`)
     return this.http.put(`${this.url}/update/${event._id}`, event);
