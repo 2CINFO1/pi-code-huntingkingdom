@@ -4,7 +4,7 @@ const verifyToken = require ("./verifyToken");
 const {verifyTokenAndAuthorization,verifyTokenAndAdmin} = require ("./verifyToken")
 
 //updateUser
-router.put ("/:id",verifyTokenAndAuthorization , async (req,res) => {
+router.put ("/:id", async (req,res) => {
         if(req.body.password){
             password : CryptoJS.AES.encrypt(req.body.Password , process.env.Pass_sec).toString();
         }
