@@ -58,13 +58,9 @@ app.set('view engine', 'jade');
 app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
-app.use(
-    helmet({
-      crossOriginEmbedderPolicy: false,
-      // ...
-    })
-  );
-    //allow cross origin requests
+app.use(helmet())
+
+//allow cross origin requests
 app.use(function(req, res, next) {
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Methods", "POST, PUT, OPTIONS, DELETE, GET");
