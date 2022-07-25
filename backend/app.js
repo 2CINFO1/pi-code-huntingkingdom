@@ -60,13 +60,13 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(
     helmet({
-      crossOriginEmbedderPolicy: false,
-      crossOriginResourcePolicy: false,
-      // ...
+        crossOriginEmbedderPolicy: false,
+        crossOriginResourcePolicy: false,
+        // ...
     })
-  );
+);
 
-    //allow cross origin requests
+//allow cross origin requests
 app.use(function(req, res, next) {
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Methods", "POST, PUT, OPTIONS, DELETE, GET");

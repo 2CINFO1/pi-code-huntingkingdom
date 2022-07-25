@@ -9,7 +9,8 @@ var Schema = mongoose.Schema;
 const EventSchema = mongoose.Schema({
     name: {
         type: String,
-        required: false
+        required: false,
+        unique: true
     },
     type: {
         type: String,
