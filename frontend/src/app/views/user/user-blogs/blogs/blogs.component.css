@@ -11,9 +11,10 @@ body {
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: transparent;
 }
-*, ::after, ::before {
+::after, ::before {
   box-sizing: border-box;
 }
+
 
 :root {
   --bs-blue: #0d6efd;

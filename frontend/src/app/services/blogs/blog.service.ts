@@ -28,7 +28,11 @@ export class BlogService {
     return this.http.get(`${this.url}/search/${blogID}`)
   }
 
+
   updateBlog(blogID: String ,blog: Blog) {
     return this.http.put(`${this.url}/${blogID}`, blog)
   }
+
+
+
 }

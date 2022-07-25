@@ -6,6 +6,7 @@ import { BlogsComponent } from './blogs/blogs.component';
 import {FormsModule} from "@angular/forms";
 import { BlogAddComponent } from './blog-add/blog-add.component';
 import { BlogDetailsComponent } from './blog-details/blog-details.component';
+import { BlogHomeComponent } from './blog-home/blog-home.component';
 
 
 @NgModule({
@@ -13,12 +14,15 @@ import { BlogDetailsComponent } from './blog-details/blog-details.component';
     BlogsComponent,
     BlogDetailsComponent,
     BlogAddComponent,
+    BlogHomeComponent,
+
 
   ],
   imports: [
     CommonModule,
     FormsModule,
     UserBlogsRoutingModule,
+
 
   ]
 })

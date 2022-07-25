@@ -1,67 +1,27 @@
-
-
-      <div class="py-5 text-center container">
-        <div class="row py-lg-5">
-          <div class="col-lg-8 col-md- mx-auto">
-
-            <p class="lead text-muted"> Blog Quelque chose de court et de principal sur la collection ci-dessous - son contenu, le créateur, etc. Faites-le court et doux, mais pas trop court pour que les gens ne le sautent pas complètement.</p>
-            <p>
-              <a routerLink="/blogs/add" class="btn btn-primary my-2">Ajouter Blog</a>
-
-              <!--<a href="#" class="btn btn-secondary my-2">Secondary action</a>-->
-
-
-            </p>
+<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center headercmp text-light">
+  <div class="col-md-5 p-lg-5 mx-auto my-5">
+      <h1 class="display-4 fw-normal">{{blog.title}}</h1>
+      <p class="lead fw-normal">{{blog.description}}</p>
+      <p class="lead fw-normal">{{blog.text}}</p>
+      <nav class="navbar navbar-expand navbar-dark  justify-content-center ">
+          <div class="nav justify-content-center">
+              <div class="container px-4 px-lg-5">
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                  <div class="collapse navbar-collapse" id="navbarResponsive">
+                     <!-- <ul>
+                          <button class="bg-transparent border-0" (click)="gereInteresses()">
+                            <img width="50" height="50" alt="" class="d-inline-block align-middle mr-2 " data-toggle="tooltip" data-placement="top" title="Je suis interessé(e)" src="../../../../../assets/img/146-label-outline (1).gif"/>
+                          </button>{{blog.likedNumber}}
+                          <button class="bg-transparent border-0" (click)="gereParticipant()">
+                            <img width="50" height="50" alt="" class="d-inline-block align-middle mr-2" data-toggle="tooltip" data-placement="top" title="Je participe" src="../../../../../assets/img/48-favorite-heart-outline (4).gif" />
+                          </button>{{blog.commentstNumber}}
+                      </ul>-->
+                  </div>
+              </div>
           </div>
-        </div>
-        </div>
-        <form class="mx-1 mx-md-4">
-        <input type="text" placeholder="title" name="title"
-               [(ngModel)]="blog.title" required minlength="3">
-        <br>
-        <input type="text" placeholder="description" name="description"
-               [(ngModel)]="blog.description" required>
-        <br>
-        <input type="text" placeholder="img" name="img"
-               [(ngModel)]="blog.img" required>
-        <br>
-        <input type="text" placeholder="text" name="text" [(ngModel)]="blog.text" >
-        <br>
-        <input type="text" placeholder="category" [(ngModel)]="blog.category" name="category"/>
-        <br>
-        <input type="text" placeholder="auth" [(ngModel)]="blog.auth" name="auth"/>
-        <br>
-        <button (click)="save()">save</button>
+      </nav>
+  </div>
 
-      </form>
-
-
-      <table class="table table-striped">
-        <thead>
-        <tr>
-          <th scope="col">title</th>
-          <th scope="col">description</th>
-          <th scope="col">img</th>
-          <th scope="col">text</th>
-          <th scope="col">category</th>
-          <th scope="col">auth</th>
-        </tr>
-        </thead>
-
-        <tbody>
-        <tr *ngFor="let blog of blogList">
-          <td>{{blog.title}}</td>
-          <td>{{blog.description}}</td>
-          <td>{{blog.img}}</td>
-          <td>{{blog.text}}</td>
-          <td>{{blog.category}}</td>
-          <td>{{blog.auth}}</td>
-        <!--  <td>
-            <button (click)="update(blog._id)">update</button>
-          </td>-->
-          <td>
-            <button (click)="delete(blog._id)">delete</button>
-          </td>
-        </tr>
-        </tbody>
-      </table>
+  <div class="product-device shadow-sm d-none d-md-block"></div>
+  <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+</div>
