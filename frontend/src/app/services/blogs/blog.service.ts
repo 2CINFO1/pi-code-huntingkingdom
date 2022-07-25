@@ -7,6 +7,7 @@ import {Blog} from "../../models/blog/blog";
 })
 export class BlogService {
 
+
   url: String = 'http://localhost:3000/blogs'
 
   constructor(private http: HttpClient) { }
@@ -27,7 +28,11 @@ export class BlogService {
     return this.http.get(`${this.url}/search/${blogID}`)
   }
 
+
   updateBlog(blogID: String ,blog: Blog) {
     return this.http.put(`${this.url}/${blogID}`, blog)
   }
+
+
+
 }

@@ -1,8 +1,23 @@
-<br><br><br><br><br><br><br><br>
-<section class="py-7 py-md-0 bg-login" id="login">
-  <div class="col-md-8 col-sm-10 col-12 mx-auto my-auto text-center align-baseline">
-    <div class="row vh-md-100">
 
+
+      <div class="py-5 text-center container">
+        <div class="row py-lg-5">
+          <div class="col-lg-8 col-md- mx-auto">
+
+            <p class="lead text-muted"> Blog Quelque chose de court et de principal sur la collection ci-dessous - son contenu, le créateur, etc. Faites-le court et doux, mais pas trop court pour que les gens ne le sautent pas complètement.</p>
+            <p>
+              <a routerLink="/blogs/add" class="btn btn-primary my-2">Ajouter Blog</a>
+
+              <a routerLink="/blogs/home" class="btn btn-secondary my-2">Secondary action</a>
+
+
+            </p>
+          </div>
+        </div>
+        </div>
+
+
+<!--
       <form class="mx-1 mx-md-4">
         <input type="text" placeholder="title" name="title"
                [(ngModel)]="blog.title" required minlength="3">
@@ -47,51 +62,56 @@
           <!--    <td>-->
           <!--      <button (click)="update(blog._id)">delete</button>-->
           <!--    </td>-->
-          <td>
+         <!--<td>
             <button (click)="delete(blog._id)">delete</button>
           </td>
         </tr>
         </tbody>
-      </table>
-    </div>
-  </div>
-</section>
+      </table> -->
+
 <div class="album py-5 bg-light">
   <div class="container">
 
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 
       <div class="col" *ngFor="let blog of blogList">
-        <a href="#">
+
         <div class="card shadow-sm">
-
+          <a style="color: azure ;" href="#">
           <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Paul_Childerley_driven_hunt_Finland_04.png/1024px-Paul_Childerley_driven_hunt_Finland_04.png" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-
-         <div class="card-title">
-                <p>{{blog.title}}</p>
+          <div class="card-title">
+                <p style="color:rgb(7, 5, 26); font-size:25px ; font-weight: bold;" >{{blog.title}}</p>
             <div class="d-flex justify-content-between align-items-center"></div>
           </div>
-
+        </a>
           <div class="card-descrption">
             <div class="d-flex justify-content-between align-items-center"></div>
           </div>
-
           <div class="card-body">
             <p class="card-text">{{blog.description}}</p>
+            <a routerLink="/blogs/details"  style="color: rgb(54, 18, 255); font-size:18px ;">Lire suite</a>
+            
+            <div><p>{{blog.text}}</p></div>
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group">
-                <a routerLink="blogs/details" button type="button" class="btn btn-sm fa fa-eye">Lire suite</a>
-                <button type="button" class="btn btn-sm btn-outline-secondary">Modifier</button>
-                <button type="button" class="btn btn-sm fa fa-eye">Supprimer</button>
+
+                <button type="button" class="btn btn-sm btn-outline-success">Modifier</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary" (click)="delete(blog._id)">Supprimer</button>
               </div>
-              <small class="text-muted">9 mins</small>
+              <div>
+              <small class="text-muted">{{myDate| date}}</small>
+             <div> <small class="text-muted">{{myDate| date:'shortTime'}}</small>
             </div>
+          </div>
+
 
           </div>
 
+
         </div>
-      </a>
+
       </div>
+
 
 
 

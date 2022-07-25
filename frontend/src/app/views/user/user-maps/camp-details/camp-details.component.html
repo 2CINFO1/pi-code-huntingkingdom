@@ -1,0 +1,72 @@
+<section class="contact-us">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7">
+        <div class="section-title">
+          <h2>{{campSpot.name}}</h2>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-7">
+        <form action="/" class="mb-4 mb-lg-0">
+          <div class="form-row">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Category: </label>
+            <label class="label-output">{{campSpot.category}}</label>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Address: </label>
+            <label class="label-output">{{campSpot.address}}</label>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Global rate: </label>
+            <label class="label-output">{{campSpot.rate}} <span class="rating">⭐</span></label>
+          </div>
+          <div class="Skills">
+            <label class="form-label rate-label">Your Rate: </label>
+            <div class="rating">
+              <input type="radio" name="html" value="5"
+                     (change)="onItemChange($event)">
+              <input type="radio" name="html" value="4.5"
+                     (change)="onItemChange($event)">
+              <input type="radio" name="html" value="4"
+                     (change)="onItemChange($event)">
+              <input type="radio" name="html" value="3.5"
+                     (change)="onItemChange($event)">
+              <input type="radio" name="html" value="3"
+                     (change)="onItemChange($event)">
+              <input type="radio" name="html" value="2.5"
+                     (change)="onItemChange($event)">
+              <input type="radio" name="html" value="2"
+                     (change)="onItemChange($event)">
+              <input type="radio" name="html" value="1.5"
+                     (change)="onItemChange($event)">
+              <input type="radio" name="html" value="1"
+                     (change)="onItemChange($event)">
+              <input type="radio" name="html" value="0.5"
+                     (change)="onItemChange($event)">
+            </div>
+          </div>
+
+          <button (click)="update()" type="button" class="btn btn-warning">Submit</button>
+        </form>
+      </div>
+
+      <div class="col-lg-5">
+        <agm-map
+          [latitude]="campSpot.position.lat"
+          [longitude]="campSpot.position.lng"
+          [zoom]="zoom"
+          [disableDefaultUI]="false"
+          (mapReady)="mapClicked($event)">
+          <agm-marker
+            [latitude]="campSpot.position.lat"
+            [longitude]="campSpot.position.lng">
+          </agm-marker>
+        </agm-map>
+      </div>
+    </div>
+  </div>
+</section>
