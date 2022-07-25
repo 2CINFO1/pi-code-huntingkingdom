@@ -4,20 +4,26 @@ import { CommonModule } from '@angular/common';
 import { UserBlogsRoutingModule } from './user-blogs-routing.module';
 import { BlogsComponent } from './blogs/blogs.component';
 import {FormsModule} from "@angular/forms";
-import { BlogDetailsComponent } from './blog-details/blog-details.component';
 import { BlogAddComponent } from './blog-add/blog-add.component';
+import { BlogDetailsComponent } from './blog-details/blog-details.component';
+import { BlogHomeComponent } from './blog-home/blog-home.component';
 
 
 @NgModule({
   declarations: [
     BlogsComponent,
     BlogDetailsComponent,
-    BlogAddComponent
+    BlogAddComponent,
+    BlogHomeComponent,
+
+
   ],
   imports: [
     CommonModule,
     FormsModule,
-    UserBlogsRoutingModule
+    UserBlogsRoutingModule,
+
+
   ]
 })
 export class UserBlogsModule { }

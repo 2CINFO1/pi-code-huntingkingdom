@@ -1,0 +1,61 @@
+
+
+<div classe="w3-main" style="margin-left: 160px;margin-right:60px">
+  <h1>Tableau d'affichage des blogs</h1>
+  <div>
+  <nav classe="nav-bar">
+    <input class="form-control" type="text" name="title"
+    placeholder="Search blog">
+  </nav>
+</div>
+
+  <div class="table-responsive">
+    <table class="table table-striped table-sm">
+      <thead>
+        <tr>
+          <th scope="col" >ID blog&nbsp; <i classe="fa fa-sort"></i></th>
+          <th scope="col">Le titre</th>
+          <th scope="col">La description</th>
+          <th scope="col">image</th>
+          <th scope="col">Categorie</th>
+          <th scope="col">Action</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let blog of blogList ">
+          <td>{{blog._id}}</td>
+          <td>{{blog.title}}</td>
+          <td>{{blog.description}}/td>
+          <td>{{blog.img}}</td>
+          <td>{{blog.category}}</td>
+          <td>
+            <button type="button" class="btn btn-info" style="color: blue  ; ">Modifier</button>
+            <button type="button" class="btn btn-danger" style="color: gray; " (click)="delete(blog._id)">supprimer</button>
+          </td>
+        </tr>
+
+      </tbody>
+      <br> <br>
+      <section>
+      <nav aria-label="...">
+        <ul class="pagination">
+          <li class="page-item disabled">
+            <a class="page-link">Previous</a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item active" aria-current="page">
+            <a class="page-link" href="#">2</a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item">
+            <a class="page-link" href="#">Next</a>
+          </li>
+        </ul>
+      </nav>
+    </section>
+    </table>
+  </div>
+
+
+ </div>
