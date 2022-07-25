@@ -12,6 +12,7 @@ export class UserLayoutComponent implements OnInit {
   visible = false;
   carts:any
   products : any
+  amount = 0 ;
 
 
   ngOnInit(): void {
@@ -21,8 +22,11 @@ export class UserLayoutComponent implements OnInit {
     this.dataservice.getcart().subscribe((data: any) => {
       this.products = data;
       // this.cartDetails = data.data;
-      console.log(this.carts);
-    }),
+      console.log(this.carts);})
+this.dataservice.getamount().subscribe((data:any) => {
+    this.amount = data ;
+}
+    ),
     this.visible = !this.visible;}
 
     constructor(private dataservice:DataService) {

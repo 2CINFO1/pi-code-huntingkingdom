@@ -31,4 +31,7 @@ getcart(){
   return this.http.get('http://localhost:3000/api/cart/find/62b70b1d7f73fec4e5bb3530')
 
 }
+getamount(){
+  return this.http.get('http://localhost:3000/api/cart/findamount/62b70b1d7f73fec4e5bb3530')
+}
 }
