@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
   }
 
   Login(f: any) {
+    console.log(f)
     this.userservice.Login(f).subscribe((user_id) => {
       this.router.navigate(['/user/profile', user_id])
     })

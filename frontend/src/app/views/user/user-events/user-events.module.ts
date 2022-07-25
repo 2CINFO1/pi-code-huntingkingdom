@@ -6,13 +6,15 @@ import { EventsComponent } from './events/events.component';
 import {FormsModule} from "@angular/forms";
 import { AddEventComponent } from './add-event/add-event.component';
 import { EventDetailsComponent } from './event-details/event-details.component';
+import { EventUpdateComponent } from './event-update/event-update.component';
 
 
 @NgModule({
   declarations: [
     EventsComponent,
     AddEventComponent,
-    EventDetailsComponent
+    EventDetailsComponent,
+    EventUpdateComponent
   ],
   imports: [
     CommonModule,
