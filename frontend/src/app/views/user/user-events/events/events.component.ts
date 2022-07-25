@@ -11,6 +11,9 @@ import {Router} from "@angular/router";
 export class EventsComponent implements OnInit {
 
   public eventList: Event[]
+  searchKeyWord : string = '';
+  public searchedEventList: Event[]
+
 
   constructor(private eventsService: EventsService, private router: Router) {
     this.eventsService.listEvents().subscribe((response: Event[])=> {
@@ -26,4 +29,11 @@ export class EventsComponent implements OnInit {
     this.router.navigate(['events/details', _id])
   }
 
+  serachListElement()
+  {
+    this.eventsService.listSearchedEventsByKey(this.searchKeyWord).subscribe((response: Event[])=> {
+      this.searchedEventList = response
+      this.searchKeyWord = '';
+    })
+  }
 }

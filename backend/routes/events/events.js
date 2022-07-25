@@ -187,9 +187,10 @@ router.post('/uploadFiles', upload.array('media'), (req, res) => {
 })
 
 router.post('/uploadCoverImage/:id', (req, res, next) => {
+    console.log(req)
     upload.single("file")(req, res, function(err) {
         if (err) {
-            res.json({ success: false, message: err });
+            res.json({ success: false, message: err.msg });
         } else {
             res.json({ success: true, message: "Photo was updated !" });
 

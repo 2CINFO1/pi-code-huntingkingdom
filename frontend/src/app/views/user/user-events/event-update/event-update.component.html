@@ -10,12 +10,7 @@
 
         <form action="/" class="card p-2 bg-transparent">
             <div class="input-group">
-                <select class="custom-select" name="category" id="category" [(ngModel)]="event.category">
-                <option selected value="pêche">pêche</option>
-                <option value="Chasse des oiseaux">Chasse des oiseaux</option>
-                <option value="Chasse dans les deserts">Chasse dans les deserts</option>
-                <option value="Chasse dans les forets">Chasse dans les forets</option>
-              </select>
+                <input type="text" name="category" id="category" [(ngModel)]="evenement.category">
                 <div class="input-group-append">
                     <button class="btn btn-outline-secondary" type="button">Ajouter catégorie</button>
                 </div>
@@ -26,14 +21,14 @@
                 <div class="row">
                     <div class="form-group col-md-6 mb-3">
                         <label for="Name">Nom evenement</label>
-                        <input type="text" id="name" name="name" [(ngModel)]="event.name" class="form-control" placeholder="" value="" required>
+                        <input type="text" id="name" name="name" [(ngModel)]="evenement.name" class="form-control" placeholder="" value="" required>
                         <div class="invalid-feedback">
                             Nom evenement est obligatoir.
                         </div>
                     </div>
                     <div class="form-group col-md-6 mb-3">
                         <label for="type">Type</label>
-                        <input type="text" class="form-control" name="type" id="type" [(ngModel)]="event.type" placeholder="" value="" required="">
+                        <input type="text" class="form-control" name="type" id="type" [(ngModel)]="evenement.type" placeholder="" value="" required="">
                         <div class="invalid-feedback">
                             Type evenement est obligatoir.
                         </div>
@@ -43,7 +38,7 @@
                 <div class="form-group mb-3">
                     <label for="description">description</label>
                     <div class="input-group">
-                        <input type="text" class="form-control" name="description" id="description" [(ngModel)]="event.description" placeholder="" required="">
+                        <input type="text" class="form-control" name="description" id="description" [(ngModel)]="evenement.description" placeholder="" required="">
                         <div class="invalid-feedback" style="width: 100%;">
                             Description evenement est obligatoire.
                         </div>
@@ -52,12 +47,12 @@
 
                 <div class="form-group mb-3">
                     <label for="email">Détials <span class="text-muted">(Optional)</span></label>
-                    <textarea class="form-control" name="detail" id="detail" [(ngModel)]="event.detail"></textarea>
+                    <textarea class="form-control" name="detail" id="detail" [(ngModel)]="evenement.detail"></textarea>
                 </div>
 
                 <div class="form-group mb-3">
                     <label for="address">Addresse</label>
-                    <input type="text" class="form-control" name="location" id="location" [(ngModel)]="event.location" placeholder="1234 Main St" required="">
+                    <input type="text" class="form-control" name="location" id="location" [(ngModel)]="evenement.location" placeholder="1234 Main St" required="">
                     <div class="invalid-feedback">
                         Please enter your address.
                     </div>
@@ -68,17 +63,17 @@
 
                     <div class="form-group col-md-4 mb-3">
                         <label for="state">Pays</label>
-                        <select class="custom-select d-block w-100" name="pays" id="pays" [(ngModel)]="event.pays" required="">
-                          <option value="">Choose...</option>
-                          <option>California</option>
-                        </select>
+                        <select class="custom-select d-block w-100" name="pays" id="pays" [(ngModel)]="evenement.pays" required="">
+                        <option value="">Choose...</option>
+                        <option>California</option>
+                      </select>
                         <div class="invalid-feedback">
                             Please provide a valid state.
                         </div>
                     </div>
                     <div class="form-group  col-md-3 mb-3">
                         <label for="zip">Zip</label>
-                        <input type="text" class="form-control" name="codePostal" id="codePostal" [(ngModel)]="event.codePostal" placeholder="" required="">
+                        <input type="text" class="form-control" name="codePostal" id="codePostal" [(ngModel)]="evenement.codePostal" placeholder="" required="">
                         <div class="invalid-feedback">
                             Zip code required.
                         </div>
@@ -110,7 +105,7 @@
 
                     <div class="form-group col-md-6 mb-3">
                         <label for="cc-number">numro carte Credit  </label>
-                        <input type="number" class="form-control" placeholder="" required="" id="creditCard" name="creditCard" [(ngModel)]="event.creditCard">
+                        <input type="number" class="form-control" placeholder="" required="" id="creditCard" name="creditCard" [(ngModel)]="evenement.creditCard">
                         <div class="invalid-feedback">
                             Credit card number is required
                         </div>
@@ -119,7 +114,7 @@
                 <hr class="mb-4">
 
 
-                <button class="btn btn-primary btn-lg btn-block" (click)="save()">Sauvegarder</button>
+                <button class="btn btn-primary btn-lg btn-block" (click)="update()">Mettre à jour</button>
             </div>
         </form>
 
