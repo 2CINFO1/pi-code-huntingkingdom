@@ -58,7 +58,12 @@ app.set('view engine', 'jade');
 app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
-app.use(helmet())
+app.use(
+    helmet({
+      crossOriginEmbedderPolicy: false,
+      // ...
+    })
+  );
     //allow cross origin requests
 app.use(function(req, res, next) {
     res.setHeader("Access-Control-Allow-Origin", "*");
@@ -67,6 +72,8 @@ app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
     next();
 });
+
+
 
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
