@@ -1,5 +1,6 @@
 const router = require ("express").Router();
 const Cart = require("../../models/products/Cart");
+const Product = require("../../models/products/Product");
 const {verifyTokens,verifyTokenAndAuthorization,verifyTokenAndAdmin} = require ("../user/verifyToken")
 
 
@@ -21,7 +22,7 @@ router.post("/item/:id", async (req, res) => {
           cart.products[itemIndex] = productItem;
         } else {
           //product does not exists in cart, add new item
-          cart.products.push({ productId, quantity, name, price });
+          cart.products.push({ productId, quantity, Nom, price });
         }
         cart = await cart.save();
         return res.status(201).send(cart);
@@ -86,11 +87,13 @@ router.delete("/:id",verifyTokenAndAuthorization,async (req,res)=>{
 //verifyTokenAndAuthorization
 router.get("/find/:id",async (req,res)=>{
   const userId = req.params.id;
+  const products = [];
     try{
-    let cart =  await Cart.find({userId})
-
-       res.status(200).json(cart)
-    }
+    let cart =  await Cart.findOne({userId});
+     if(cart){
+      console.log(cart.products)
+      res.status(200).json(cart.products)}
+     }
     catch(err){
         res.status(400).json(err)
     }
@@ -101,6 +104,7 @@ router.get("/find/:id",async (req,res)=>{
 router.get("/findall/",verifyTokenAndAdmin,async (req,res)=>{
 try{
 const carts = await Cart.find()
+
 res.status(200).json(carts)
 }catch(err){
     res.status(400).json(err)

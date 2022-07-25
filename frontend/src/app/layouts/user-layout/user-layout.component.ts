@@ -9,21 +9,25 @@ import { Cart } from 'src/app/models/store/Cart.model';
 })
 export class UserLayoutComponent implements OnInit {
 
-  carts : Cart[];
   visible = false;
-  cart : any;
+  carts:any
+  products : any
 
 
   ngOnInit(): void {
   }
 
   toggle() {
+    this.dataservice.getcart().subscribe((data: any) => {
+      this.products = data;
+      // this.cartDetails = data.data;
+      console.log(this.carts);
+    }),
     this.visible = !this.visible;}
 
     constructor(private dataservice:DataService) {
-      this.dataservice.getcart().subscribe(data=>this.cart=data)
+    }
 
-     }
 
      }
 
