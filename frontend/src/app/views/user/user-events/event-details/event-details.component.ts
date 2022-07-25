@@ -51,6 +51,12 @@ export class EventDetailsComponent implements OnInit {
     this.eventsService.uploadImage(this.file,this.event_id);
 }
 
+
+updateCurrentEvent(_id: String) {
+  console.log(_id)
+  this.router.navigate(['events/update', _id])
+}
+
 /*
   onFileSelected(files :File ) {
 

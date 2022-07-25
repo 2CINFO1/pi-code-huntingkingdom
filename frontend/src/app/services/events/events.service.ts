@@ -26,6 +26,7 @@ export class EventsService {
   }
 
   updateEvent(event: Event) {
+    console.log(`${this.url}/update/${event._id}`)
     return this.http.put(`${this.url}/update/${event._id}`, event);
   }
 
