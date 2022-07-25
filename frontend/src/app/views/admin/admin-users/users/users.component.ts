@@ -23,6 +23,11 @@ export class UsersComponent implements OnInit {
       console.log(data)
     })
   }
+  update(id: any) {
+    this.router.navigate(['dashboard/users/details/'+id])
+
+    }
+  
 
   delete(id: any) {
     this.userService.deleteUser(id).subscribe(() => {
