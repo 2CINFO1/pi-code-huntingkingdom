@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Item} from "../../models/store/item.model";
+import { Data } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -23,9 +24,11 @@ getHikingProducts(){
 getHuntingProducts(){
   return this.http.get('http://localhost:3000/api/product/findall?Categorie=hunting')
 }
-addtoCart(item: Item){
-  return this.http.post(`${this.url}`, item);
+addtoCart(data:Data){
+  return this.http.post(`${this.url}`, data);
 }
+getcart(){
+  return this.http.get('http://localhost:3000/api/cart/item/62b70b1d7f73fec4e5bb3530')
 
-
+}
 }

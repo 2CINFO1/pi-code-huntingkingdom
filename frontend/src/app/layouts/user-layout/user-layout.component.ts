@@ -11,7 +11,7 @@ export class UserLayoutComponent implements OnInit {
 
   carts : Cart[];
   visible = false;
-  products : any;
+  cart : any;
 
 
   ngOnInit(): void {
@@ -20,8 +20,10 @@ export class UserLayoutComponent implements OnInit {
   toggle() {
     this.visible = !this.visible;}
 
-    constructor(private DataService: DataService, private router: Router) { }
-addtocart(id : any) {
-  this.DataService.addtoCart(id).subscribe()
-}
-}
+    constructor(private dataservice:DataService) {
+      this.dataservice.getcart().subscribe(data=>this.cart=data)
+
+     }
+
+     }
+

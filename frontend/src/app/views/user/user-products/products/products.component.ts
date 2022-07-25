@@ -38,14 +38,14 @@ export class ProductsComponent implements OnInit {
   ngOnInit(): void {
   }
   addtocart(id: any, quantity: number,name: any,price: any):  void {
-    let item = {
+    let data = {
       productId: id,
       quantity : quantity ,
       name : name,
       price : price
     };
-    console.log(item);
-    this.dataservice.addtoCart(item).subscribe(() => {
+    console.log(data);
+    this.dataservice.addtoCart(data).subscribe(() => {
       this.dataservice.getAllProducts()
       alert('Product Added');
     });;
