@@ -6,9 +6,9 @@ const {verifyTokens,verifyTokenAndAuthorization,verifyTokenAndAdmin} = require (
 
 
 
-router.post("/cart", async (req, res) => {
+router.post("/item/:id", async (req, res) => {
     const { productId, quantity, name, price } = req.body;
-    const userId = "62b62370d430fa7948eee374"; //TODO: the logged in user id
+    const userId = req.params.id; //TODO: the logged in user id
     try {
       let cart = await Cart.findOne({ userId });
       if (cart) {
@@ -83,10 +83,11 @@ router.delete("/:id",verifyTokenAndAuthorization,async (req,res)=>{
     }
 })
 //GET USER Cart
-
-router.get("/find/:userid",verifyTokenAndAuthorization,async (req,res)=>{
+//verifyTokenAndAuthorization
+router.get("/find/:id",async (req,res)=>{
+  const userId = req.params.id;
     try{
-     const cart =  await Cart.find({userId : req.params.userId})
+    let cart =  await Cart.find({userId})
 
        res.status(200).json(cart)
     }
