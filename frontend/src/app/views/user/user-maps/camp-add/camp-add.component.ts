@@ -3,6 +3,11 @@ import {CampSpot} from "../../../../models/maps/camp_spot";
 import {CampSpotService} from "../../../../services/maps/camp-spot.service";
 import {Router} from "@angular/router";
 
+interface CampingCategories {
+  value: string;
+  viewValue: string;
+}
+
 @Component({
   selector: 'app-camp-add',
   templateUrl: './camp-add.component.html',
@@ -13,6 +18,14 @@ export class CampAddComponent implements OnInit {
   address: string;
   name: string;
 
+  camping_categories: CampingCategories[] = [
+    {value: 'Tent Camping', viewValue: 'Tent Camping'},
+    {value: 'Hiking Camping', viewValue: 'Hiking Camping'},
+    {value: 'Car Camping', viewValue: 'Car Camping'},
+    {value: 'Van Camping', viewValue: 'Van Camping'},
+    {value: 'Bicycle Touring Camping', viewValue: 'Bicycle Touring Camping'},
+    {value: 'Ultralight Camping', viewValue: 'Ultralight Camping'},
+  ];
   campSpot: CampSpot;
   camp_lat: number;
   camp_lng: number;
@@ -20,7 +33,7 @@ export class CampAddComponent implements OnInit {
   lat: number = 33.331050;
   lng: number = 10.489326;
 
-  zoom: number = 8;
+  zoom: number = 5.5;
   marker: google.maps.Marker;
   private mapClickListener: google.maps.MapsEventListener;
   private map: google.maps.Map;
@@ -50,15 +63,21 @@ export class CampAddComponent implements OnInit {
   }
 
   save() {
-    // console.log(`name: ${this.campSpot.name}
-    // \naddress: ${this.campSpot.address}
-    // \ncategory ${this.campSpot.category}
-    // \nrate: ${this.campSpot.rate}
-    // \nposition ${this.campSpot.position.lat}
-    // \nlongitude: ${this.campSpot.position.lng}`
-    // )
     this.campService.addCampSpot(this.campSpot);
     this.router.navigate(['/maps/'])
   }
 
+  home() {
+    this.router.navigate(['/maps/'])
+  }
+
+
+  onItemChange(value: any){
+    this.campSpot.rate = value.target.value
+  }
+
+  campCategory(value: any) {
+    console.log(value.value)
+    this.campSpot.category = value.value
+  }
 }

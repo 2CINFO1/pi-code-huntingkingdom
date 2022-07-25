@@ -3,13 +3,13 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-const helmet = require ("helmet");
+const helmet = require("helmet");
 var bodyParser = require('body-parser')
 const dotenv = require("dotenv");
 const cors = require('cors');
 
 
-const cryptoRoute = require ("./routes/product/crypto");
+const cryptoRoute = require("./routes/product/crypto");
 const cartRoute = require("./routes/product/cart");
 const orderRoute = require("./routes/product/order");
 const productRoute = require("./routes/product/product");
@@ -66,6 +66,17 @@ app.use(
     })
   );
 
+    //allow cross origin requests
+app.use(function(req, res, next) {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods", "POST, PUT, OPTIONS, DELETE, GET");
+    res.header("Access-Control-Max-Age", "3600");
+    res.header("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+    next();
+});
+
+
+
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
@@ -79,12 +90,12 @@ app.use('/blogs', blogRouter);
 
 app.use('/maps', mapsRouter);
 
-app.use("/api/auth",authRoute);
-app.use("/api/user",userRoute);
-app.use("/api/product",productRoute);
-app.use("/api/cart",cartRoute);
-app.use("/api/order",orderRoute);
-app.use("/api/crypto",cryptoRoute);
+app.use("/api/auth", authRoute);
+app.use("/api/user", userRoute);
+app.use("/api/product", productRoute);
+app.use("/api/cart", cartRoute);
+app.use("/api/order", orderRoute);
+app.use("/api/crypto", cryptoRoute);
 
 app.use("/api/reclamation", reclamationRoute);
 app.use('/camp', campRouter);

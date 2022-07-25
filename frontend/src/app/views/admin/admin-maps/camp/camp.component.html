@@ -1,34 +1,26 @@
 <section class="home-section">
-  <div class="text">Camp Spots</div>
+    <div class="text">Camp Spots</div>
 
+    <div class="album py-5 bg-light">
+        <div class="container">
 
-  <div class="album py-5 bg-light">
-    <div class="container">
-
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" >
-        <div class="col" *ngFor="let spot of campList">
-          <div class="card shadow-sm">
-            <agm-map
-              [disableDefaultUI]="true"
-              [disableDoubleClickZoom]="true"
-              [latitude]="spot.position.lat"
-              [longitude]="spot.position.lng"
-              [zoom]="7"
-              (mapReady)="setMarker($event, spot.position.lat, spot.position.lng)"
-            ></agm-map>
-            <div class="card-body">
-              <p class="card-text">{{spot.name}}</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary" (click)="goToDetails(spot._id)">Edit</button>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col" *ngFor="let spot of campList">
+                    <div class="card shadow-sm">
+                        <agm-map [disableDefaultUI]="true" [disableDoubleClickZoom]="true" [latitude]="spot.position.lat" [longitude]="spot.position.lng" [zoom]="7" (mapReady)="setMarker($event, spot.position.lat, spot.position.lng)"></agm-map>
+                        <div class="card-body">
+                            <p class="card-text">{{spot.name}}</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary" (click)="goToDetails(spot._id)">Edit</button>
+                                    <button type="button" class="btn btn-sm btn-outline-danger" (click)="delete(spot._id)">Delete</button>
+                                </div>
+                                <small class="text-muted">{{spot.rate}} ⭐</small>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <small class="text-muted">{{spot.rate}} ⭐</small>
-              </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
 </section>

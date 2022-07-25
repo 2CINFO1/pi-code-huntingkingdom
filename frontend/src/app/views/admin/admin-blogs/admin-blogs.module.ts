@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 
 import { AdminBlogsRoutingModule } from './admin-blogs-routing.module';
 import { BlogsComponent } from './blogs/blogs.component';
+import { TableBlogsComponent } from './blogs/table-blogs/table-blogs.component';
 
 
 @NgModule({
   declarations: [
-    BlogsComponent
+    BlogsComponent,
+    TableBlogsComponent
   ],
   imports: [
     CommonModule,

@@ -3,6 +3,7 @@ import {CampSpotService} from "../../../../services/maps/camp-spot.service";
 import {CampSpot} from "../../../../models/maps/camp_spot";
 import {HuntSpot} from "../../../../models/maps/hunt_spot";
 import {HuntService} from "../../../../services/maps/hunt.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-maps',
@@ -12,7 +13,7 @@ import {HuntService} from "../../../../services/maps/hunt.service";
 export class MapsComponent implements OnInit {
 
 
-  constructor(private campService: CampSpotService, private huntService: HuntService) {
+  constructor(private campService: CampSpotService, private huntService: HuntService, private router: Router) {
   }
 
   public campList: CampSpot[]
@@ -32,6 +33,7 @@ export class MapsComponent implements OnInit {
     this.huntService.listHuntSpot().subscribe((response: HuntSpot[]) => {
       this.huntList = response
     })
+
   }
 
   // initial center position for the map
@@ -96,7 +98,7 @@ export class MapsComponent implements OnInit {
     });
 
     this.toggleHuntHeatmap();
-    this.toggleCampHeatmap()
+    this.toggleCampHeatmap();
   }
 
   changeRadius(): void {
@@ -119,16 +121,53 @@ export class MapsComponent implements OnInit {
 
   toggleCampMarkers(): void {
     const image = "http://maps.google.com/mapfiles/ms/icons/";
-    this.campCoordsList.forEach(data => {
-      var myLatlng = new google.maps.LatLng(parseFloat(String(data.lat())), parseFloat(String(data.lng())))
-      new google.maps.Marker({
+    this.campList.forEach(data => {
+
+      var myLatlng = new google.maps.LatLng(parseFloat(String(data.position.lat)), parseFloat(String(data.position.lng)))
+      const campMarker = new google.maps.Marker({
         position: myLatlng,
         // label: (this.labels)[this.labelIndex++ % this.labels.length],
         map: this.map,
         icon: `${image}hiker.png`
       });
+      this.infoTest(data, campMarker)
+
     })
   }
+
+
+  infoTest(spot: CampSpot, marker: google.maps.Marker) {
+    var contentWindow = "<h2>" + spot.name + "</h2>"
+      + "<p>" + spot.address + "</p>"
+      + "<p>" + spot.rate + "</p>"
+      + "<button class='btn btn-primary' id='clickableItem' (click)='navigate()'>" +
+      "Details</button>"
+
+    const infoWindow = new google.maps.InfoWindow({
+      content: contentWindow,
+    });
+
+    google.maps.event.addListener(infoWindow, 'domready', () => {
+      //now my elements are ready for dom manipulation
+      var clickableItem = document.getElementById('clickableItem');
+      console.log(`Your clickable item: ${clickableItem}`)
+      if (clickableItem)
+        clickableItem.addEventListener('click', () => {
+          this.goToDetails(spot._id)
+        });
+      console.log('Hola')
+    });
+
+    marker.addListener('click', () => {
+      infoWindow.open(this.map, marker);
+    });
+  }
+
+  goToDetails(_id: String) {
+    console.log(_id)
+    this.router.navigate(['/maps/camp/details', _id])
+  }
+
   toggleHuntMarkers(): void {
     const image = "http://maps.google.com/mapfiles/ms/icons/";
     this.huntCoordsList.forEach(data => {

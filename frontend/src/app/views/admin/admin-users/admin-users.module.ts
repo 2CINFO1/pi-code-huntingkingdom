@@ -4,6 +4,10 @@ import { CommonModule } from '@angular/common';
 import { AdminUsersRoutingModule } from './admin-users-routing.module';
 import { UsersComponent } from './users/users.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
+
 
 
 @NgModule({
@@ -13,7 +17,10 @@ import { UserDetailsComponent } from './user-details/user-details.component';
   ],
   imports: [
     CommonModule,
-    AdminUsersRoutingModule
+    AdminUsersRoutingModule,
+    FormsModule,
+HttpClientModule 
+    
   ]
 })
 export class AdminUsersModule { }

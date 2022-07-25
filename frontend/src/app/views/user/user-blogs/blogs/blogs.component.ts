@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import {Blog} from "../../../../models/blog/blog";
 import {BlogService} from "../../../../services/blogs/blog.service";
@@ -12,6 +13,7 @@ export class BlogsComponent implements OnInit {
 
   blog: Blog;
   public blogList: Blog[];
+  public myDate = new Date();
   constructor(private blogService: BlogService) { }
 
   ngOnInit(): void {

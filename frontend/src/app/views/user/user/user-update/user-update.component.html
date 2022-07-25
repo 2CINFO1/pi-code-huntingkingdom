@@ -1,0 +1,75 @@
+<section class="py-7 py-md-0 bg-login" id="login">
+    <div class="container">
+      <div class="row vh-md-100">
+  
+        <div class="col-md-8 col-sm-10 col-12 mx-auto my-auto text-center">
+          <div class="card-body p-md-5">
+            <div class="row justify-content-center">
+              <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Editer  un compte</p>
+              <form class="mx-1 mx-md-4" style="background-color: transparent " #f="ngForm" >
+  
+                <div class="d-flex flex-row align-items-center mb-4">
+                  <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                  <div class="form-outline flex-fill mb-0">
+                    <input type="text" id="form3Example1c" class="form-control" name="Nom" placeholder="{{user.Nom}}" #Nom="ngModel"  ngModel />
+                    <!--                      <label class="form-label" for="form3Example1c">Nom</label>-->
+                  </div>
+                </div>
+                <div class="d-flex flex-row align-items-center mb-4">
+                  <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                  <div class="form-outline flex-fill mb-0">
+                    <input type="text" id="form3Example3c" class="form-control" name="Prenom" placeholder="{{user.Prenom}}" #Prenom="ngModel"  ngModel/>
+                    <!--                      <label class="form-label" for="form3Example3c">Prenom</label>-->
+                  </div>
+                </div>
+                <div class="d-flex flex-row align-items-center mb-4">
+                  <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                  <div class="form-outline flex-fill mb-0">
+                    <input type="text" id="form3Example3c" class="form-control" name="Age" placeholder="{{user.Age}}" #Age="ngModel"  ngModel/>
+                                         <label class="form-label" for="form3Example3c">Prenom</label>
+                  </div>
+                </div>
+                <div class="d-flex flex-row align-items-center mb-4">
+                  <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                  <div class="form-outline flex-fill mb-0">
+                    <input type="text" id="form3Example3c" class="form-control" name="Bio" placeholder="{{user.Bio}}" #Bio="ngModel"  ngModel/>
+                    <!--                      <label class="form-label" for="form3Example3c">Prenom</label>-->
+                  </div>
+                </div>
+                
+                <div class="d-flex flex-row align-items-center mb-4">
+                  <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                  <div class="form-outline flex-fill mb-0">
+                    <input type="email" id="form3Example1" class="form-control" name="Email" placeholder="{{user.Email}}" #Email="ngModel"  ngModel />
+                    <!--                      <label class="form-label" for="form3Example1">Email</label>-->
+                  </div>
+                </div>
+  
+                <div class="d-flex flex-row align-items-center mb-4">
+                  <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                  <div class="form-outline flex-fill mb-0">
+                    <input type="password" id="form3Example2c" class="form-control" name="Password" placeholder="{{user.Password}}" #Password="ngModel"  ngModel />
+                    <!--                      <label class="form-label" for="form3Example2c">Mot de passe</label>-->
+                  </div>
+                </div>
+  
+  
+                <div class="form-check d-flex  mb-5">
+                  <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3c"/>
+                  <label class="form-check-label" for="form2Example3c">
+                    J'accepte toutes les déclarations dans <a href="#!">les conditions d'utilisation</a>
+                  </label>
+                </div>
+ 
+                <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                  <button type="button" class="btn btn-primary btn-lg" (click)="Updateuser(f.value)">Register</button>
+                </div>
+               
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
