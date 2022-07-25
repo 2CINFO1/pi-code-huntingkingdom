@@ -1,13 +1,10 @@
-<br><br><br><br><br><br><br><br>
-<header>
-<section class="py-7 py-md-0 bg-login" id="login">
+<div style="background-color: rgb(17, 17, 17);">
+  <br><br><br><br><br><br><br><br>
+  </div>
+<header >
+<section class="py-7 py-md-0 bg-login" id="ajout" style="background-color: rgb(17, 17, 17);" >
   <div class="col-md-8 col-sm-10 col-12 mx-auto my-auto text-center align-baseline">
     <div class="row vh-md-100">
-
-
-
-
-
 
       <div class="container-fluid">
 
@@ -35,10 +32,9 @@
                     <input type="text" class="form-control" id="description" placeholder="la description du blog" classe="formControl2"
                      [(ngModel)]="blog.description">
                   </div>
-                  <div class="form-group">
-                    <label for="formFile" class="form-label">Ajouter un fichier</label>
+                  <!--  <label for="formFile" class="form-label">Ajouter un fichier</label>
                     <input class="form-control" type="file" id="formFile"  [(ngModel)]="blog.img" required>
-                  </div>
+                  </div>-->
                   <div class="form-group">
                     <label for="text" class="form-label">Le contenu du blog</label>
                     <textarea class="form-control" id="text" rows="3" placeholder="Veuillez saisir ou coller l'article de votre blog ici ....."
@@ -49,17 +45,20 @@
                   <div>Catégorie
                   <select class="form-select form-select-sm" aria-label=".form-select-sm example" aria-placeholder="Catégorie" [(ngModel)]="blog.category" [ngModelOptions]="{standalone: true}" >
                     <option selected ></option>
-                    <option value="1">La pêche</option>
-                    <option value="2">La chasse</option>
-                    <option value="3">Camping</option>
+                    <option value="La pêche">La pêche</option>
+                    <option value="La chasse">La chasse</option>
+                    <option value="Camping">Camping</option>
                   </select>
                 </div><br><br>
 
                   <div class="d-grid gap-2">
-                    <button class="btn btn-primary" type="submit" onclick="save()">Publier</button>
+                    <button class="btn btn-primary" type="submit" (click)="save()">Publier</button>
                     <button class="btn btn-primary" type="button" routerLink="/blogs">Annuler</button>
                   </div>
                   </div>
+
+
+
 
               </form>
 
@@ -93,7 +92,7 @@
 
 </div>-->
 
-
+</header>
 
  <footer class="bg-dark text-center text-white">
   <!-- Grid container -->

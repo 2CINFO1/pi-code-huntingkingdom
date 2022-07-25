@@ -13,9 +13,10 @@ import {BlogService} from "../../../../services/blogs/blog.service";
 export class BlogAddComponent implements OnInit {
   blog: Blog;
   public blogList: Blog[];
-  blogService: any;
 
-  constructor(private bs: BlogService) { }
+
+
+  constructor(private blogService: BlogService) { }
 
   ngOnInit(): void {
     this.blog = new Blog();
@@ -23,7 +24,7 @@ export class BlogAddComponent implements OnInit {
   }
 
   getBlogList() {
-    this.bs.listBlogs().subscribe((response: Blog[]) => {
+    this.blogService.listBlogs().subscribe((response: Blog[]) => {
       this.blogList = response;
       console.log(response)
     })
@@ -35,8 +36,9 @@ export class BlogAddComponent implements OnInit {
     )
   }
 
- addBlog(f:any) {
-    this.blogService.addBlog(this.blog).subscribe(
+ save() {
+  console.log(this.blog)
+     this.blogService.addBlog(this.blog).subscribe(
       ()=>{this.getBlogList()}
     );
   }
