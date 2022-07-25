@@ -61,6 +61,7 @@ app.use(express.json());
 app.use(
     helmet({
       crossOriginEmbedderPolicy: false,
+      crossOriginResourcePolicy: false,
       // ...
     })
   );

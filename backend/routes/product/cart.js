@@ -6,9 +6,9 @@ const {verifyTokens,verifyTokenAndAuthorization,verifyTokenAndAdmin} = require (
 
 
 
-router.post("/cart", async (req, res) => {
+router.post("/item/:id", async (req, res) => {
     const { productId, quantity, name, price } = req.body;
-    const userId = "62b62370d430fa7948eee374"; //TODO: the logged in user id
+    const userId = req.params.id; //TODO: the logged in user id
     try {
       let cart = await Cart.findOne({ userId });
       if (cart) {

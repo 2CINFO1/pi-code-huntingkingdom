@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import{DataService}from '../../../../services/product/product.service' ;
+import {Item} from "../../../../models/store/item.model";
 import { trigger, transition, animate, style } from '@angular/animations'
 
 
@@ -24,15 +25,30 @@ import { trigger, transition, animate, style } from '@angular/animations'
 })
 export class ProductsComponent implements OnInit {
   visible = false;
+  item: Item;
+
 
   toggle() {
     this.visible = !this.visible;}
   products : any;
-  constructor(private product:DataService) {
-    this.product.getAllProducts().subscribe(data=>this.products=data)
+  constructor(private dataservice:DataService) {
+    this.dataservice.getAllProducts().subscribe(data=>this.products=data)
 
    }
   ngOnInit(): void {
   }
+  addtocart(id: any, quantity: number,name: any,price: any):  void {
+    let item = {
+      productId: id,
+      quantity : quantity ,
+      name : name,
+      price : price
+    };
+    console.log(item);
+    this.dataservice.addtoCart(item).subscribe(() => {
+      this.dataservice.getAllProducts()
+      alert('Product Added');
+    });;
 
+  }
 }
