@@ -54,7 +54,7 @@ export class EventsService {
     return this.http.put(`${this.url}/addInterested/${event._id}`, event);
   }
 
-  deleteEvent(id: string) {
+  deleteEvent(id: String) {
     console.log(this.http.delete(`${this.url}/delete/${id}`))
     return this.http.delete(`${this.url}/delete/${id}`);
   }
