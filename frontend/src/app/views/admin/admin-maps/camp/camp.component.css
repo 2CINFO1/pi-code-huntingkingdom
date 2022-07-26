@@ -20,3 +20,11 @@
 agm-map {
   height: 300px;
 }
+
+.form-control {
+  margin-bottom: 10px;
+}
+
+.btn {
+  margin-bottom: 10px;
+}

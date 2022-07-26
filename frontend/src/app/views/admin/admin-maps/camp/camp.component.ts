@@ -21,6 +21,8 @@ export class CampComponent implements OnInit {
   lng: number = 10.489326;
 
   public campList: CampSpot[]
+  searchKeyWord : string = '';
+
   constructor(private campService: CampSpotService, private router: Router) {
   }
 
@@ -99,5 +101,10 @@ export class CampComponent implements OnInit {
       this.router.navigate(['/dashboard/maps/camp'])
     })
     this.router.navigate(['/dashboard/maps/camp'])
+  }
+
+  serachListElement()
+  {
+    console.log(this.searchKeyWord)
   }
 }
