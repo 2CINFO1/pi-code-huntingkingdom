@@ -12,24 +12,28 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgxPaginationModule } from 'ngx-pagination';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
 
   ],
   imports: [
+
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
     AppRoutingModule,
+
     LayoutsModule,
     ReactiveFormsModule,
     Ng2OrderModule,
     Ng2SearchPipeModule,
-    NgxPaginationModule
+    NgxPaginationModule,
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 
