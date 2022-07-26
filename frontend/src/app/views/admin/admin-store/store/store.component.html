@@ -53,7 +53,7 @@
                 <button class="btn btn-success btn-block" routerLink="/products/add">Modifier</button>
               </td>
               <td>
-                <button class="btn btn-danger btn-block" routerLink="/products/add">Supprimer</button>
+                <button class="btn btn-danger btn-block" routerLink="/products/add"(click)="delete(product._id)">Supprimer</button>
               </td>
             </tr>
             </tbody>

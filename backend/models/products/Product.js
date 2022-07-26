@@ -7,7 +7,7 @@ const ProductSchema = new mongoose.Schema(
     SousCategorie: {type : Array, required:false},
     Marque : {type : String ,required : false},
     img:{type : String , required : false},
-    discription : {type : String,required :false},
+    description : {type : String,required :false},
     prix : {type: Number ,required :false},
     InStock: {type : Boolean , default : true},
     Size : {type : Array},

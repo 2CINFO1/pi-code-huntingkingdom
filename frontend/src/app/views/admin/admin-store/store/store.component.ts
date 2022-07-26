@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import{DataService}from '../../../../services/product/product.service' ;
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-store',
@@ -8,7 +9,7 @@ import{DataService}from '../../../../services/product/product.service' ;
 })
 export class StoreComponent implements OnInit {
 products : any
-  constructor(private dataservice:DataService) {
+  constructor(private dataservice:DataService,private router: Router) {
     this.dataservice.getAllProducts().subscribe(data=>this.products=data)
 
    }
@@ -17,9 +18,9 @@ products : any
   }
 
 
-  // delete(_id: String) {
-  //   this.dataservice.deleteCampSpot(_id).subscribe(() => {
-  //     this.router.navigate(['/dashboard/maps/camp'])
-  //   })
-  // }
+  delete(_id: String) {
+    this.dataservice.deleteProducts(_id).subscribe(() => {
+      this.router.navigate(['/dashboard/maps/camp'])
+    })
+  }
 }
