@@ -41,4 +41,10 @@ makePayment(stripeToken: any): Observable<any>{
 
   return this.http.post<any>(url,{token:stripeToken})
 }
+deletecart(){
+  return this.http.delete('http://localhost:3000/api/cart/62b70b1d7f73fec4e5bb3530')
+}
+deleteProducts(id: String){
+  return this.http.delete('http://localhost:3000/api/product/'+id)
+}
 }

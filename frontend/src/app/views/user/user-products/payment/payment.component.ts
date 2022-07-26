@@ -1,3 +1,4 @@
+import {ActivatedRoute, Params, Router} from "@angular/router";
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
@@ -22,9 +23,10 @@ export class PaymentComponent implements OnInit {
   failure:boolean = false
   amount = 0 ;
 
-  constructor(private dataservice:DataService) { this.dataservice.getamount().subscribe((data:any) => {
+  constructor(private dataservice:DataService,private router: Router) { this.dataservice.getamount().subscribe((data:any) => {
     this.amount = data ;
 } )}
+
 
   ngOnInit() {
     this.invokeStripe();
@@ -77,6 +79,11 @@ export class PaymentComponent implements OnInit {
 
       window.document.body.appendChild(script);
     }
+  }
+  delete() {
+    this.dataservice.deletecart().subscribe(() => {
+      this.router.navigate(['/products'])
+    })
   }
 
 }
