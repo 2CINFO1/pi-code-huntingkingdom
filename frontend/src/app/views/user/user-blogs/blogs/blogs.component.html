@@ -1,7 +1,30 @@
 
+<div class="bg-dark text-secondary px-4 py-5 text-center" id="eventHeader">
+  <div class="py-5"><br>
+      <h1 class="display-5 fw-bold text-white">HUNTERS Blog</h1>
+      <div class="col-lg-6 mx-auto">
+          <p class="fs-5 mb-4">Blog Quelque chose de court et de principal sur la collection ci-dessous - son contenu, le créateur, etc. Faites-le court et doux, mais pas trop court pour que les gens ne le sautent pas complètement.📝<br> <br> <p>Search 🔍</p> &nbsp;
+
+          <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+           <!-- -->
+             <!-- <button type="button" class=" secondaryHKBtn btn btn-outline-light btn-lg px-4">Cherchez votre blog</button>-->
+
+             <!--search-->
+             <br><br>
+             <div class="container ">
+              <input type="text" placeholder="Search...">
+              <div class="search"> </div>
+            </div>
+
+
+          </div>
+      </div>
+  </div>
+</div>
+
 <body >
-      <div class="py-5 text-center container" style="background-color: rgb(30, 28, 28);">
-        <div class="row py-lg-5" style="background-color: rgb(30, 28, 28);">
+      <div class="py-5 text-center container" id="back">
+        <div class="row py-lg-5" >
           <div class="col-lg-8 col-md- mx-auto"  >
 
             <p class="lead text-muted"> Blog Quelque chose de court et de principal sur la collection ci-dessous - son contenu, le créateur, etc. Faites-le court et doux, mais pas trop court pour que les gens ne le sautent pas complètement.</p>
@@ -95,7 +118,7 @@
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group">
 
-                <button type="button" class="btn btn-sm btn-outline-success">Modifier</button>
+                <button type="button" class="btn btn-sm btn-outline-success" (click)="update(blog._id)">Modifier</button>
                 <button type="button" class="btn btn-sm btn-outline-secondary" (click)="delete(blog._id)">Supprimer</button>
               </div>
               <div>
@@ -121,5 +144,5 @@
   </div>
   </div>
   </div>
-  
+
   </body>

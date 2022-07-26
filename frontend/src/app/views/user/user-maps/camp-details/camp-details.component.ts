@@ -30,7 +30,7 @@ export class CampDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.params.subscribe((params: Params) => this.camp_id = params['id']);
+
     this.campService.getCampSpot(this.camp_id).subscribe((response) => {
       this.campSpot = response;
     })

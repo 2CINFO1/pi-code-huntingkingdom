@@ -7,12 +7,31 @@ body {
   line-height: var(--bs-body-line-height);
   color: var(--bs-body-color);
   text-align: var(--bs-body-text-align);
-  background-color: rgb(19, 19, 19) ;
+   background-image: linear-gradient(to right, #0B2518 0%, 8.862433582544327%, #0B2518 17.724867165088654%, 49.669311195611954%, #0D0D0D 81.61375522613525%);
+
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: transparent;
 }
 ::after, ::before {
   box-sizing: border-box;
+}
+#back{
+  background-image: linear-gradient(to right, #0B2518 0%, 8.862433582544327%, #0B2518 17.724867165088654%, 49.669311195611954%, #0D0D0D 81.61375522613525%);
+
+}
+
+.btn {
+  background-image: linear-gradient(to right, #0B2518 0%, 5.621693283319473%, #05291D 11.243386566638947%, 55.62169328331947%, #0D0D0D 100%);
+  flex: 1 1 auto;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  /* text-shadow: 0px 0px 10px rgba(0,0,0,0.2);*/
+  box-shadow: 0 0 20px #eee;
+  border-radius: 5px;
+  border: 0px;
 }
 
 

@@ -5,7 +5,8 @@
   height: 100%;
   left: 0;
   top: 0px;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-image: linear-gradient(to right, #0B2518 0%, 8.862433582544327%, #0B2518 17.724867165088654%, 49.669311195611954%, #0D0D0D 81.61375522613525%);
+
   text-align: center;
   z-index: 2;
 
@@ -73,7 +74,7 @@ body {
   background-color: rgb(38, 38, 38);
   font-weight: 400;
   line-height: 1.75;
-  color: #333;
+    background-image: linear-gradient(to right, #0B2518 0%, 8.862433582544327%, #0B2518 17.724867165088654%, 49.669311195611954%, #0D0D0D 81.61375522613525%);
 }
 body {
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -106,6 +107,11 @@ html {
   text-shadow: none;
   background: #333;
 }
+#eventHeader{
+  background-image: linear-gradient(to right, #0B2518 0%, 8.862433582544327%, #0B2518 17.724867165088654%, 49.669311195611954%, #0D0D0D 81.61375522613525%);
+
+
+}
 
 
 .btn-primary {
@@ -133,7 +139,7 @@ font-size: medium;
 
 }
 .btn {
-  
+
 }
 
 
