@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {CampSpot} from "../../../../models/maps/camp_spot";
 import {CampSpotService} from "../../../../services/maps/camp-spot.service";
 import {Router} from "@angular/router";
+import {Event} from "../../../../models/events/events";
 
 @Component({
   selector: 'app-camp',
@@ -105,6 +106,9 @@ export class CampComponent implements OnInit {
 
   serachListElement()
   {
-    console.log(this.searchKeyWord)
+    this.campService.listCampSpotsByKey(this.searchKeyWord).subscribe((response: CampSpot[])=> {
+      this.campList = response
+      this.searchKeyWord = '';
+    })
   }
 }
