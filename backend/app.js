@@ -35,8 +35,8 @@ var app = express();
 
 
 dotenv.config();
-var cors = require('cors');    
-app.use(cors({credentials: true, origin: 'http://localhost:3000'}))
+// var cors = require('cors');
+// app.use(cors({credentials: true, origin: 'http://localhost:3000'}))
 
 //--------------- connection to the database--------------------------------------------
 var mongoose = require('mongoose');
