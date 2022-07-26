@@ -1,14 +1,14 @@
 label {
     color: white;
   }
-  
+
   body {
     background-image: url("src/assets/img/HomePage2.jpg");
   }
-  
+
 .row {
     background-color: gray;
-  
+
 }
 
 
@@ -51,38 +51,37 @@ label {
       font-weight: 600;
   }
   .dropdown-toggle:focus{
-  
+
       box-shadow: none !important;
-  
+
   }
-  
-  
+
+
   .dropdown-toggle::after {
-  
+
       display: none;
-  
+
   }
-  
+
   .dropdown-menu{
-  
+
       width: 200px;
           border: 2px solid #000000;
           padding: 0rem 0;
               transform: translate3d(0px, 50px, 0px) !important;
-  
+
   }
-  
+
   .dropdown-item:focus, .dropdown-item:hover {
       color: #ffffff;
       background-color: #000000;
       padding: 12px;
   }
-  
+
   .dropdown-item {
       display: block;
       width: 100%;
       padding: 12px;
-  
+
       }
 
-      

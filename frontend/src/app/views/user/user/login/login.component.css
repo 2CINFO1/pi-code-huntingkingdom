@@ -1,14 +1,18 @@
 label {
     color: white;
   }
-  
+
   body {
     background-color: white;
   }
-  
+
+  .login {
+    color: white;
+  }
+
   .bg-login {
     background-color: #EEEEEE;
-    background-image: url("src/assets/img/HomePage2.jpg");
+    background-image: linear-gradient(to right, #0B2518 0%, 8.862433582544327%, #0B2518 17.724867165088654%, 49.669311195611954%, #0D0D0D 81.61375522613525%);
     /* background by SVGBackgrounds.com */
     background-attachment: fixed;
     background-size: cover;
@@ -29,4 +33,3 @@ label {
   .bg-login .container {
     z-index: 2;
     position: relative; }
-  
