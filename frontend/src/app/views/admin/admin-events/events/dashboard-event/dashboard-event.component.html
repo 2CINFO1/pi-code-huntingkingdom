@@ -38,23 +38,29 @@
 
             <h2>Section title</h2>
             <div class="table-responsive">
-                <table class="table table-striped table-sm">
+                <table class="table table-striped table-sm ">
                     <thead>
                         <tr>
-                            <th scope="col">Category</th>
-                            <th scope="col">Type</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Date debut</th>
-                            <th scope="col">Date Fin</th>
-                            <th scope="col">Location</th>
-                            <th scope="col">status</th>
-                            <th></th>
-                            <th></th>
+                            <th scope="col"><select class="custom-select" name="category" id="category" ng-model="categoryS">
+                              <option selected value="Categorie">Categorie</option>
+                              <option value="pêche">pêche</option>
+                              <option value="Chasse des oiseaux">Chasse des oiseaux</option>
+                              <option value="Chasse dans les deserts">Chasse dans les deserts</option>
+                              <option value="Chasse dans les forets">Chasse dans les forets</option>
+                            </select>
+                                <th scope="col">Type</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Date debut</th>
+                                <th scope="col">Date Fin</th>
+                                <th scope="col">Location</th>
+                                <th scope="col">status</th>
+                                <th></th>
+                                <th></th>
 
                         </tr>
                     </thead>
-                    <tbody *ngFor="let event of eventList">
-                        <tr>
+                    <tbody *ngFor="let event of eventList" class="bg-transparent">
+                        <tr *ngIf="(categoryS == '' || event.category == categoryS )">
                             <td>{{event.category}}</td>
                             <td>{{event.type}}</td>
                             <td>{{event.name}}</td>
@@ -63,34 +69,23 @@
                             <td>{{event.location}}</td>
                             <td>{{event.status}}</td>
                             <td padding-right="20px">
-                                <a href="#"><img width="20" height="20" src='../../../../../../assets/img/39-trash-outline (1).gif' /></a>
+                                <a type="button" (click)="popup = true; initId(event._id,event.name);"><img width="20" height="20" src='../../../../../../assets/img/39-trash-outline (1).gif' /></a>
                             </td>
                             <td padding-right="20px">
-                                <a href="#"><img width="20" height="20" src='../../../../../../assets/img/50-file-outline.gif' /></a>
+                                <a type="button" (click)="initId(event._id,event.name); update(); "><img width="20" height="20" src='../../../../../../assets/img/50-file-outline.gif' /></a>
                             </td>
-
+                            <div class="position-absolute top-50 start-50 translate-middl bg-transparent" *ngIf="popup" tabindex="-1" role="dialog" id="popup">
+                                <div class="cookiesContent" id="cookiesPopup">
+                                    <button class="close" (click)="popup = false;initId('','');">✖</button>
+                                    <img id="popupIcon" src="../../../../../../assets/img/39-trash-outline (1).gif" alt="cookies-img" />
+                                    <p>Voulez vous vraiment supprimer l'evenement {{currentName}}</p>
+                                    <button class="accept" (click)="delete()">That's fine!</button>
+                                </div>
+                            </div>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </main>
-    </div>
-</div>
-
-<div class="modal modal-sheet position-static d-block bg-secondary py-5" tabindex="-1" role="dialog" id="modalSheet">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content rounded-4 shadow">
-            <div class="modal-header border-bottom-0">
-                <h5 class="modal-title">Modal title</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body py-0">
-                <p>This is a modal sheet, a variation of the modal that docs itself to the bottom of the viewport like the newer share sheets in iOS.</p>
-            </div>
-            <div class="modal-footer flex-column border-top-0">
-                <button class="btn btn-lg btn-primary w-100 mx-0 mb-2">Save changes</button>
-                <button class="btn btn-lg btn-light w-100 mx-0" data-bs-dismiss="modal">Close</button>
-            </div>
-        </div>
     </div>
 </div>

@@ -7,17 +7,21 @@ import { AngularMaterialModule } from './../../../angular-material/angular-mater
 import { AppComponent } from 'src/app/app.component';
 import { EventsDisplayComponent } from './events-display/events-display.component';
 import { DashboardEventComponent } from './events/dashboard-event/dashboard-event.component';
+import { EventUpdateAdminComponent } from './events/event-update-admin/event-update-admin.component';
+import { EventUpdateComponent } from '../../user/user-events/event-update/event-update.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
     EventsComponent,
     EventsDisplayComponent,
-    DashboardEventComponent
-  ],
+    DashboardEventComponent,
+    EventUpdateAdminComponent  ],
   imports: [
     CommonModule,
     AdminEventsRoutingModule,
-    AngularMaterialModule
+    AngularMaterialModule,
+    FormsModule
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
