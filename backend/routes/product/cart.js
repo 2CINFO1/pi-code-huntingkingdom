@@ -1,6 +1,8 @@
 const router = require ("express").Router();
 const Cart = require("../../models/products/Cart");
-const {verifyTokens,verifyTokenAndAuthorization,verifyTokenAndAdmin} = require ("../user/verifyToken")
+const Product = require("../../models/products/Product");
+const {verifyTokens,verifyTokenAndAuthorization,verifyTokenAndAdmin} = require ("../user/verifyToken");
+const stripe = require("stripe")("sk_test_51LH13WHxNBiDGFedRzXFbgZn7pxMX6ozjjiublCBDKfz9EP0PbsIL9TWKszycdZRFUqocD8BkhgqhGLYEYGNzogA00JBfrhD3b");
 
 
 
@@ -21,8 +23,11 @@ router.post("/item/:id", async (req, res) => {
           cart.products[itemIndex] = productItem;
         } else {
           //product does not exists in cart, add new item
-          cart.products.push({ productId, quantity, name, price });
-        }
+         
+          cart.products.push({ productId, quantity, name , price });
+          cart.amount = cart.products.map(productItem => productItem.price).reduce((acc, next) => acc + next);
+            }
+        
         cart = await cart.save();
         return res.status(201).send(cart);
       } else {
@@ -86,11 +91,15 @@ router.delete("/:id",verifyTokenAndAuthorization,async (req,res)=>{
 //verifyTokenAndAuthorization
 router.get("/find/:id",async (req,res)=>{
   const userId = req.params.id;
+  const products = [];
+  let amount = 0;
     try{
-    let cart =  await Cart.find({userId})
+    let cart =  await Cart.findOne({userId});
+     if(cart){
+      console.log(cart.products)
 
-       res.status(200).json(cart)
-    }
+      res.status(200).json(cart.products)}
+     }
     catch(err){
         res.status(400).json(err)
     }
@@ -101,6 +110,7 @@ router.get("/find/:id",async (req,res)=>{
 router.get("/findall/",verifyTokenAndAdmin,async (req,res)=>{
 try{
 const carts = await Cart.find()
+
 res.status(200).json(carts)
 }catch(err){
     res.status(400).json(err)
@@ -109,6 +119,53 @@ res.status(200).json(carts)
 
 }
 )
+router.get("/findamount/:id",async (req,res)=>{
+  const userId = req.params.id;
+    try{
+    let cart =  await Cart.findOne({userId});
+     if(cart){
+      console.log(cart.amount)
+
+      res.status(200).json(cart.amount)}
+     }
+    catch(err){
+        res.status(400).json(err)
+    }
+})
+router.post('/checkout', async(req, res) => {
+  try {
+      console.log(req.body);
+      token = req.body.token
+    const customer = stripe.customers
+      .create({
+        email: "geekygautam1997@gmail.com",
+        source: token.id
+      })
+      .then((customer) => {
+        console.log(customer);
+        return stripe.charges.create({
+          amount: 1000,
+          description: "Test Purchase using express and Node",
+          currency: "USD",
+          customer: customer.id,
+        });
+      })
+      .then((charge) => {
+        console.log(charge);
+          res.json({
+            data:"success"
+        })
+      })
+      .catch((err) => {
+          res.json({
+            data: "failure",
+          });
+      });
+    return true;
+  } catch (error) {
+    return false;
+  }
+})
 
 
 module.exports  = router

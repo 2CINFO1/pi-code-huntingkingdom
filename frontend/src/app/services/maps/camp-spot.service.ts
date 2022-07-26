@@ -39,4 +39,8 @@ export class CampSpotService {
     console.log(this.http.delete(`${this.url}/${id}`))
     return this.http.delete(`${this.url}/${id}`);
   }
+
+  getSpotByName(name: String) {
+    return this.http.get<CampSpot[]>(`${this.url}/findByName/${name}`)
+  }
 }

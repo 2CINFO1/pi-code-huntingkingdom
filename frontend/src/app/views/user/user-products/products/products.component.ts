@@ -47,7 +47,6 @@ export class ProductsComponent implements OnInit {
     console.log(data);
     this.dataservice.addtoCart(data).subscribe(() => {
       this.dataservice.getAllProducts()
-      alert('Product Added');
     });;
 
   }

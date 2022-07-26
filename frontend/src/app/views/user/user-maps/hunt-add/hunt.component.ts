@@ -3,6 +3,11 @@ import {HuntService} from "../../../../services/maps/hunt.service";
 import {HuntSpot} from "../../../../models/maps/hunt_spot";
 import {Router} from "@angular/router";
 
+interface HuntTypes {
+  value: string;
+  viewValue: string;
+}
+
 @Component({
   selector: 'app-hunt',
   templateUrl: './hunt.component.html',
@@ -24,6 +29,14 @@ export class HuntComponent implements OnInit {
   marker: google.maps.Marker;
   private mapClickListener: google.maps.MapsEventListener;
   private map: google.maps.Map;
+
+
+  hunt_types: HuntTypes[] = [
+    {value: 'Fishing', viewValue: 'Fishing'},
+    {value: 'Birds Hunt', viewValue: 'Birds Hunt'},
+    {value: 'Forest Hunt', viewValue: 'Forest Hunt'},
+    {value: 'Wild Hunt', viewValue: 'Wild Hunt'},
+  ];
 
   ngOnInit(): void {
     this.huntSpot = new HuntSpot();
@@ -56,6 +69,11 @@ export class HuntComponent implements OnInit {
 
   home() {
     this.router.navigate(['/maps/'])
+  }
+
+  huntType(value: any) {
+    console.log(value.value)
+    this.huntSpot.hunt_type = value.value
   }
 
 }

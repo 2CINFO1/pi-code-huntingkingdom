@@ -9,7 +9,8 @@ const CartSchema = new mongoose.Schema(
     products: [
         {
             productId:{
-                type:String
+                type: mongoose.Schema.Types.ObjectId,
+        ref: "product"
             },
             name: String,
             price: Number,
@@ -21,6 +22,8 @@ const CartSchema = new mongoose.Schema(
             },
         },
     ],
+    amount : {type : Number ,
+    deffault : 0 }
 },
 {timestamps: true }
 

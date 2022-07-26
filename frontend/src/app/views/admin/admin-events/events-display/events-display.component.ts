@@ -9,23 +9,27 @@ import { AngularMaterialModule } from '../../../../angular-material/angular-mate
 import {Event} from "../../../../models/events/events";
 import {EventsService} from "../../../../services/events/events.service";
 import {Router} from "@angular/router";
+import {MatDialogModule} from '@angular/material/dialog';
+
+const ELEMENT_DATA: Event[] = [];
 
 @Component({
   selector: 'app-events-display',
   templateUrl: './events-display.component.html',
   styleUrls: ['./events-display.component.css']
 })
+
 export class EventsDisplayComponent implements OnInit,AfterViewInit {
-  title = 'table';
-  displayedColumns: string[] = ['_id', 'name', 'type', 'category', 'description', 'detail', 'location', 'startDate', 'status'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
+  title = 'table';
+  displayedColumns: string[] = ['_id', 'name', 'type', 'category', 'description', 'detail', 'location', 'startDate', 'status'];
+  public eventList: Event[];
+  dataSource = ELEMENT_DATA;
 
-  public eventList: Event[]
-  dataSource: any;
 
-  constructor(private eventsService: EventsService, private router: Router) {
+  constructor(private eventsService: EventsService, private router: Router, public dialog: MatDialogModule) {
   }
 
   ngOnInit(): void {
@@ -35,12 +39,11 @@ export class EventsDisplayComponent implements OnInit,AfterViewInit {
     const dataSource = new MatTableDataSource(this.eventList);
   }
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+  /*  this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;*/
 
   }
-  ELEMENT_DATA: Event[] = [
-  ];
+
 }
 // export interface PeriodicElement {
 //   name: string;

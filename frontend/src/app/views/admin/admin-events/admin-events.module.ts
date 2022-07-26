@@ -6,11 +6,13 @@ import { EventsComponent } from './events/events.component';
 import { AngularMaterialModule } from './../../../angular-material/angular-material.module';
 import { AppComponent } from 'src/app/app.component';
 import { EventsDisplayComponent } from './events-display/events-display.component';
+import { DashboardEventComponent } from './events/dashboard-event/dashboard-event.component';
 
 @NgModule({
   declarations: [
     EventsComponent,
-    EventsDisplayComponent
+    EventsDisplayComponent,
+    DashboardEventComponent
   ],
   imports: [
     CommonModule,
