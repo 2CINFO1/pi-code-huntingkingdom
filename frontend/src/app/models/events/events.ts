@@ -6,8 +6,8 @@ category: String
 description: String
 detail: String
 location: String
-startDate: String
-endDate: String
+startDate: Date
+endDate: Date
 status: String
 maxmumbers: Number
 interestedNumber: Number

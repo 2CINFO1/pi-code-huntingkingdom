@@ -66,6 +66,9 @@ app.use(
     })
 );
 
+app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
+
+
 //allow cross origin requests
 app.use(function(req, res, next) {
     res.setHeader("Access-Control-Allow-Origin", "*");
