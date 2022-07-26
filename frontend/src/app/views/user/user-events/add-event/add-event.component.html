@@ -9,34 +9,32 @@
         </div>
 
         <div class="col-md-7 col-lg-8">
-            <form action="/" class="needs-validation" novalidate="">
+            <form action="/" class="needs-validation" #f="ngForm">
                 <div class="row g-3">
                     <div class="col-sm-12">
                         <label for="name" class="form-label">Nom evenement</label>
-                        <input type="text" class="form-control" id="name " name="name " [(ngModel)]="event.name " placeholder="" value="" required="">
-                        <div class="invalid-feedback">
-                            Nom evenement obligatoire
+                        <input type="text" class="form-control" id="name " name="name " [(ngModel)]="event.name " #q="ngModel" placeholder="" value="" required>
+                        <div class="alert alert-danger" *ngIf="q.invalid && q.touched">
+                            <div *ngIf="q.errors?.required"> Nom evenement est obligatoire</div>
                         </div>
                     </div>
 
                     <div class="col-sm-12">
                         <label for="country" class="form-label">Catégorie</label>
-                        <select class="form-select" name="category " id="category " [(ngModel)]="event.category " required="">
+                        <select class="form-select" name="category " id="category " [(ngModel)]="event.category ">
                                    <option selected  value="pêche ">pêche</option>
                                   <option value="Chasse des oiseaux ">Chasse des oiseaux</option>
                                   <option value="Chasse dans les deserts ">Chasse dans les deserts</option>
                                   <option value="Chasse dans les forets ">Chasse dans les forets</option>
                       </select>
-                        <div class="invalid-feedback">
-                            Please select a valid category.
-                        </div>
+
                     </div>
 
                     <div class="col-sm-12">
                         <label for="type" class="form-label">Type evenement</label>
-                        <input type="text" class="form-control" id="type " name="type " [(ngModel)]="event.type " placeholder="" value="" required="">
-                        <div class="invalid-feedback">
-                            type obligatoire
+                        <input type="text" class="form-control" id="type " name="type " [(ngModel)]="event.type " #qt="ngModel" placeholder="" value="" required>
+                        <div class="alert alert-danger" *ngIf="qt.invalid && qt.touched">
+                            <div *ngIf="q.errors?.required"> Merci d'indiquer le type de l'evenement </div>
                         </div>
                     </div>
 
