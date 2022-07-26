@@ -29,12 +29,14 @@ export class MapsComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.getCampSpots()
+  }
+
+  getCampSpots() {
     this.campService.listCampSpot().subscribe((response: CampSpot[])=> {
       this.campList = response
     })
   }
-
-
 
   getCoords() {
     this.campService.listCampSpot().subscribe(
@@ -99,8 +101,9 @@ export class MapsComponent implements OnInit {
 
   delete(_id: String) {
     this.campService.deleteCampSpot(_id).subscribe(() => {
-      this.router.navigate(['/dashboard/maps/camp'])
+      this.getCampSpots()
     })
+    this.getCampSpots()
     this.router.navigate(['/dashboard/maps/camp'])
   }
 

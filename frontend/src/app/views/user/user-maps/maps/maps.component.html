@@ -11,6 +11,10 @@
       <div>
         <div>
           <div>
+            <div class="d-flex flex-wrap search-box ">
+              <input class="form-control"  type="text"placeholder="Type to Search..."  [(ngModel)]="searchKeyWord">
+              <button type="button" class="btn btn-success" (click)="searchListElement()">Search</button>
+            </div>
             <div>
               <div class="section-title">
                 <h4>Global map settings</h4>
