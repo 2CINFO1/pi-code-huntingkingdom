@@ -31,3 +31,4 @@ export class DesertComponent implements OnInit {
 
   }
 }
+}
