@@ -25,7 +25,7 @@ export class BlogService {
   }
 
   searchBlogs(blogID: String) {
-    return this.http.get(`${this.url}/search/${blogID}`)
+    return this.http.get<Blog>(`${this.url}/search/${blogID}`)
   }
 
 

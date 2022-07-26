@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Blog } from 'src/app/models/blog/blog';
 import { BlogService } from 'src/app/services/blogs/blog.service';
 
@@ -12,8 +13,8 @@ export class BlogsComponent implements OnInit {
 
   blog: Blog;
   public blogList: Blog[];
-
-  constructor(private blogService: BlogService) { }
+  public myDate = new Date();
+  constructor(private blogService: BlogService, private router: Router) { }
 
   ngOnInit(): void {
     this.blog = new Blog();
@@ -38,6 +39,12 @@ export class BlogsComponent implements OnInit {
       ()=>{this.getBlogList()}
     );
   }
+
+  update(_id: String) {
+    console.log(_id)
+    this.router.navigate(['/blogs/update', _id])
+  }
+
 
 }
 

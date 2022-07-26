@@ -6,6 +6,8 @@ export class Blog {
   img: String;
   text: String;
   category: String;
+
+  createdAt : Date;
   auth: string;
 }
 // comments: [

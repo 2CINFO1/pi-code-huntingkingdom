@@ -53,7 +53,7 @@ router.get("/find/:id", async (req, res) => {
 })
 
 
-router.get("/findByName/:name", async(req, res) => {
+router.get("/findByName/:name", async (req, res) => {
     try {
         var name = req.params.name;
         const query = {name}
@@ -63,6 +63,33 @@ router.get("/findByName/:name", async(req, res) => {
         res.status(500).json(err)
     }
 })
+
+router.get('/getSpotsByKey/:key', async (req, res) => {
+    try {
+        var key = req.params.key;
+        const event = await CampingSpot.find({
+            $or: [{
+                category: {
+                    $regex: key,
+                    $options: 'i'
+                }
+            }, {
+                address: {
+                    $regex: key,
+                    $options: 'i'
+                }
+            }, {
+                name: {
+                    $regex: key,
+                    $options: 'i'
+                }
+            }]
+        });
+        res.status(200).json(event)
+    } catch (err) {
+        res.status(500).json(err)
+    }
+});
 
 
 router.get("/fetch", async (req, res) => {
@@ -76,8 +103,7 @@ router.get("/fetch", async (req, res) => {
 )
 
 router.get("/position_fetch/:lng/:lat/:radius",
-    async (req, res) =>
-    {
+    async (req, res) => {
         const pois = {}
         let campingSpots = await search_radius(req.params.lng, req.params.lat, req.params.radius)
         for (const id of campingSpots) {
