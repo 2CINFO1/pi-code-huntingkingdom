@@ -10,13 +10,15 @@ import { DashboardEventComponent } from './events/dashboard-event/dashboard-even
 import { EventUpdateAdminComponent } from './events/event-update-admin/event-update-admin.component';
 import { EventUpdateComponent } from '../../user/user-events/event-update/event-update.component';
 import {FormsModule} from "@angular/forms";
+import { EventAddAdminComponent } from './events/event-add-admin/event-add-admin.component';
 
 @NgModule({
   declarations: [
     EventsComponent,
     EventsDisplayComponent,
     DashboardEventComponent,
-    EventUpdateAdminComponent  ],
+    EventUpdateAdminComponent,
+    EventAddAdminComponent  ],
   imports: [
     CommonModule,
     AdminEventsRoutingModule,
