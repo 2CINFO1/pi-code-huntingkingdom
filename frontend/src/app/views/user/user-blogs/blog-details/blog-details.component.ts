@@ -13,6 +13,7 @@ export class BlogDetailsComponent implements OnInit {
   blog: Blog;
   public blogList: Blog[];
   blog_id: string;
+  public myDate = new Date();
 
 
   constructor(private blogService: BlogService, private route: ActivatedRoute, private router: Router) { }
@@ -43,6 +44,11 @@ export class BlogDetailsComponent implements OnInit {
     this.blogService.addBlog(this.blog).subscribe(
       ()=>{this.getBlogList()}
     );
+  }
+
+  getBlogDetails(_id: String) {
+    console.log(_id)
+    this.router.navigate(['blogs/details', _id])
   }
 
 }
