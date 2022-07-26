@@ -6,7 +6,7 @@ var logger = require('morgan');
 const helmet = require("helmet");
 var bodyParser = require('body-parser')
 const dotenv = require("dotenv");
-const cors = require('cors');
+
 
 
 const cryptoRoute = require("./routes/product/crypto");
@@ -29,12 +29,14 @@ const campRouter = require('./routes/maps/camping_spot');
 const areaRouter = require('./routes/maps/area');
 const huntRouter = require('./routes/maps/hunt_spot');
 const animalRouter = require('./routes/maps/entities/animal');
+const stripe = require("stripe")("sk_test_51LH13WHxNBiDGFedRzXFbgZn7pxMX6ozjjiublCBDKfz9EP0PbsIL9TWKszycdZRFUqocD8BkhgqhGLYEYGNzogA00JBfrhD3b");
 
 var app = express();
 
 
 dotenv.config();
-app.use(cors())
+// var cors = require('cors');
+// app.use(cors({credentials: true, origin: 'http://localhost:3000'}))
 
 //--------------- connection to the database--------------------------------------------
 var mongoose = require('mongoose');
@@ -55,7 +57,6 @@ app.use(bodyParser.json())
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
-app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(
