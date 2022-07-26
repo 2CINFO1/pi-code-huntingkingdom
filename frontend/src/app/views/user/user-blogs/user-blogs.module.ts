@@ -7,6 +7,7 @@ import {FormsModule} from "@angular/forms";
 import { BlogAddComponent } from './blog-add/blog-add.component';
 import { BlogDetailsComponent } from './blog-details/blog-details.component';
 import { BlogHomeComponent } from './blog-home/blog-home.component';
+import { BlogUpdateComponent } from './blog-update/blog-update.component';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { BlogHomeComponent } from './blog-home/blog-home.component';
     BlogDetailsComponent,
     BlogAddComponent,
     BlogHomeComponent,
+    BlogUpdateComponent,
 
 
   ],

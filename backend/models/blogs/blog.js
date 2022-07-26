@@ -4,13 +4,13 @@ const BlogSchema = new mongoose.Schema(
 
         title: {
             type: String,
-            required: true,
+            required: false,
             unique: true
         },
 
         description: {
             type: String,
-            required: true,
+            required: false,
         },
 
         img: {
@@ -41,5 +41,7 @@ const BlogSchema = new mongoose.Schema(
         ],
     },
     {timestamps: true}
+    
 );
+
 module.exports = mongoose.model('blog', BlogSchema);

@@ -11,7 +11,7 @@
         <div class="t">
           <div class="card-header">
             <ul class="nav nav-pills card-header-pills">
-              <h3>Ajouter un blog</h3>
+              <h3>Modifier un blog</h3>
 
             </ul>
 
@@ -33,7 +33,7 @@
                      [(ngModel)]="blog.description">
                   </div>
                   <!--  <label for="formFile" class="form-label">Ajouter un fichier</label>
-                    <input class="form-control" type="file" id="formFile"  [(ngModel)]="blog.img" >
+                    <input class="form-control" type="file" id="formFile"  [(ngModel)]="blog.img" required>
                   </div>-->
                   <div class="form-group">
                     <label for="text" class="form-label">Le contenu du blog</label>
@@ -52,7 +52,7 @@
                 </div><br><br>
 
                   <div class="d-grid gap-2">
-                    <button class="btn btn-primary" type="submit" (click)="save()">Publier</button>
+                    <button class="btn btn-primary" type="submit" (click)="update()">Confirmer</button>
                     <button class="btn btn-primary" type="button" routerLink="/blogs">Annuler</button>
                   </div>
                   </div>
