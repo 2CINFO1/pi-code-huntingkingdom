@@ -111,4 +111,9 @@ export class CampComponent implements OnInit {
       this.searchKeyWord = '';
     })
   }
+
+  navigateToHunt()
+  {
+    this.router.navigate(['/dashboard/maps/hunt'])
+  }
 }

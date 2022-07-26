@@ -87,4 +87,7 @@ export class HuntComponent implements OnInit {
     this.router.navigate(['dashboard/maps/hunt/details', _id])
   }
 
+  navigateToCamp() {
+      this.router.navigate(['/dashboard/maps/camp'])
+  }
 }
