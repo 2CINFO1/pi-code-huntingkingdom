@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Item} from "../../models/store/item.model";
 import { Data } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -33,5 +34,11 @@ getcart(){
 }
 getamount(){
   return this.http.get('http://localhost:3000/api/cart/findamount/62b70b1d7f73fec4e5bb3530')
+
+}
+makePayment(stripeToken: any): Observable<any>{
+  const url = "http://localhost:3000/api/cart/checkout/"
+
+  return this.http.post<any>(url,{token:stripeToken})
 }
 }
