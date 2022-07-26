@@ -132,19 +132,21 @@ router.get("/findamount/:id",async (req,res)=>{
         res.status(400).json(err)
     }
 })
-router.post('/checkout', async(req, res) => {
+router.post('/checkout/:id', async(req, res) => {
+  const userId = req.params.id;
   try {
+    let cart =  await Cart.findOne({userId});
       console.log(req.body);
       token = req.body.token
     const customer = stripe.customers
       .create({
-        email: "geekygautam1997@gmail.com",
+        email: "sghaier.muhamed@esprit.tn" ,
         source: token.id
       })
       .then((customer) => {
         console.log(customer);
         return stripe.charges.create({
-          amount: 1000,
+          amount: cart.amount * 100,
           description: "Test Purchase using express and Node",
           currency: "USD",
           customer: customer.id,

@@ -37,7 +37,7 @@ getamount(){
 
 }
 makePayment(stripeToken: any): Observable<any>{
-  const url = "http://localhost:3000/api/cart/checkout/"
+  const url = "http://localhost:3000/api/cart/checkout/62b70b1d7f73fec4e5bb3530"
 
   return this.http.post<any>(url,{token:stripeToken})
 }
