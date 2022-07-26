@@ -46,4 +46,9 @@ export class BlogsComponent implements OnInit {
     this.router.navigate(['/blogs/update', _id])
   }
 
+  getBlogDetails(_id: String) {
+    console.log(_id)
+    this.router.navigate(['blogs/details', _id])
+  }
+
 }

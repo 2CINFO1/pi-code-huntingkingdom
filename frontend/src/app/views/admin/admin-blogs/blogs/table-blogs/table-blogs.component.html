@@ -2,7 +2,7 @@
 
 <div classe="w3-main" style="margin-left: 160px;margin-right:60px"><br>
 <div>
-  <button class="btn btn-primary" id="btn3" routerLink="/dashboard/blogs">Afficher en tableau</button>
+  <button class="btn btn-primary" id="btn3" routerLink="/dashboard/blogs">Afficher en cards</button>
 </div> <br>
   <h1>Tableau d'affichage des blogs</h1>
   <div>
@@ -36,10 +36,10 @@
           <td>{{blog.createdAt | date}}</td>
 
           <td>
-            <button type="button" class="btn btn-info" style="color: blue  ; " >Modifier</button>
+
             <button type="button" class="btn btn-danger" style="color: gray; " (click)="delete(blog._id)">supprimer</button>
           </td>
-          
+
         </tr>
 
       </tbody>

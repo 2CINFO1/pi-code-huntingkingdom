@@ -19,7 +19,7 @@
       <div class="col" *ngFor="let blog of blogList | slice:0:6; let i=index">
 
         <div class="card shadow-sm">
-          <a style="color: azure ;" href="#">
+          <a style="color: azure ;" >
           <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Paul_Childerley_driven_hunt_Finland_04.png/1024px-Paul_Childerley_driven_hunt_Finland_04.png" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
           <div class="card-title">
                 <p class="text-white" style="font-weight: bold;
@@ -33,13 +33,15 @@
           </div>
           <div class="card-body">
             <p class="card-text">{{blog.description}}</p>
-            <a classe="link" routerLink="/blogs/details"  style="  color: rgb(253, 253, 255); font-size:12px ;
-            ">Lire suite</a>
+
 
             <div><p id="p3">{{blog.text}}</p></div>
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group">
+<div>
+                <a classe="link" routerLink="/blogs/details_id"  >Lire suite</a>
 
+</div> <br>
                 <button type="button" class="btn btn-sm btn-outline-success" (click)="update(blog._id)">Modifier</button>
                 <button type="button" class="btn btn-sm btn-outline-secondary" (click)="delete(blog._id)">Supprimer</button>
               </div>
