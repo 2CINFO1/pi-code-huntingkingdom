@@ -16,4 +16,18 @@ export class FishingComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  addtocart(id: any, quantity: number,name: any,price: any):  void {
+    let data = {
+      productId: id,
+      quantity : quantity ,
+      name : name,
+      price : price
+    };
+    console.log(data);
+    this.product.addtoCart(data).subscribe(() => {
+      this.product.getAllProducts()
+    });;
+
+  }
+
 }
