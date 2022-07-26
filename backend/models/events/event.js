@@ -68,6 +68,12 @@ const EventSchema = mongoose.Schema({
         type: String,
         default: 'XXXXXX'
     },
+    mailContact: {
+        type: String
+    },
+    phoneContact: {
+        type: Number
+    },
     /*
     guid: {
         type: mongoose.Schema.Types.ObjectId,
