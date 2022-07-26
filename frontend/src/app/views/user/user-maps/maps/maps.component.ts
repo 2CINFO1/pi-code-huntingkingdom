@@ -11,6 +11,9 @@ import {Router} from "@angular/router";
   styleUrls: ['./maps.component.css']
 })
 export class MapsComponent implements OnInit {
+  searchKeyWord: string = '';
+  public searchList: CampSpot[]
+  public searchMarkers: google.maps.Marker[]
 
 
   constructor(private campService: CampSpotService, private huntService: HuntService, private router: Router) {
@@ -179,6 +182,32 @@ export class MapsComponent implements OnInit {
         icon: `${image}POI.png`
       });
     })
+  }
+
+  searchListElement()
+  {
+    this.campService.listCampSpotsByKey(this.searchKeyWord).subscribe((response: CampSpot[])=> {
+      this.searchList = response
+      this.searchKeyWord = '';
+    })
+
+    this.searchList.forEach(data => {
+      var myLatlng = new google.maps.LatLng(parseFloat(String(data.position.lat)), parseFloat(String(data.position.lng)))
+      const campMarker = new google.maps.Marker({
+        position: myLatlng,
+        // label: (this.labels)[this.labelIndex++ % this.labels.length],
+        map: this.map,
+      });
+      this.searchMarkers.push(campMarker)
+    })
+    for (var i = 0; i < this.searchList.length; i++) {
+      this.infoTest(this.searchList[i], this.searchMarkers[i])
+      //Do something
+    }
+
+    this.searchList = []
+    this.searchMarkers = []
+
   }
 
 }

@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {CampSpot} from "../../models/maps/camp_spot";
+import {Event} from "../../models/events/events";
 
 @Injectable({
   providedIn: 'root'
@@ -42,5 +43,10 @@ export class CampSpotService {
 
   getSpotByName(name: String) {
     return this.http.get<CampSpot[]>(`${this.url}/findByName/${name}`)
+  }
+
+  listCampSpotsByKey(key: string) {
+    console.log(this.http.get<CampSpot[]>(`${this.url}/getSpotsByKey/${key}`))
+    return this.http.get<CampSpot[]>(`${this.url}/getSpotsByKey/${key}`);
   }
 }
