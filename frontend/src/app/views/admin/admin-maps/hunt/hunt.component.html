@@ -4,7 +4,9 @@
 
   <div class="album py-5 bg-light">
     <div class="container">
-
+      <div class="d-flex flex-wrap search-box ">
+        <button class="btn btn-primary navigate" (click)="navigateToCamp()">Check Camp Spots</button>
+      </div>
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" >
         <div class="col" *ngFor="let spot of huntList">
           <div class="card shadow-sm">
