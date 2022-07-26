@@ -26,6 +26,7 @@ import { trigger, transition, animate, style } from '@angular/animations'
 export class ProductsComponent implements OnInit {
   visible = false;
   item: Item;
+  amount = 0
 
 
   toggle() {

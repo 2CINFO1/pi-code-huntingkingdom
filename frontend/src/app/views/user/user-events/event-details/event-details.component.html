@@ -1,8 +1,14 @@
-<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center headercmp text-light">
-    <div class="col-md-5 p-lg-5 mx-auto my-5">
+<div class=".container-fluid	 position-relative overflow-hidden  p-md-0 m-md-0 text-center headercmp text-light">
+    <img src="http://localhost:3000/events/getImage/{{evenement.coverImagePath}}" class=".container-fluid	card-img  cardImage" onerror="this.src='../../../../../assets/img/Logo_blanc.png ';" alt="...">
+    <div class=" card-img-overlay  p-lg-5 mx-auto pt-10 mb-10  ">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
         <h1 class="display-4 fw-normal">{{evenement.name}}</h1>
         <p class="lead fw-normal">{{evenement.description}}</p>
-        <nav class="navbar navbar-expand navbar-dark  justify-content-center ">
+        <div class="navbar navbar-expand navbar-dark  justify-content-center  m-5">
             <div class="nav justify-content-center">
                 <div class="container px-4 px-lg-5">
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
@@ -16,13 +22,19 @@
                             </button>{{evenement.participantNumber}}
                         </ul>
                     </div>
+
+
                 </div>
+
             </div>
-        </nav>
+
+        </div>
+        <button class="btn btn-primary btn-lg btn-block" (click)="updateCurrentEvent(evenement._id)">Modifier Evenement</button>
+        <app-event-comments></app-event-comments>
     </div>
 
-    <form action="/" class="card p-2 bg-transparent">
-        <!-- Ajouter photo -->
+    <!--<form action="/" class="card p-2 bg-transparent">
+         Ajouter photo
         <div class="input-group">
             <div class="custom-file">
                 <label class="custom-file-label" for="inputGroupFile04">Choisir fichier</label>
@@ -33,9 +45,6 @@
             </button> </div>
         </div>
     </form>
+-->
 
-    <button class="btn btn-primary btn-lg btn-block" (click)="updateCurrentEvent(evenement._id)">Modifier Evenement</button>
-
-    <div class="product-device shadow-sm d-none d-md-block"></div>
-    <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
 </div>

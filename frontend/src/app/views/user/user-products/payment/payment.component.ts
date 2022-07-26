@@ -8,6 +8,7 @@ import * as Stripe from 'stripe';
 
 // import { StripeService, Elements, Element as StripeElement, ElementsOptions } from "ngx-stripe";
 import{DataService}from '../../../../services/product/product.service' ;
+import { getMatFormFieldDuplicatedHintError } from '@angular/material/form-field';
 @Component({
   selector: 'app-payment',
   templateUrl: './payment.component.html',
@@ -19,8 +20,11 @@ export class PaymentComponent implements OnInit {
   success: boolean = false
 
   failure:boolean = false
+  amount = 0 ;
 
-  constructor(private dataservice:DataService) {}
+  constructor(private dataservice:DataService) { this.dataservice.getamount().subscribe((data:any) => {
+    this.amount = data ;
+} )}
 
   ngOnInit() {
     this.invokeStripe();
@@ -49,10 +53,10 @@ export class PaymentComponent implements OnInit {
     };
 
     paymentHandler.open({
-      name: 'Coding Shiksha',
-      description: 'This is a sample pdf file',
-      amount: amount * 100,
-    });
+      name: 'E-Payment',
+      description :'Fully protected ',
+      amount: amount * 100 ,
+    })
   }
 
   invokeStripe() {
@@ -74,7 +78,9 @@ export class PaymentComponent implements OnInit {
       window.document.body.appendChild(script);
     }
   }
+
 }
+
 
 
 

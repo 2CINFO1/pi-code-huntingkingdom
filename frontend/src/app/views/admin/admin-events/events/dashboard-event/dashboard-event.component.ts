@@ -14,6 +14,10 @@ export class DashboardEventComponent implements OnInit {
   public eventList: Event[]
   searchKeyWord : string = '';
   public searchedEventList: Event[]
+  popup : boolean = false;
+  currentId : String = '';
+  currentName : String = '';
+  categoryS  : String = '';
 
   constructor(private eventsService: EventsService, private router: Router) {
     this.eventsService.listEvents().subscribe((response: Event[])=> {
@@ -24,4 +28,21 @@ export class DashboardEventComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
+  initId(id:String,name:String)
+  {
+    this.currentId = id;
+    this.currentName = name;
+
+  }
+  delete()
+  {
+    this.eventsService.deleteEvent(this.currentId).subscribe(() => {
+      location.reload();
+    })
+  }
+  update() {
+    console.log('currentId is '+this.currentId)
+    this.router.navigate(['dashboard/events/update', this.currentId])
+  }
 }
