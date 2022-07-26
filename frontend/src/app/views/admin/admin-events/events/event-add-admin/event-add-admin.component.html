@@ -1,8 +1,9 @@
 <section class="home-section">
 
+
     <body class="bg-light" data-new-gr-c-s-check-loaded="14.1068.0" data-gr-ext-installed="" cz-shortcut-listen="true">
 
-        <div class="row g-3 container-fluid  justify-content-center bg-transparent">
+        <div class=" row g-3 container-fluid  justify-content-center bg-transparent">
             <div class="py-5 text-center">
                 <img class="d-block mx-auto mb-4" src="../../../../../assets/img/40-add-card-outline.gif" alt="" width="72" height="72">
                 <h2>Ajout d'un evenement</h2>
@@ -15,7 +16,7 @@
                     <div class="row g-3">
                         <div class="col-sm-12">
                             <label for="name" class="form-label">Nom evenement</label>
-                            <input type="text" class="form-control" id="name " name="name " [(ngModel)]="evenement.name " #q="ngModel" placeholder="" value="" required>
+                            <input type="text" class="form-control" id="name " name="name " [(ngModel)]="event.name " #q="ngModel" placeholder="" value="" required>
                             <div class="alert alert-danger" *ngIf="q.invalid && q.touched">
                                 <div *ngIf="q.errors?.required"> Nom evenement est obligatoire</div>
                             </div>
@@ -23,7 +24,7 @@
 
                         <div class="col-sm-12">
                             <label for="country" class="form-label">Catégorie</label>
-                            <select class="form-select" name="category " id="category " [(ngModel)]="evenement.category ">
+                            <select class="form-select" name="category " id="category " [(ngModel)]="event.category ">
                                    <option selected  value="pêche ">pêche</option>
                                   <option value="Chasse des oiseaux ">Chasse des oiseaux</option>
                                   <option value="Chasse dans les deserts ">Chasse dans les deserts</option>
@@ -34,7 +35,7 @@
 
                         <div class="col-sm-12">
                             <label for="type" class="form-label">Type evenement</label>
-                            <input type="text" class="form-control" id="type " name="type " [(ngModel)]="evenement.type " #qt="ngModel" placeholder="" value="" required>
+                            <input type="text" class="form-control" id="type " name="type " [(ngModel)]="event.type " #qt="ngModel" placeholder="" value="" required>
                             <div class="alert alert-danger" *ngIf="qt.invalid && qt.touched">
                                 <div *ngIf="q.errors?.required"> Merci d'indiquer le type de l'evenement </div>
                             </div>
@@ -42,7 +43,7 @@
 
                         <div class="col-sm-12">
                             <label for="description" class="form-label">Description evenement</label>
-                            <input type="text" class="form-control" id="description " name="description " [(ngModel)]="evenement.description " placeholder="" value="" required="">
+                            <input type="text" class="form-control" id="description " name="description " [(ngModel)]="event.description " placeholder="" value="" required="">
                             <div class="invalid-feedback">
                                 description obligatoire
                             </div>
@@ -50,7 +51,7 @@
 
                         <div class="col-sm-12">
                             <label for="detail" class="form-label">Details</label>
-                            <textArea class="form-select" name="detail " id="detail " [(ngModel)]="evenement.detail " required="">
+                            <textArea class="form-select" name="detail " id="detail " [(ngModel)]="event.detail " required="">
                 </textArea>
                             <div class="invalid-feedback">
                                 Please select a valid detail.
@@ -59,7 +60,7 @@
 
                         <div class="col-sm-12">
                             <label for="maxmumbers" class="form-label">Nombre maximum des participant</label>
-                            <input type="number" class="form-control" id="maxmumbers " name="maxmumbers " [(ngModel)]="evenement.maxmumbers " placeholder="" value="" required="">
+                            <input type="number" class="form-control" id="maxmumbers " name="maxmumbers " [(ngModel)]="event.maxmumbers " placeholder="" value="" required="">
                             <div class="invalid-feedback">
                                 maxmumbers obligatoire
                             </div>
@@ -70,7 +71,7 @@
 
                         <div class="col-sm-6">
                             <label for="startDate" class="form-label">Date début evenement</label>
-                            <input type="date" class="form-control" id="startDate " name="startDate " [(ngModel)]="evenement.startDate " placeholder="" value="" required="">
+                            <input type="date" class="form-control" id="startDate " name="startDate " [(ngModel)]="event.startDate " placeholder="" value="" required="">
                             <div class="invalid-feedback">
                                 startDate obligatoire
                             </div>
@@ -78,14 +79,14 @@
 
                         <div class="col-sm-6">
                             <label for="endDate" class="form-label">Date fin evenement</label>
-                            <input type="date" class="form-control" id="endDate " name="endDate " [(ngModel)]="evenement.endDate " placeholder="" value="" required="">
+                            <input type="date" class="form-control" id="endDate " name="endDate " [(ngModel)]="event.endDate " placeholder="" value="" required="">
                             <div class="invalid-feedback">
                                 endDate obligatoire
                             </div>
                         </div>
                         <div class="col-sm-12">
                             <label for="location" class="form-label">Location evenement</label>
-                            <input type="text" class="form-control" id="location " name="location " [(ngModel)]="evenement.location " placeholder="" value="" required="">
+                            <input type="text" class="form-control" id="location " name="location " [(ngModel)]="event.location " placeholder="" value="" required="">
                             <div class="invalid-feedback">
                                 location obligatoire
                             </div>
@@ -93,7 +94,7 @@
 
                         <div class="col-sm-12">
                             <label for="pays" class="form-label">Pays evenement</label>
-                            <input type="text" class="form-control" id="pays " name="pays " [(ngModel)]="evenement.pays " placeholder="" value="" required="">
+                            <input type="text" class="form-control" id="pays " name="pays " [(ngModel)]="event.pays " placeholder="" value="" required="">
                             <div class="invalid-feedback">
                                 pays obligatoire
                             </div>
@@ -101,7 +102,7 @@
 
                         <div class="col-sm-12">
                             <label for="codePostal" class="form-label">Code Postal evenement</label>
-                            <input type="number" class="form-control" id="codePostal " name="codePostal " [(ngModel)]="evenement.codePostal " placeholder="" value="" required="">
+                            <input type="number" class="form-control" id="codePostal " name="codePostal " [(ngModel)]="event.codePostal " placeholder="" value="" required="">
                             <div class="invalid-feedback">
                                 codePostal obligatoire
                             </div>
@@ -112,7 +113,7 @@
 
                         <div class="col-sm-12">
                             <label for="phoneContact" class="form-label">Numéro de Contact evenement</label>
-                            <input type="number" class="form-control" id="phoneContact " name="phoneContact " [(ngModel)]="evenement.phoneContact " placeholder="" value="" required="">
+                            <input type="number" class="form-control" id="phoneContact " name="phoneContact " [(ngModel)]="event.phoneContact " placeholder="" value="" required="">
                             <div class="invalid-feedback">
                                 phoneContact obligatoire
                             </div>
@@ -120,7 +121,7 @@
 
                         <div class="col-sm-12">
                             <label for="mailContact" class="form-label">Mail de contact evenement</label>
-                            <input type="mail" class="form-control" id="mailContact " name="mailContact " [(ngModel)]="evenement.mailContact " placeholder="" value="" required="">
+                            <input type="mail" class="form-control" id="mailContact " name="mailContact " [(ngModel)]="event.mailContact " placeholder="" value="" required="">
                             <div class="invalid-feedback">
                                 mailContact obligatoire
                             </div>
@@ -151,31 +152,31 @@
                         <br>
                         <div class="col-sm-12">
                             <label for="creditCard" class="form-label">Numéro carte bancaire</label>
-                            <input type="number" class="form-control" id="creditCard " name="creditCard " [(ngModel)]="evenement.creditCard " placeholder="" value="" required="">
+                            <input type="number" class="form-control" id="creditCard " name="creditCard " [(ngModel)]="event.creditCard " placeholder="" value="" required="">
                             <div class="invalid-feedback">
                                 creditCard obligatoire
                             </div>
                         </div>
                     </div>
 
-                    <button class=" col-sm-12 btn btn-primary btn-lg btn-block" (click)="update()">Mettre à jour</button>
 
                     <hr class="my-4">
 
+                    <button class=" col-sm-12 btn btn-primary btn-lg btn-block " (click)="save() ">Sauvegarder</button>
                 </form>
             </div>
 
-
-            <footer class="my-5 pt-5 text-muted text-center text-small">
-                <p class="mb-1">© Hunting Kingdom</p>
-                <ul class="list-inline">
-                    <li class="list-inline-item"><a href="#">Privacy</a></li>
-                    <li class="list-inline-item"><a href="#">Terms</a></li>
-                    <li class="list-inline-item"><a href="#">Support</a></li>
+            <footer class="my-5 pt-5 text-muted text-center text-small ">
+                <p class="mb-1 ">© Hunting Kingdom</p>
+                <ul class="list-inline ">
+                    <li class="list-inline-item "><a href="# ">Privacy</a></li>
+                    <li class="list-inline-item "><a href="# ">Terms</a></li>
+                    <li class="list-inline-item "><a href="# ">Support</a></li>
                 </ul>
             </footer>
         </div>
 
 
     </body>
+
 </section>

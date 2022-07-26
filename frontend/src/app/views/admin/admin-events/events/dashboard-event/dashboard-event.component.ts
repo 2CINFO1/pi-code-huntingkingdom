@@ -45,4 +45,10 @@ export class DashboardEventComponent implements OnInit {
     console.log('currentId is '+this.currentId)
     this.router.navigate(['dashboard/events/update', this.currentId])
   }
+
+  add()
+  {
+    this.router.navigate(['dashboard/events/add'])
+
+  }
 }

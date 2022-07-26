@@ -16,5 +16,8 @@ coverImagePath: String
 pays: String
 codePostal:Number
 creditCard:Number
+mailContact : String
+phoneContact : Number
+paiement : String
 
 }
