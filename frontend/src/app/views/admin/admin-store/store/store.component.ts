@@ -20,7 +20,7 @@ products : any
 
   delete(_id: String) {
     this.dataservice.deleteProducts(_id).subscribe(() => {
-      this.router.navigate(['/dashboard/maps/camp'])
+      this.router.navigate(['/dashboard/store'])
     })
   }
 }
