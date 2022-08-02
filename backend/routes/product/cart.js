@@ -9,7 +9,7 @@ const stripe = require("stripe")("sk_test_51LH13WHxNBiDGFedRzXFbgZn7pxMX6ozjjiub
 
 
 router.post("/item/:id", async (req, res) => {
-    const { productId, quantity, name, price } = req.body;
+    const { productId, quantity, name, price , img } = req.body;
     const userId = req.params.id; //TODO: the logged in user id
     try {
       let cart = await Cart.findOne({ userId });
@@ -24,7 +24,7 @@ router.post("/item/:id", async (req, res) => {
         } else {
           //product does not exists in cart, add new item
          
-          cart.products.push({ productId, quantity, name , price });
+          cart.products.push({ productId, quantity, name , price, img });
           cart.amount = cart.products.map(productItem => productItem.price).reduce((acc, next) => acc + next);
             }
         
@@ -34,7 +34,7 @@ router.post("/item/:id", async (req, res) => {
         //no cart for user, create new cart
         const newCart = await Cart.create({
           userId,
-          products: [{ productId, quantity, name, price }]
+          products: [{ productId, quantity, name, price , img}]
         });
         return res.status(201).send(newCart);
       }
