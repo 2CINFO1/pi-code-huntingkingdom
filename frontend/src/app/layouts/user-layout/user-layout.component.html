@@ -85,7 +85,7 @@
                       <li class="flex py-6"*ngFor="let product of products">
                         <div class="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                           <img
-                            src="https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-01.jpg"
+                            src="http://localhost:3000/events/getImage/{{product.img}}"
                             alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt."
                             class="h-full w-full object-cover object-center">
                         </div>
@@ -98,7 +98,7 @@
                               </h3>
                               <p class="ml-4">{{product.price}} $</p>
                             </div>
-                            <p class="mt-1 text-sm text-gray-500">Salmon</p>
+                            <p class="mt-1 text-sm text-gray-500">Great quality</p>
                           </div>
                           <div class="flex flex-1 items-end justify-between text-sm">
                             <p class="text-gray-500">Qty 1</p>
