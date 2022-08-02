@@ -31,7 +31,7 @@ import {MatAutocompleteModule} from "@angular/material/autocomplete";
     MatAutocompleteModule,
     MatInputModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyB8Co765BFMKjzCBHInzOz-cOuKdBTJOdA',
+      apiKey: 'AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg',
       libraries: ['visualization']
     }),
   ],
