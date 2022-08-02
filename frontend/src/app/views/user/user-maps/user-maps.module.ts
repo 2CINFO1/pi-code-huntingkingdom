@@ -28,7 +28,7 @@ import {MatFormFieldModule} from "@angular/material/form-field";
     MatFormFieldModule,
     FormsModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyB8Co765BFMKjzCBHInzOz-cOuKdBTJOdA',
+      apiKey: 'AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg',
       libraries: ['visualization']
     }),
     FormsModule
