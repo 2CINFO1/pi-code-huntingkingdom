@@ -1,0 +1,91 @@
+<section class="products h-full">
+  <div class="h-full">
+    <div id="test" class="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
+      <h2 class="sr-only">Products</h2>
+      <nav class="navbar navbar-expand  justify-content-center pb-32 pt-20  ">
+        <div class="nav justify-content-center ">
+  <!-- images that hover-->
+
+          <div class="container px-7 px-lg-10 ">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span
+              class="navbar-toggler-icon  "></span></button>
+            <div class="collapse navbar-collapse " id="navbarResponsive">
+              <ul>
+                <a class="active" href="hiking" routerLink="../hiking"><img width="100" height="120" alt="" class="d-inline-block align-middle mr-9 hover:w-36  hover:border-emerald-300 transition-all duration-500"
+                                                data-toggle="tooltip" data-placement="top"
+                                                title="Chasse dans les forets"
+                                                src="../../../../../assets/img/forest-Icon-W.png"/></a>
+                <a href="fishing" routerLink="../fishing" class=" hover:text-emerald-300  hover:border-emerald-300" href="#"><img width="100" height="120" alt="" class="d-inline-block align-middle mr-9 hover:w-36 transition-all duration-500 "
+                                 data-toggle="tooltip" data-placement="top" title="pêche"
+                                 src="../../../../../assets/img/sea-icon-W.png"/> </a>
+                <a href="hunting" routerLink="../hunting"><img width="100" height="120" alt="" class="d-inline-block align-middle mr-9 hover:w-36 transition-all duration-500"
+                                 data-toggle="tooltip" data-placement="top" title="Chasse dans les deserts"
+                                 src="../../../../../assets/img/desert-Icon-W.png"/></a>
+                <a href="camping" routerLink="../camping"><img width="100" height="120" alt="" class="d-inline-block align-middle mr-9 hover:w-36 transition-all duration-500"
+                                 data-toggle="tooltip" data-placement="top" title="Chasse des oiseaux"
+                                 src="../../../../../assets/img/sky-Icon-W.png"/></a>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+
+<!-- *********** Bloc de recherche ***********  -->
+<div class="py-3 mb-4 border-bottom search-bloc">
+  <div class="container d-flex flex-wrap justify-content-center">
+      <a href="/" class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto text-dark text-decoration-none">
+          <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+          <span class="fs-4 text-light">Hunting Products</span>
+      </a>
+      <div class="d-flex flex-wrap search-box">
+          <button class="btn-search"><img class="bi me-2" width="40" height="32" src="../../../../../assets/img/42-search-outline (1).gif">
+          </button>
+      </div>
+      <div class="d-flex flex-wrap">
+          <button class="btn-search"><img class="bi me-2" width="40" height="32" src="../../../../../assets/img/45-category-outline.gif">
+        </button>
+      </div>
+  </div>
+</div>
+
+
+      <div class="grid grid-cols-1 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8 ">
+
+        <!-- product container-->
+       <div class="group " *ngFor="let HuntingProduct of HuntingProducts">
+         <div class="container mx-auto max-w w-full ">
+           <div class="card flex flex-col justify-center p-10 bg-white  rounded-lg shadow-2xl">
+             <div class="prod-title">
+               <p class="text-2xl uppercase text-gray-900 font-bold">{{HuntingProduct.Nom}}</p>
+               <p class="uppercase text-sm text-gray-400">
+                 great quality
+               </p>
+             </div>
+             <div class="prod-img">
+               <img src="http://localhost:3000/events/getImage/{{HuntingProduct.img}}"
+                    class="w-full object-cover object-center"/>
+             </div>
+             <div class="prod-info">
+
+               <div class="flex flex-col   items-center text-gray-900">
+                 <p class="font-bold text-xl">{{HuntingProduct.prix}} $</p>
+                 <button
+                   class=" px-6 py-2 transition ease-in duration-200 uppercase rounded-full hover:bg-emerald-300 hover:text-white border-2 hover:border-emerald-300 border-gray-900 focus:outline-none"
+                   routerLink="/cart"(click)="addtocart(HuntingProduct._id,1,HuntingProduct.Nom,HuntingProduct.prix)">Add
+                   to cart
+                 </button>
+
+               </div>
+
+             </div>
+           </div>
+         </div>
+
+
+         <!-- products... -->
+       </div>
+
+
+

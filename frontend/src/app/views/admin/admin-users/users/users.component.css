@@ -1,0 +1,205 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200&display=swap');
+
+                                    body {
+
+                                        font-family: 'Manrope', sans-serif;
+                                        background: #BA68C8;
+                                        color: #fff
+                                    }
+
+
+                                    .topbar {
+                                        height: 4.375rem;
+                                    }
+
+                                    .topbar .nav-item .nav-link {
+                                        height: 4.375rem;
+                                        display: flex;
+                                        align-items: center;
+                                        padding: 0 .75rem;
+                                    }
+
+
+                                    .topbar .nav-item .nav-link .badge-counter {
+                                        position: absolute;
+                                        transform: scale(.7);
+                                        transform-origin: top right;
+                                        right: .25rem;
+                                        margin-top: -.25rem;
+                                    }
+
+                                    .topbar.navbar-light .navbar-nav .nav-item .nav-link {
+                                        color: #d1d3e2;
+                                    }
+
+                                    .dropdown-toggle::after {
+                                        content:none !important;
+                                    }
+
+                                    .badge {
+                                        display: inline-block;
+                                        padding: .25em .4em;
+                                        font-size: 75%;
+                                        font-weight: 700;
+                                        line-height: 1;
+                                        text-align: center;
+                                        white-space: nowrap;
+                                        vertical-align: baseline;
+                                        border-radius: .35rem;
+                                        transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+                                    }
+
+                                    .form-control:focus {
+
+                                            box-shadow: none !important;
+                                    }
+
+                                    .input-group-append button{
+                                        box-shadow: none !important;
+                                    }
+
+
+
+                                    .topbar .nav-item .nav-link .badge-counter {
+                                        position: absolute;
+                                        transform: scale(.7);
+                                        transform-origin: top right;
+                                        right: .25rem;
+                                        margin-top: -.25rem;
+                                    }
+
+                                    .badge {
+                                        display: inline-block;
+                                        padding: .25em .4em;
+                                        font-size: 75%;
+                                        font-weight: 700;
+                                        line-height: 1;
+                                        text-align: center;
+                                        white-space: nowrap;
+                                        vertical-align: baseline;
+                                        border-radius: .35rem;
+                                        transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+                                    }
+
+
+                                    .rounded-circle{
+
+                                            width: 40px;
+                                        height: 40px;
+                                    }
+
+
+
+                                    .topbar .topbar-divider {
+                                        width: 0;
+                                        border-right: 1px solid #e3e6f0;
+                                        height: calc(4.375rem - 2rem);
+                                        margin: auto 1rem;
+                                    }
+
+
+
+
+                                    .topbar .dropdown-list {
+                                        width: 20rem!important;
+                                    }
+                                    @import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@700&family=Poppins:wght@600&display=swap');
+*{
+    box-sizing: border-box;
+}
+body{
+    background-color: #d9ecf2;
+    font-family: 'Poppins', sans-serif;
+    color: #666;
+}
+.h2{
+    color: #444;
+    font-family: 'PT Sans', sans-serif;
+}
+thead{
+    font-family: 'Poppins', sans-serif;
+    font-weight: bolder;
+    font-size: 14px;
+    color: #666;
+}
+img{
+    width: 40px;
+    height: 40px;
+}
+.name{
+    display: inline-block;
+}
+.bg-blue{
+    background-color: #EBF5FB;
+    border-radius: 8px;
+}
+.fa-check,.fa-minus{
+    color: blue;
+}
+.bg-blue:hover{
+    background-color: #3e64ff;
+    color: #eee;
+    cursor: pointer;
+}
+.bg-blue:hover .fa-check,
+.bg-blue:hover .fa-minus{
+    background-color: #3e64ff;
+    color: #eee;
+}
+
+.table thead th,.table td{
+    border: none;
+}
+
+.table tbody td:first-child{
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+}
+.table tbody td:last-child{
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+}
+#spacing-row{
+    height: 10px;
+}
+@media(max-width:575px){
+    .container{
+        width: 125%;
+        padding: 20px 10px;
+    }
+}
+
+label {
+    color: white;
+  }
+
+  body {
+    background-color: white;
+  }
+
+  .bg-login {
+    background-color: #EEEEEE;
+    /* background by SVGBackgrounds.com */
+    background-attachment: fixed;
+    background-size: cover;
+    max-width: 100%;
+    height: auto;
+    width: auto\9;
+    position: center; }
+  .bg-login:before {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    display: block;
+    left: 0;
+    top: 0;
+    content: "";
+    background-color: rgba(0, 0, 0, 0.6); }
+  .bg-login .container {
+    z-index: 2;
+    position: relative; }
+
+  .login {
+
+  }

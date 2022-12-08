@@ -1,0 +1,116 @@
+<div class="bg-dark text-secondary px-4 py-5 text-center" id="eventHeader">
+  <div class="py-5"><br>
+      <h1 class="display-5 fw-bold text-white">HUNTERS Blog</h1>
+      <div class="col-lg-6 mx-auto">
+          <p class="fs-5 mb-4">Blog Quelque chose de court et de principal sur la collection ci-dessous - son contenu, le créateur, etc. Faites-le court et doux, mais pas trop court pour que les gens ne le sautent pas complètement.📝<br> <br> <p>Search 🔍</p> &nbsp;
+
+          <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+           <!-- -->
+             <!-- <button type="button" class=" secondaryHKBtn btn btn-outline-light btn-lg px-4">Cherchez votre blog</button>-->
+
+             <!--search-->
+             <br><br>
+             <div class="container ">
+              <input type="text" placeholder="Search...">
+              <div class="search"> </div>
+            </div>
+
+
+          </div>
+      </div>
+  </div>
+</div>
+
+<br><br><br>
+
+
+
+
+  <div class="master-wrapper">
+
+      <section>
+          <div class="section-inner">
+            <div class="container">
+
+               <div class="row" >
+
+                      <div class="col-sm-4 blog-item mb100 wow match-height animated" style=" height: 400px; " *ngFor="let blog of blogList" >
+
+                        <div class="row2" >
+                              <div class="col-xs-12" >
+                                  <div class="hover-item mb30">
+                                      <img src="assets/img/news/1.jpg" class="img-responsive smoothie" alt="image">
+                                      <div class="overlay-item-caption smoothie"></div>
+                                      <div class="hover-item-caption smoothie">
+                                          <h3 class="vertical-center smoothie"><a href="single-post-right-sidebar.html" class="smoothie btn btn-primary page-scroll" title="view article">View</a></h3>
+                                      </div>
+                                  </div>
+
+                                  <div class="item-metas text-muted mb30">
+                                    <h2 class="post-title">{{blog.title}}</h2>
+                                    <p class="post-description">{{blog.description}}</p>
+
+                                      <span class="meta-item"><i class="pe-icon pe-7s-folder"></i> <b>Publié le</b>:
+                                        <small class="text-muted">{{myDate| date}}</small>
+                                        <small class="text-muted">{{myDate| date:'shortTime'}}</small>
+                                      </span> &nbsp; &nbsp; &nbsp; &nbsp;
+                                      <span class="meta-item"><i class="pe-icon pe-7s-ticket"></i> <b>Catégorie: </b> <span>{{blog.category}}</span></span><br>
+                                      <span class="meta-item"><i class="pe-icon pe-7s-user"></i> <b>AUTHOR: </b><span>Danny Jones</span></span>&nbsp; &nbsp;
+                                      <span class="meta-item"><i class="pe-icon pe-7s-comment"></i> <b>COMMENTS:</b><span>3</span></span>
+                                  </div>
+                                  <div> <br>
+                                 <div><p>{{blog.text}}.</p>
+                                 </div>
+                                 <div>
+                                 <button class="border-0 bg-dark text-white" (click)="getBlogDetails(blog._id)">Lire la suite</button>
+                                </div>
+                              </div>
+                              </div>
+                          </div>
+                      </div>
+
+
+
+                  </div>
+
+
+              </div>
+          </div>
+
+      </section>
+
+
+
+  </div>
+
+
+
+  <script src="assets/js/jquery.js"></script>
+  <script src="assets/js/bootstrap.min.js"></script>
+  <script src="assets/js/plugins.js"></script>
+  <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+  <script src="assets/js/init.js"></script>
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+  <script type="text/javascript">
+  $(document).ready(function() {
+      'use strict';
+      jQuery('#headerwrap').backstretch([
+          "assets/img/bg/bg1.jpg",
+          "assets/img/bg/bg2.jpg",
+          "assets/img/bg/bg3.jpg"
+      ], {
+          duration: 8000,
+          fade: 500
+      });
+  });
+  </script>
+
+
+

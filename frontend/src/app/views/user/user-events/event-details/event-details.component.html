@@ -1,0 +1,57 @@
+<div class=".container-fluid	 position-relative overflow-hidden  p-md-0 m-md-0 text-center headercmp text-light">
+    <img src="http://localhost:3000/events/getImage/{{evenement.coverImagePath}}" class=".container-fluid	card-img  cardImage" onerror="this.src='../../../../../assets/img/Logo_blanc.png ';" alt="...">
+    <div class=" card-img-overlay  p-lg-5 mx-auto pt-10 mb-10  ">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <h1 class="display-4 fw-normal">{{evenement.name}}</h1>
+        <p class="lead fw-normal">{{evenement.description}}</p>
+        <p class="lead fw-normal">{{evenement.detail}}</p>
+
+        <p class="lead fw-normal">{{evenement.mailContact}}</p>
+        <p class="lead fw-normal">{{evenement.phoneContact}}</p>
+        <p class="lead fw-normal">du : {{evenement.startDate | date}} à {{evenement.endDate | date}} </p>
+        <p class="lead fw-normal">{{evenement.location}} - {{evenement.pays}} </p>
+
+
+        <div class="navbar navbar-expand navbar-dark  justify-content-center  m-5">
+            <div class="nav justify-content-center">
+                <div class="container px-4 px-lg-5">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse" id="navbarResponsive">
+                        <ul>
+                            <button class="bg-transparent border-0" (click)="gereInteresses()">
+                              <img width="50" height="50" alt="" class="d-inline-block align-middle mr-2 " data-toggle="tooltip" data-placement="top" title="Je suis interessé(e)" src="../../../../../assets/img/146-label-outline (1).gif"/>
+                            </button>{{evenement.interestedNumber}}
+                            <button class="bg-transparent border-0" (click)="gereParticipant()">
+                              <img width="50" height="50" alt="" class="d-inline-block align-middle mr-2" data-toggle="tooltip" data-placement="top" title="Je participe" src="../../../../../assets/img/48-favorite-heart-outline (4).gif" />
+                            </button>{{evenement.participantNumber}}
+                        </ul>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+        <button class="  btn btn-primary btn-lg btn-block primarHKBtn" (click)="updateCurrentEvent(evenement._id)">Modifier Evenement</button>
+    </div>
+
+    <!--<form action="/" class="card p-2 bg-transparent">
+         Ajouter photo
+        <div class="input-group">
+            <div class="custom-file">
+                <label class="custom-file-label" for="inputGroupFile04">Choisir fichier</label>
+                <input type="file" class="file-input" (change)="onChange($event)" #fileUpload>
+            </div>
+            <div class="input-group-append file-upload">
+                <button mat-mini-fab color="primary" class="upload-btn" (click)="onUpload()">
+            </button> </div>
+        </div>
+    </form>
+-->
+
+</div>

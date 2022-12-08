@@ -1,0 +1,186 @@
+
+<div class="bg-dark text-secondary px-4 py-5 text-center" id="eventHeader">
+  <div class="py-5"><br>
+      <h1 class="display-5 fw-bold text-white">HUNTERS Blog</h1>
+      <div class="col-lg-6 mx-auto">
+          <p class="fs-5 mb-4">Blog Quelque chose de court et de principal sur la collection ci-dessous - son contenu, le créateur, etc. Faites-le court et doux, mais pas trop court pour que les gens ne le sautent pas complètement.📝<br> <br> <p>Search 🔍</p> &nbsp;
+
+          <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+           <!-- -->
+             <!-- <button type="button" class=" secondaryHKBtn btn btn-outline-light btn-lg px-4">Cherchez votre blog</button>-->
+
+             <!--search-->
+             <br><br>
+             <div class="container ">
+              <input type="text" placeholder="Search...">
+              <div class="search"> </div>
+            </div>
+
+
+          </div>
+      </div>
+  </div>
+</div>
+
+<body >
+
+
+
+<!--
+      <form class="mx-1 mx-md-4">
+        <input type="text" placeholder="title" name="title"
+               [(ngModel)]="blog.title" required minlength="3">
+        <br>
+        <input type="text" placeholder="description" name="description"
+               [(ngModel)]="blog.description" required>
+        <br>
+        <input type="text" placeholder="img" name="img"
+               [(ngModel)]="blog.img" required>
+        <br>
+        <input type="text" placeholder="text" name="text" [(ngModel)]="blog.text">
+        <br>
+        <input type="text" placeholder="category" [(ngModel)]="blog.category" name="category"/>
+        <br>
+        <input type="text" placeholder="auth" [(ngModel)]="blog.auth" name="auth"/>
+        <br>
+        <button (click)="save()">save</button>
+
+      </form>
+
+
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th scope="col">title</th>
+          <th scope="col">description</th>
+          <th scope="col">img</th>
+          <th scope="col">text</th>
+          <th scope="col">category</th>
+          <th scope="col">auth</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr *ngFor="let blog of blogList">
+          <td>{{blog.title}}</td>
+          <td>{{blog.description}}</td>
+          <td>{{blog.img}}</td>
+          <td>{{blog.text}}</td>
+          <td>{{blog.category}}</td>
+          <td>{{blog.auth}}</td>
+          <!--    <td>-->
+          <!--      <button (click)="update(blog._id)">delete</button>-->
+          <!--    </td>-->
+         <!--<td>
+            <button (click)="delete(blog._id)">delete</button>
+          </td>
+        </tr>
+        </tbody>
+      </table> -->
+
+<div class="album py-5 " >
+  <div class="container">
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+      <div class="col" *ngFor="let blog of blogList">
+
+        <div class="card shadow-sm">
+          <a style="color: azure ;" href="#">
+          <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Paul_Childerley_driven_hunt_Finland_04.png/1024px-Paul_Childerley_driven_hunt_Finland_04.png" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+          <div class="card-title">
+                <p style="color:rgb(7, 5, 26); font-size:25px ; font-weight: bold;" >{{blog.title}}</p>
+            <div class="d-flex justify-content-between align-items-center"></div>
+          </div>
+        </a>
+          <div class="card-descrption">
+            <div class="d-flex justify-content-between align-items-center"></div>
+          </div>
+          <div class="card-body">
+            <p class="card-text">{{blog.description}}</p>
+
+
+            <div><p>{{blog.text}}</p></div>
+            <div class="d-flex justify-content-between align-items-center">
+
+              <div>
+                <button class="border-0 bg-dark text-white" (click)="getBlogDetails(blog._id)">Lire la suite</button>
+               </div>
+
+             <!-- <a routerLink="/blogs/details"  style="color: rgb(54, 18, 255); font-size:18px ;">Lire suite</a>-->
+
+              <div> <p>publié le : <small class="text-muted">{{blog.createdAt | date}}</small> At : <small class="text-muted">{{blog.createdAt | date:'shortTime'}}</small></p>
+
+             <div>
+            </div>
+          </div>
+
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+
+
+
+
+
+    </div>
+  </div>
+  </div>
+  </div>
+
+  </body>
+
+  <footer class="bg-dark text-center text-white">
+    <!-- Grid container -->
+    <div class="container p-4 pb-0">
+      <!-- Section: Form -->
+      <section class="">
+        <form action="">
+          <!--Grid row-->
+          <div class="row d-flex justify-content-center" style="margin-right:3px ;">
+            <!--Grid column-->
+            <div class="col-auto">
+              <p class="pt-2" style="margin-right:8px ">
+                <strong>Inscrivez-vous à notre newsletter</strong>
+              </p>
+            </div>
+            <!--Grid column-->
+
+            <!--Grid column-->
+            <div class="col-md-5 col-12">
+              <!-- Email input -->
+              <div class="form-outline form-white mb-4">
+                <input type="email" id="form5Example29" class="form-control" placeholder="Adresse email" />
+                <label class="form-label" for="form5Example29"></label>
+              </div>
+            </div>
+            <!--Grid column-->
+
+            <!--Grid column-->
+            <div class="col-auto">
+              <!-- Submit button -->
+              <button type="submit" class="btn btn-outline-light mb-4">
+                S'abonner
+              </button>
+            </div>
+            <!--Grid column-->
+          </div>
+          <!--Grid row-->
+        </form>
+      </section>
+      <!-- Section: Form -->
+    </div>
+    <!-- Grid container -->
+
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(18, 17, 17, 0.882);">
+      © 2022 Copyright:
+      <a class="text-white" href="">NEN TEAM</a>
+    </div>
+    <!-- Copyright -->
+  </footer>

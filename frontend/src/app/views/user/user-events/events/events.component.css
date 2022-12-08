@@ -1,0 +1,99 @@
+@import url('https://getbootstrap.com//docs/5.1/dist/css/bootstrap.min.css');
+#eventHeader,
+.search-bloc {
+    background-image: linear-gradient(to right, #0B2518 0%, 8.862433582544327%, #0B2518 17.724867165088654%, 49.669311195611954%, #0D0D0D 81.61375522613525%);
+}
+
+.search-bloc {
+    color: white;
+}
+
+.primarHKBtn {
+    background-color: transparent;
+    border-color: #11BFAE;
+    color: #11BFAE;
+}
+
+.primarHKBtn:hover {
+    background-color: #11BFAE;
+    color: #0B2518;
+}
+
+@media (min-width: 700px) {
+    .primarHKBtn {
+        font-size: 1.125rem;
+        padding: 1rem 2rem;
+    }
+}
+
+.search-box {
+    width: fit-content;
+    height: fit-content;
+    position: relative;
+}
+
+.input-search {
+    height: 50px;
+    width: 50px;
+    border-style: none;
+    padding: 10px;
+    font-size: 18px;
+    letter-spacing: 2px;
+    outline: none;
+    border-radius: 25px;
+    transition: all .5s ease-in-out;
+    background-color: transparent;
+    padding-right: 40px;
+    color: #fff;
+    left: 10px;
+}
+
+.input-search::placeholder {
+    color: rgba(255, 255, 255, .5);
+    font-size: 18px;
+    letter-spacing: 2px;
+    font-weight: 100;
+}
+
+.btn-search,
+.btn-filter {
+    width: 50px;
+    height: 50px;
+    border-style: none;
+    font-size: 20px;
+    font-weight: bold;
+    outline: none;
+    cursor: pointer;
+    border-radius: 50%;
+    position: absolute;
+    right: 0px;
+    left: Opx;
+    color: #ffffff;
+    background-color: transparent;
+    pointer-events: painted;
+}
+
+.btn-search:focus~.input-search {
+    width: 300px;
+    border-radius: 0px;
+    background-color: transparent;
+    border-bottom: 1px solid rgba(255, 255, 255, .5);
+    transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+}
+
+.input-search:focus {
+    width: 300px;
+    border-radius: 0px;
+    background-color: transparent;
+    border-bottom: 1px solid rgba(255, 255, 255, .5);
+    transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+}
+
+.cardImage {
+    height: 300px;
+    width: 500px;
+}
+
+.cardElement {
+    background-color: #0D0D0D;
+}

@@ -1,0 +1,101 @@
+<section class="py-7 py-md-6 bg-login" id="login">
+    <div class="container">
+        <div class="row vh-md-10">
+
+            <div class="col-md-10 col-sm-8 col-14 mx-auto my-auto text-center">
+                <div class="card-body p-md-10">
+                    <div class="row justify-content-center">
+
+                        <div class="container rounded bg-white mt-5">
+                            <div class="row">
+                                <div class="col-md-4 border-right">
+                                    <div class="d-flex flex-column align-items-center text-center p-3 py-5" ><img
+                                            class="rounded-circle mt-5" src="https://i.imgur.com/0eg0aG0.jpg"
+                                            width="180"><span class="font-weight-bold">{{user.Nom}}</span><span
+                                            class="text-black-50"></span><span>{{user.type}}</span></div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="p-3 py-5">
+
+                                        <div class="row mt-2">
+                                            <div class="col-md-6"><input style="width: 400px; height: 70px;"  type="text" class="form-control"
+                                                    placeholder="Nom" value="{{user.Nom}} ">
+                                            </div>
+                                        </div>
+
+                                        <div class="row mt-2">
+                                        
+                                            <div class="col-md-6"><input style="width: 400px; height: 70px;" type="text" class="form-control"
+                                                    placeholder="Prenom" value="{{user.Prenom}}"></div>
+                                        </div>
+
+                                        
+                                         <div class="row mt-2">
+                                            <div class="col-md-6"><input style="width: 400px; height: 70px;" type="text" class="form-control"
+                                                    placeholder="Email" value="{{user.Email}} ">
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- <div class="row mt-3">
+                                    <div class="col-md-6"><input type="text" class="form-control" placeholder="Email" value="{{user.Email}}"></div>
+                                    <div class="col-md-6"><input type="text" class="form-control"  placeholder="Bio" value="{{user.Bio}}"></div>
+                                </div> -->
+                                <form #f="ngForm">
+                                    <div class="row mt-6">
+                                        <div class="col-md-3">
+                                            <label style="width: 400px; height: 50px;"> <h1>Est il vérifié?</h1></label>
+                                        
+                                            <select style="width: 400px; height: 70px;" name="isValidated" #isValidated="ngModel" ngModel>
+                                                <option value= true> <h1>Compte vérifié</h1></option>
+                                                <option value=false> <h1>Compte non vérifié</h1></option>
+                                            </select>
+                                        </div>
+                                        <div class="row mt-4">
+                                            <div class="col-md-3">
+                                                <label style="width: 400px; height: 70px;"><h1>Est il admin ?</h1></label>
+
+                                                <select style="width: 400px; height: 70px;" name="isAdmin" #isAdmin="ngModel" ngModel>
+                                                    <option value=true> Admin</option>
+                                                    <option value=false> Utilisateur simple</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-4">
+                                            <div class="col-md-3">
+                                                <label style="width: 400px; height: 70px;"><h1>quel est son role? </h1></label>
+
+                                                <select style="width: 400px; height: 70px;" name="type" #type="ngModel" ngModel>
+                                                    <option value=" Visiteur "> Visiteur</option>
+                                                    <option value=" Guide"> Guide</option>
+                                                    <option value=" Professionnel"> Professionnel</option>
+                                                </select>
+                                                <!-- <input type="hidden"  name="Password" value="{{user.Password}}" #Password="ngModel"  ngModel /> -->
+                                                   <input type="hidden"  name="Password" [(ngModel)]="user.Password"/>
+                                                <input type="hidden"   name="Nom" [(ngModel)]="user.Nom" />
+                                                <input type="hidden"  name="Prenom" [(ngModel)]="user.Prenom" />
+                                                <input type="hidden"  name="Email" [(ngModel)]="user.Email"/>
+                                                <input type="hidden"  name="Age" [(ngModel)]="user.Age"/>
+                                                <input type="hidden"  name="Bio" [(ngModel)]="user.Bio"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div  class="d-flex justify-content-center mx-4 mb-3 mb-lg-4" >
+                                        <button type="button" class="btn btn-primary btn-lg" (click)="ValideUser(f.value)">Mettre à jour</button>
+                                      </div>
+
+                                </form>   
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

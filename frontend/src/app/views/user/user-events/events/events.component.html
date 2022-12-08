@@ -1,0 +1,118 @@
+<div class="bg-dark text-secondary px-4 py-5 text-center" id="eventHeader">
+    <div class="py-5">
+        <h1 class="display-5 fw-bold text-white">HUNTERS EVENTS</h1>
+        <div class="col-lg-6 mx-auto">
+            <p class="fs-5 mb-4">HuntingKigdom met à votre disposition une intefcae pour vos évenements , vos campings , vos conférences , vos sorties ... Profiter bien ^^
+            </p>
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                <button type="button" class=" primarHKBtn btn btn-outline-info btn-lg px-4 me-sm-3 fw-bold" routerLink="add">Ajoutez votre evenement </button>
+                <button type="button" class=" secondaryHKBtn btn btn-outline-light btn-lg px-4">Cherchez votre evenement</button>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container px-4 py-5" id="custom-cards">
+    <h2 class="pb-2 border-bottom">Nos évenements</h2>
+
+    <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
+        <div class="col" *ngFor="let event of eventList | slice:0:6; let i=index">
+            <a (click)="getEventDetails(event._id)">
+                <div class="card h-100 overflow-hidden text-white rounded-5 shadow-lg cardElement">
+                    <img src="{{event.coverImagePath}}" class="card-img  cardImage" onerror="this.src='../../../../../assets/img/Logo_blanc.png ';" alt="...">
+                    <div class=" card-img-overlay d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1 ">
+                        <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">{{event.name}}</h2>
+                        <ul class="d-flex list-unstyled mt-auto">
+                            <li class="me-auto">
+                                <img src="./../../../../../assets/img/{{event.category}}.png" alt="Bootstrap" width="32" height="32" class="rounded-circle border border-0">
+                            </li>
+                            <li class="d-flex align-items-center me-3">
+                                <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"></use></svg>
+                                <small>{{event.location}}</small>
+                            </li>
+                            <li class="d-flex align-items-center">
+                                <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#calendar3"></use></svg>
+                                <small>{{event.startDate | date }}</small>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- *********** Bloc de recherche ***********  -->
+
+
+
+<div class="py-3 mb-4 border-bottom search-bloc ">
+    <div class="container d-flex flex-wrap justify-content-center ">
+        <a href="/ " class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto text-dark text-decoration-none ">
+            <svg class="bi me-2 " width="40 " height="32 "><use xlink:href="#bootstrap "></use></svg>
+            <span class="fs-4 text-light ">Chercher l'évenement de votre choix</span>
+        </a>
+        <div class="d-flex flex-wrap search-box ">
+            <button class="btn-search " (click)="serachListElement()"><img class="bi me-2 " width="40 " height="32 " src="../../../../../assets/img/42-search-outline (1).gif ">
+            </button>
+            <input type="text" name="SearchKeyWord" id="SearchKeyWord" [(ngModel)]="searchKeyWord" class="input-search " placeholder="Type to Search... ">
+        </div>
+        <div class="d-flex flex-wrap ">
+            <button class="btn-search "><img class="bi me-2 " width="40 " height="32 " src="../../../../../assets/img/45-category-outline.gif ">
+          </button>
+        </div>
+    </div>
+
+    <!-- Résultats -->
+
+    <div class="container px-1 py-1 " id="custom-cards">
+        <div class="row row-cols-1 row-cols-lg-3 align-items-stretch ">
+            <div class="col" *ngFor="let event of searchedEventList | slice:0:6; let i=index" class="mt-2">
+                <a (click)="getEventDetails(event._id)">
+                    <div class="card h-100 overflow-hidden text-white rounded-5 shadow-lg cardElement">
+                        <img src="http://localhost:3000/events/getImage/{{event.coverImagePath}}" class="card-img  cardImage" onerror="this.src='../../../../../assets/img/Logo_blanc.png ';" alt="...">
+                        <div class=" card-img-overlay d-flex flex-column h-100 p-5 pb-3  text-white text-shadow-1 ">
+                            <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">{{event.name}}</h2>
+                            <ul class="d-flex list-unstyled mt-auto">
+                                <li class="me-auto">
+                                    <img src="./../../../../../assets/img/{{event.category}}.png" alt="Bootstrap" width="32" height="32" class="rounded-circle border border-0">
+                                </li>
+                                <li class="d-flex align-items-center me-3">
+                                    <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"></use></svg>
+                                    <small>{{event.location}}</small>
+                                </li>
+                                <li class="d-flex align-items-center">
+                                    <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#calendar3"></use></svg>
+                                    <small>{{event.startDate | date }}</small>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+<div class="container marketing">
+
+    <!-- Three columns of text below the carousel -->
+    <div class="row  ">
+        <div class="align-self-center">
+            <svg class="bd-placeholder-img rounded-circle lign-self-center" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
+
+            <h2 class="lign-self-center">Heading</h2>
+            <p class="lign-self-center">Some representative placeholder content for the three columns of text below the carousel. This is the first column.</p>
+            <p><a class="btn btn-secondary lign-self-center" href="#">View details »</a></p>
+        </div>
+    </div>
+</div>

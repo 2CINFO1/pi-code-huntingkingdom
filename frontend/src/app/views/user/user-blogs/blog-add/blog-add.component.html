@@ -1,0 +1,145 @@
+<div class="back">
+  <br><br><br><br><br><br><br><br>
+  </div>
+<header >
+<section class="py-7 py-md-0 bg-login" id="ajout"  >
+  <div class="col-md-8 col-sm-10 col-12 mx-auto my-auto text-center align-baseline">
+    <div class="row vh-md-100">
+
+      <div class="container-fluid">
+
+        <div class="t">
+          <div class="card-header">
+            <ul class="nav nav-pills card-header-pills">
+              <h3>Ajouter un blog</h3>
+
+            </ul>
+
+            <form autocomplete="off" #form="ngForm" >
+
+              <div class="form-group">
+                    <label for="titre" >Titre : </label>
+                    <input type="text" class="form-control" id="titre" placeholder="le titre du blog" classe="formControl"
+                    ngModel name="titre" [(ngModel)]="blog.title" ngModel  #titre="ngModel" required minlength="3" maxlength="20">
+                    <div class="alert alert-danger" *ngIf="titre.touched && !titre.valid">
+                     <div *ngIf="titre?.errors?.['required']">Le champs est obligatoire</div>
+                     <div *ngIf="titre?.errors?.['minlength']">Le champs doit contenir au moins 3 caractères</div>
+                     <div *ngIf="titre?.errors?.['maxlength']">Le champs doit contenir au maximum 20 caractères</div>
+
+                </div>
+                  <div class="form-group">
+                    <label for="description" class="form-label2">Description : </label>
+                    <input type="text" class="form-control" id="description" placeholder="la description du blog" classe="formControl2"
+                     [(ngModel)]="blog.description">
+                  </div>
+                  <!--  <label for="formFile" class="form-label">Ajouter un fichier</label>
+                    <input class="form-control" type="file" id="formFile"  [(ngModel)]="blog.img" >
+                  </div>-->
+                  <div class="form-group">
+                    <label for="text" class="form-label">Le contenu du blog</label>
+                    <textarea class="form-control" id="text" rows="3" placeholder="Veuillez saisir ou coller l'article de votre blog ici ....."
+                    ngModel name="body" ngModel  #text="ngModel" [(ngModel)]="blog.text" required minlength="300" >
+                    <div class="alert alert-danger" *ngIf="text.touched && !text.valid">
+                    Le contenu du blog</textarea>
+                  </div>
+                  <div>Catégorie
+                  <select class="form-select form-select-sm" aria-label=".form-select-sm example" aria-placeholder="Catégorie" [(ngModel)]="blog.category" [ngModelOptions]="{standalone: true}" >
+                    <option selected ></option>
+                    <option value="La pêche">La pêche</option>
+                    <option value="La chasse">La chasse</option>
+                    <option value="Camping">Camping</option>
+                  </select>
+                </div><br><br>
+
+                  <div class="d-grid gap-2">
+                    <button class="btn btn-primary" type="submit" (click)="save()">Publier</button>
+                    <button class="btn btn-primary" type="button" routerLink="/blogs">Annuler</button>
+                  </div>
+                  </div>
+
+
+
+
+              </form>
+
+            </div>
+
+            </div>
+
+
+          </div>
+
+    </div>
+  </div>
+ </section>
+<br><br><br><br>
+
+<!--<div class="container-fluid" style="width:30% ;border-color: rgb(229, 229, 228);">
+  <div class="modal-content rounded-4 shadow">
+  <div class="modal-header border-bottom-0">
+    <h5 class="modal-title">Modal title</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  </div>
+
+  <div class="modal-body py-0">
+    <p>Voulez-vous publier ce blog ?</p>
+  </div>
+  <div class="modal-footer flex-column border-top-0">
+    <button type="button" class="btn btn-lg btn-primary w-100 mx-0 mb-2">Confirmer</button>
+    <button type="button" class="btn btn-lg btn-light w-100 mx-0" data-bs-dismiss="modal">Close</button>
+  </div>
+  </div>
+
+</div>-->
+
+</header>
+
+ <footer class="bg-dark text-center text-white">
+  <!-- Grid container -->
+  <div class="container p-4 pb-0">
+    <!-- Section: Form -->
+    <section class="">
+      <form action="">
+        <!--Grid row-->
+        <div class="row d-flex justify-content-center" style="margin-right:3px ;">
+          <!--Grid column-->
+          <div class="col-auto">
+            <p class="pt-2" style="margin-right:8px ">
+              <strong>Inscrivez-vous à notre newsletter</strong>
+            </p>
+          </div>
+          <!--Grid column-->
+
+          <!--Grid column-->
+          <div class="col-md-5 col-12">
+            <!-- Email input -->
+            <div class="form-outline form-white mb-4">
+              <input type="email" id="form5Example29" class="form-control" placeholder="Adresse email" />
+              <label class="form-label" for="form5Example29"></label>
+            </div>
+          </div>
+          <!--Grid column-->
+
+          <!--Grid column-->
+          <div class="col-auto">
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-outline-light mb-4">
+              S'abonner
+            </button>
+          </div>
+          <!--Grid column-->
+        </div>
+        <!--Grid row-->
+      </form>
+    </section>
+    <!-- Section: Form -->
+  </div>
+  <!-- Grid container -->
+
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(18, 17, 17, 0.882);">
+    © 2022 Copyright:
+    <a class="text-white" href="">NEN TEAM</a>
+  </div>
+  <!-- Copyright -->
+</footer>

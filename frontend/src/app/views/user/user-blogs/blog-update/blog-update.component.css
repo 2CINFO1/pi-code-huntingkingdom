@@ -1,0 +1,75 @@
+
+.container-fluid {
+  width:80%;
+  margin: 20px;
+  padding: 20px;
+  border: 10px solid rgba(32, 30, 30, 0.798);
+  background: rgba(241, 241, 242, 0.891);
+
+}
+header {
+  background-image: linear-gradient(to right, #0B2518 0%, 8.862433582544327%, #0B2518 17.724867165088654%, 49.669311195611954%, #0D0D0D 81.61375522613525%);
+
+}
+#ajout{
+  background-image: linear-gradient(to right, #0B2518 0%, 8.862433582544327%, #0B2518 17.724867165088654%, 49.669311195611954%, #0D0D0D 81.61375522613525%);
+
+}
+.back{
+  background-image: linear-gradient(to right, #0B2518 0%, 8.862433582544327%, #0B2518 17.724867165088654%, 49.669311195611954%, #0D0D0D 81.61375522613525%);
+
+}
+
+.form-group{
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: bolder;
+  border-left-color:rgb(243, 255, 251)
+
+}
+h3{
+  color: rgb(50, 106, 249);
+  font-weight: bold;
+}
+form-select form-select-sm {
+  background: white;
+  color: #59da99;
+  }
+.form-control.ng-valid{
+  border-left: 5px solid rgb(56, 183, 56);
+}
+.container-fluid {
+  box-sizing: content-box;
+
+}
+.card
+{
+  width: 50%;
+  margin: 20px;
+  padding: 20px;
+  border: 10px solid black;
+}
+body {
+  background: #fcfeff;
+  font-family: Montserrat, "sans-serif";
+  display: contents;
+  justify-content: center;
+  color: #111111;
+  width: 100%;
+  background-image: linear-gradient(to right, #0B2518 0%, 8.862433582544327%, #0B2518 17.724867165088654%, 49.669311195611954%, #0D0D0D 81.61375522613525%);
+
+
+  }
+  .btn {
+    background-image: linear-gradient(to right, #0B2518 0%, 5.621693283319473%, #05291D 11.243386566638947%, 55.62169328331947%, #0D0D0D 100%);
+    flex: 1 1 auto;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    /* text-shadow: 0px 0px 10px rgba(0,0,0,0.2);*/
+    box-shadow: 0 0 20px #eee;
+    border-radius: 5px;
+    border: 0px;
+}
+

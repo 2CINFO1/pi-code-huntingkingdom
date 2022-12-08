@@ -1,0 +1,17 @@
+backend/package-lock.json
+backend/node_modules
+.idea
+
+crypto/node_modules
+crypto/.env
+crypto/coverage
+crypto/coverage.json
+crypto/typechain
+
+#Hardhat files
+crypto/cache
+./crypto/artifacts
+./crypto/package-lock.json
+frontend/node_modules
+frontend/.env
+frontend/package-lock.json

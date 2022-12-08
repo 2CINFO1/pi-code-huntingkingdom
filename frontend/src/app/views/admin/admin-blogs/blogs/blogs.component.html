@@ -1,0 +1,88 @@
+
+ <body>
+ <div class="col-lg-8 col-md- mx-auto"  >
+
+  <p class="lead text-muted"><p><br>
+
+    </div>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end" >
+      <button class="btn btn-primary me-md-2" id="btn1" routerLink="/blogs/add">Ajouter Blog</button>
+      <button class="btn btn-primary" id="btn2" routerLink="table">Afficher en tableau</button>
+    </div>
+
+<div classe="w3-main" style="margin-left: 175px;margin-right:40px ; width: 90%; max-height: 60%;">
+  <div class="album py-5 " >
+  <div class="container">
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" >
+
+      <div class="col" *ngFor="let blog of blogList | slice:0:6; let i=index">
+
+        <div class="card shadow-sm">
+          <a style="color: azure ;" >
+          <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Paul_Childerley_driven_hunt_Finland_04.png/1024px-Paul_Childerley_driven_hunt_Finland_04.png" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+          <div class="card-title">
+                <p class="text-white" style="font-weight: bold;
+                margin-top: 10px;
+                margin-left: 20px ; " >{{blog.title}}</p>
+            <div class="d-flex justify-content-between align-items-center"></div>
+          </div>
+        </a>
+          <div class="card-descrption">
+            <div class="d-flex justify-content-between align-items-center"></div>
+          </div>
+          <div class="card-body">
+            <p class="card-text">{{blog.description}}</p>
+
+
+            <div><p id="p3">{{blog.text}}</p></div>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+<div>
+                <a classe="link" routerLink="/blogs/details_id"  >Lire suite</a>
+
+</div> <br>
+                <button type="button" class="btn btn-sm btn-outline-success" (click)="update(blog._id)">Modifier</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary" (click)="delete(blog._id)">Supprimer</button>
+              </div>
+            <div>
+              <small class="text-muted">{{blog.createdAt| date}}</small>
+             <div> <small class="text-muted">{{blog.createdAt| date:'shortTime'}}</small>
+            </div>
+          </div>
+
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+</div>
+  </div>
+
+
+</div>
+</body>
+
+<nav aria-label="Page navigation example" id="pag">
+  <ul class="pagination justify-content-center">
+    <li class="page-item disabled">
+      <a class="page-link">Previous</a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#">Next</a>
+    </li>
+  </ul>
+</nav>
+
+
+
+

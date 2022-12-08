@@ -1,0 +1,64 @@
+
+
+<div classe="w3-main" style="margin-left: 160px;margin-right:60px"><br>
+<div>
+  <button class="btn btn-primary" id="btn3" routerLink="/dashboard/blogs">Afficher en cards</button>
+</div> <br>
+  <h1>Tableau d'affichage des blogs</h1>
+  <div>
+  <nav classe="nav-bar">
+    <input class="form-control" type="text" name="title"
+    placeholder="Search blog">
+  </nav><br>
+</div>
+
+  <div class="table-responsive">
+    <table class="table table-striped table-sm">
+      <thead>
+        <tr>
+          <th scope="col" >ID blog&nbsp; <i classe="fa fa-sort"></i></th>
+          <th scope="col">itre</th>
+          <th scope="col">Description</th>
+          <th scope="col">image</th>
+          <th scope="col">Categorie</th>
+          <th scope="col">Date de création</th>
+          <th scope="col">Action</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let blog of blogList ">
+          <td>{{blog._id}}</td>
+          <td>{{blog.title}}</td>
+          <td>{{blog.description}}</td>
+          <td>{{blog.img}}</td>
+          <td>{{blog.category}}</td>
+          <td>{{blog.createdAt | date}}</td>
+
+          <td>
+
+            <button type="button" class="btn btn-danger" style="color: gray; " (click)="delete(blog._id)">supprimer</button>
+          </td>
+
+        </tr>
+
+      </tbody>
+      <br> <br>
+      <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-end">
+          <li class="page-item disabled">
+            <a class="page-link">Previous</a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item">
+            <a class="page-link" href="#">Next</a>
+          </li>
+        </ul>
+      </nav>
+    </table>
+  </div>
+
+
+ </div>

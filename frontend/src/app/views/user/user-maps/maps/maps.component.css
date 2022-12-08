@@ -1,0 +1,53 @@
+agm-map {
+  height: 750px;
+}
+
+
+.btn-dark {
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
+.btn-success {
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
+.btn-danger {
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
+.contact-us {
+  padding: 150px 0px;
+  background-image: linear-gradient(to right, #0B2518 0%, 8.862433582544327%, #0B2518 17.724867165088654%, 49.669311195611954%, #0D0D0D 81.61375522613525%);
+}
+
+.section-title h2 {
+  color: #ffffff;
+  font-size: 30px;
+  font-weight: normal;
+  text-transform: uppercase;
+  letter-spacing: 8px;
+  padding-bottom: 25px;
+}
+
+.section-title h4 {
+  color: #6c757d;
+  font-size: 18px;
+  font-weight: inherit;
+  padding-top: 10px;
+}
+
+.section-title p {
+  color: #e8e8e8;
+  margin-bottom: 30px;
+}
+
+.map {
+  margin-top: 50px;
+}
+
+.btn {
+  margin-top: 10px;
+}

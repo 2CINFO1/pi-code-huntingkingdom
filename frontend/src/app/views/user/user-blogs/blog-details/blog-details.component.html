@@ -1,0 +1,160 @@
+
+<div class="bg-dark text-secondary px-4 py-5 text-center" id="blogHeader">
+  <div class="py-5"><br>
+      <h1 class="display-5 fw-bold text-white">{{blog.title}}</h1>
+      <div class="col-lg-6 mx-auto">
+          <p class="fs-5 mb-4">Article de la chasse dans les forêts.📝<br> <br> </p>
+</div>
+           <!-- -->
+             <!-- <button type="button" class=" secondaryHKBtn btn btn-outline-light btn-lg px-4">Cherchez votre blog</button>-->
+
+             <!--search-->
+             <br><br>
+             <div class="item-metas text-muted mb30">
+              <h2 class="post-title">{{blog.title}}</h2>
+              <p class="post-description">{{blog.description}}</p>
+
+                <span class="meta-item"><i class="pe-icon pe-7s-folder"></i> <b>Publié le</b>:
+                  <small class="text-muted">{{myDate| date}}</small>
+                  <small class="text-muted">{{myDate| date:'shortTime'}}</small>
+                </span> &nbsp; &nbsp; &nbsp; &nbsp;
+                <span class="meta-item"><i class="pe-icon pe-7s-ticket"></i> <b>Catégorie: </b> <span>{{blog.category}}</span></span><br>
+                <span class="meta-item"><i class="pe-icon pe-7s-user"></i> <b>AUTHOR: </b><span>Danny Jones</span></span>&nbsp; &nbsp;
+                <span class="meta-item"><i class="pe-icon pe-7s-comment"></i> <b>COMMENTS:</b><span>3</span></span>
+            </div>
+            <div> <br>
+           <div><p>{{blog.text}}.</p>
+           </div>
+
+
+          </div>
+      </div>
+  </div>
+  <body>
+    <div class="card shadow-sm">
+      <a style="color: azure ;" href="#">
+      <img class="bd-placeholder-img card-img-top" width="90%" height="150" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Paul_Childerley_driven_hunt_Finland_04.png/1024px-Paul_Childerley_driven_hunt_Finland_04.png" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+      <div class="card-title">
+            <p style="color:rgb(7, 5, 26); font-size:25px ; font-weight: bold;" >{{blog.title}}</p>
+        <div class="d-flex justify-content-between align-items-center"></div>
+      </div>
+    </a>
+      <div class="card-descrption">
+        <div class="d-flex justify-content-between align-items-center"></div>
+      </div>
+      <div class="card-body">
+        <p class="card-text">{{blog.description}}</p>
+
+
+        <div><p>{{blog.text}}</p></div>
+        <div class="d-flex justify-content-between align-items-center">
+
+
+         <!-- <a routerLink="/blogs/details"  style="color: rgb(54, 18, 255); font-size:18px ;">Lire suite</a>-->
+
+
+          <div> <p>publié le : <small class="text-muted">{{blog.createdAt | date}}</small> At : <small class="text-muted">{{blog.createdAt | date:'shortTime'}}</small></p>
+
+         <div>
+        </div>
+      </div>
+
+
+      </div>
+
+
+    </div>
+
+
+  </div>
+    </body>
+   <div class="row d-flex justify-content" style="margin-left: 5%;">
+  <div class="col-md-8 col-lg-6">
+    <div class="card shadow-0 border" style="background-color: #f0f2f5;">
+      <div class="card-body p-4">
+        <div class="form-outline mb-4">
+          <input type="text" id="addANote" class="form-control" placeholder="Type comment..." />
+          <label class="form-label" for="addANote">+ Add a note</label>
+        </div>
+
+        <div class="card mb-4">
+          <div class="card-body">
+            <p></p>
+
+            <div class="d-flex justify-content-between">
+              <div class="d-flex flex-row align-items-center">
+                <img src=""
+                  height="5%" sizes="" />
+                <p class="small mb-0 ms-2">Eya</p>
+              </div>
+              <div class="d-flex flex-row align-items-center">
+                <p class="small text-muted mb-0">Upvote?</p>
+                <i class="far fa-thumbs-up mx-2 fa-xs text-black" style="margin-top: -0.16rem;"></i>
+                <p class="small text-muted mb-0">3</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card mb-4">
+          <div class="card-body">
+            <p></p>
+
+            <div class="d-flex justify-content-between">
+              <div class="d-flex flex-row align-items-center">
+                <img src="" alt="avatar" width="25"
+                  height="25" />
+                <p class="small mb-0 ms-2">YOUSSEF</p>
+              </div>
+              <div class="d-flex flex-row align-items-center">
+                <p class="small text-muted mb-0">Upvote?</p>
+                <i class="far fa-thumbs-up mx-2 fa-xs text-black" style="margin-top: -0.16rem;"></i>
+                <p class="small text-muted mb-0">4</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card mb-4">
+          <div class="card-body">
+            <p></p>
+
+            <div class="d-flex justify-content-between">
+              <div class="d-flex flex-row align-items-center">
+              <!-- <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(31).webp" alt="avatar" width="25"-->
+
+                <p class="small mb-0 ms-2">Mohamed</p>
+              </div>
+              <div class="d-flex flex-row align-items-center text-primary">
+                <p class="small mb-0">Upvoted</p>
+                <i class="fas fa-thumbs-up mx-2 fa-xs" style="margin-top: -0.16rem;"></i>
+                <p class="small mb-0">2</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-body">
+            <p></p>
+
+            <div class="d-flex justify-content-between">
+              <div class="d-flex flex-row align-items-center">
+
+                <p class="small mb-0 ms-2">Nejib</p>
+              </div>
+              <div class="d-flex flex-row align-items-center">
+                <p class="small text-muted mb-0">Upvote?</p>
+                <i class="far fa-thumbs-up ms-2 fa-xs text-black" style="margin-top: -0.16rem;"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+

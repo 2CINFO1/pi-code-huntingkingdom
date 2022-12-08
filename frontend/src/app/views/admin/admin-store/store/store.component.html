@@ -1,0 +1,66 @@
+<section class="home-section">
+    <div class="text">Dashboard
+      <div class="panel-header">
+        <div class="header text-center">
+          <h2 class="title">Products</h2>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-8 ml-auto mr-auto">
+            <div class="row">
+              <div class="col-md-4">
+                <button class="btn btn-primary btn-block" routerLink="/products/add">Ajouter Un Produit</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table">
+            <thead class=" text-primary">
+            <th>
+              Libelle
+            </th>
+            <th>
+              nombre
+            </th>
+            <th>
+              prix
+            </th>
+
+            <th>
+              Image
+            </th>
+            </thead>
+            <tbody>
+            <tr *ngFor="let product of products">
+              <td>
+                {{ product. Nom}}
+              </td>
+              <td>
+                {{ product.description }}
+              </td>
+              <td>
+                {{ product.prix }}
+              </td>
+
+              <td>
+                <img src="http://localhost:3000/events/getImage/{{product.img}}" width="100px">
+              </td>
+              <td>
+                <button class="btn btn-success btn-block" routerLink="/products/add">Modifier</button>
+              </td>
+              <td>
+                <button class="btn btn-danger btn-block" routerLink="/products/add"(click)="delete(product._id)">Supprimer</button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      `
+    </div>
+
+</section>

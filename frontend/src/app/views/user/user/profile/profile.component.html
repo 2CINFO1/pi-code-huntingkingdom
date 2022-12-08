@@ -1,0 +1,59 @@
+<section class="py-7 py-md-0 bg-login" id="login">
+    <div class="container">
+      <div class="row vh-md-100">
+
+        <div class="col-md-8 col-sm-10 col-12 mx-auto my-auto text-center">
+          <div class="card-body p-md-5">
+            <div class="row justify-content-center">
+
+                <div class="container rounded bg-white mt-5" >
+                    <div class="row">
+                        <div class="col-md-4 border-right">
+                            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" src="https://i.imgur.com/0eg0aG0.jpg" width="90"><span class="font-weight-bold">{{user.Nom}}</span><span class="text-black-50"></span><span>{{user.Prenom}}</span></div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="p-3 py-5">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <div class="d-flex flex-row align-items-center back"><i class="fa fa-long-arrow-left mr-1 mb-1"></i>
+                                        <h6>Shop</h6>
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-md-6"><input type="text" class="form-control" placeholder="first name" value="{{user.Nom}}"></div>
+                                    <div class="col-md-6"><input type="text" class="form-control" value="" placeholder="Last name" value="{{user.Prenom}}"></div>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col-md-6"><input type="text" class="form-control" placeholder="Email" value="{{user.Email}}"></div>
+                                    <div class="col-md-6"><input type="text" class="form-control"  placeholder="Bio" value="{{user.Bio}}"></div>
+                                </div>
+                                <!-- <div class="row mt-3">
+                                    <!-- <div class="col-md-6"><input type="text" class="form-control" placeholder="Age" value="{{user.Age}}"></div> -->
+                                    <!-- <div class="col-md-6"><input type="text" class="form-control"  placeholder="type de compte " value="{{user.type}}"></div>
+                                </div> -->
+                                <!-- <div class="row mt-3">
+                                    <div class="col-md-6"><input type="text" class="form-control" placeholder="Etat"  value="{{user.isValidated}}"></div>
+                                    <div class="col-md-6"><input type="text" class="form-control" placeholder="User Id" value="{{user_id}}"></div>
+
+                                </div> -->
+                                <div class="mt-5 text-right"><button class="btn btn-success profile-button" (click)= "updateprofile([user._id]) ">Editer profile</button></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                                            <script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js'></script>
+                                            <script type='text/javascript' src='#'></script>
+                                            <script type='text/javascript' src='#'></script>
+                                            <script type='text/javascript' src='#'></script>
+                                            <script type='text/javascript'></script>
+                                            <script type='text/javascript'>var myLink = document.querySelector('a[href="#"]');
+                                            myLink.addEventListener('click', function(e) {
+                                              e.preventDefault();
+                                            });</script>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

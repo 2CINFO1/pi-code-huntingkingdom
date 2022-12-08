@@ -1,0 +1,182 @@
+<section class="home-section">
+
+
+    <body class="bg-light" data-new-gr-c-s-check-loaded="14.1068.0" data-gr-ext-installed="" cz-shortcut-listen="true">
+
+        <div class=" row g-3 container-fluid  justify-content-center bg-transparent">
+            <div class="py-5 text-center">
+                <img class="d-block mx-auto mb-4" src="../../../../../assets/img/40-add-card-outline.gif" alt="" width="72" height="72">
+                <h2>Ajout d'un evenement</h2>
+                <p class="lead">HuntingKigdom met à votre disposition une intefcae pour vos évenements , vos campings , vos conférences , vos sorties ... Les régles d'ajout d'évenement sont partagé et doivent etre respectées
+                </p>
+            </div>
+
+            <div class="col-md-7 col-lg-8">
+                <form action="/" class="needs-validation" #f="ngForm">
+                    <div class="row g-3">
+                        <div class="col-sm-12">
+                            <label for="name" class="form-label">Nom evenement</label>
+                            <input type="text" class="form-control" id="name " name="name " [(ngModel)]="event.name " #q="ngModel" placeholder="" value="" required>
+                            <div class="alert alert-danger" *ngIf="q.invalid && q.touched">
+                                <div *ngIf="q.errors?.required"> Nom evenement est obligatoire</div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <label for="country" class="form-label">Catégorie</label>
+                            <select class="form-select" name="category " id="category " [(ngModel)]="event.category ">
+                                   <option selected  value="pêche ">pêche</option>
+                                  <option value="Chasse des oiseaux ">Chasse des oiseaux</option>
+                                  <option value="Chasse dans les deserts ">Chasse dans les deserts</option>
+                                  <option value="Chasse dans les forets ">Chasse dans les forets</option>
+                      </select>
+
+                        </div>
+
+                        <div class="col-sm-12">
+                            <label for="type" class="form-label">Type evenement</label>
+                            <input type="text" class="form-control" id="type " name="type " [(ngModel)]="event.type " #qt="ngModel" placeholder="" value="" required>
+                            <div class="alert alert-danger" *ngIf="qt.invalid && qt.touched">
+                                <div *ngIf="q.errors?.required"> Merci d'indiquer le type de l'evenement </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <label for="description" class="form-label">Description evenement</label>
+                            <input type="text" class="form-control" id="description " name="description " [(ngModel)]="event.description " placeholder="" value="" required="">
+                            <div class="invalid-feedback">
+                                description obligatoire
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <label for="detail" class="form-label">Details</label>
+                            <textArea class="form-select" name="detail " id="detail " [(ngModel)]="event.detail " required="">
+                </textArea>
+                            <div class="invalid-feedback">
+                                Please select a valid detail.
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <label for="maxmumbers" class="form-label">Nombre maximum des participant</label>
+                            <input type="number" class="form-control" id="maxmumbers " name="maxmumbers " [(ngModel)]="event.maxmumbers " placeholder="" value="" required="">
+                            <div class="invalid-feedback">
+                                maxmumbers obligatoire
+                            </div>
+                        </div>
+
+                        <hr class="my-4">
+                        <h4 class="mb-3">Coordonnées</h4>
+
+                        <div class="col-sm-6">
+                            <label for="startDate" class="form-label">Date début evenement</label>
+                            <input type="date" class="form-control" id="startDate " name="startDate " [(ngModel)]="event.startDate " placeholder="" value="" required="">
+                            <div class="invalid-feedback">
+                                startDate obligatoire
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <label for="endDate" class="form-label">Date fin evenement</label>
+                            <input type="date" class="form-control" id="endDate " name="endDate " [(ngModel)]="event.endDate " placeholder="" value="" required="">
+                            <div class="invalid-feedback">
+                                endDate obligatoire
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <label for="location" class="form-label">Location evenement</label>
+                            <input type="text" class="form-control" id="location " name="location " [(ngModel)]="event.location " placeholder="" value="" required="">
+                            <div class="invalid-feedback">
+                                location obligatoire
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <label for="pays" class="form-label">Pays evenement</label>
+                            <input type="text" class="form-control" id="pays " name="pays " [(ngModel)]="event.pays " placeholder="" value="" required="">
+                            <div class="invalid-feedback">
+                                pays obligatoire
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <label for="codePostal" class="form-label">Code Postal evenement</label>
+                            <input type="number" class="form-control" id="codePostal " name="codePostal " [(ngModel)]="event.codePostal " placeholder="" value="" required="">
+                            <div class="invalid-feedback">
+                                codePostal obligatoire
+                            </div>
+                        </div>
+
+                        <hr class="my-4">
+                        <h4 class="mb-3">Contacts</h4>
+
+                        <div class="col-sm-12">
+                            <label for="phoneContact" class="form-label">Numéro de Contact evenement</label>
+                            <input type="number" class="form-control" id="phoneContact " name="phoneContact " [(ngModel)]="event.phoneContact " placeholder="" value="" required="">
+                            <div class="invalid-feedback">
+                                phoneContact obligatoire
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <label for="mailContact" class="form-label">Mail de contact evenement</label>
+                            <input type="mail" class="form-control" id="mailContact " name="mailContact " [(ngModel)]="event.mailContact " placeholder="" value="" required="">
+                            <div class="invalid-feedback">
+                                mailContact obligatoire
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+
+                    </div>
+                    <!-- ***************** -->
+
+                    <hr class="my-4">
+                    <h4 class="mb-3">Paiement</h4>
+
+                    <div class="my-3">
+                        <div class="form-check">
+                            <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked="" required="">
+                            <label class="form-check-label" for="credit">Participation gratuite</label>
+                        </div>
+                        <div class="form-check">
+                            <input id="debit" name="paymentMethod" type="radio" class="form-check-input" required="">
+                            <label class="form-check-label" for="debit">Participation payée</label>
+                        </div>
+                        <br>
+                        <div class="col-sm-12">
+                            <label for="creditCard" class="form-label">Numéro carte bancaire</label>
+                            <input type="number" class="form-control" id="creditCard " name="creditCard " [(ngModel)]="event.creditCard " placeholder="" value="" required="">
+                            <div class="invalid-feedback">
+                                creditCard obligatoire
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <hr class="my-4">
+
+                    <button class=" col-sm-12 btn btn-primary btn-lg btn-block " (click)="save() ">Sauvegarder</button>
+                </form>
+            </div>
+
+            <footer class="my-5 pt-5 text-muted text-center text-small ">
+                <p class="mb-1 ">© Hunting Kingdom</p>
+                <ul class="list-inline ">
+                    <li class="list-inline-item "><a href="# ">Privacy</a></li>
+                    <li class="list-inline-item "><a href="# ">Terms</a></li>
+                    <li class="list-inline-item "><a href="# ">Support</a></li>
+                </ul>
+            </footer>
+        </div>
+
+
+    </body>
+
+</section>

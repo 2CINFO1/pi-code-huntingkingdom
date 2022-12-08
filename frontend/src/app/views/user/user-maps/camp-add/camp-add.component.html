@@ -1,0 +1,86 @@
+<section class="contact-us">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7">
+        <div class="section-title">
+          <h2>Camp Spot Details</h2>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-7">
+        <form action="/" class="mb-4 mb-lg-0">
+          <div class="form-group">
+            <input type="text" name="name" class="form-control" id="name" [(ngModel)]="campSpot.name"
+                   placeholder="Spot Name"/>
+          </div>
+          <div class="form-group">
+            <mat-form-field class="form-control">
+              <mat-label class="align-top">Camp Category</mat-label>
+              <mat-select (selectionChange)="campCategory($event)">
+                <mat-option *ngFor="let food of camping_categories" [value]="food.value">
+                  {{food.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="address" [(ngModel)]="campSpot.address" id="address"
+                   placeholder="Address"/>
+          </div>
+
+
+<!--          <div class="Skills">-->
+<!--            <div class="rating">-->
+<!--              <input type="radio" name="html" value="5"-->
+<!--                     (change)="onItemChange($event)">-->
+<!--              <input type="radio" name="html" value="4.5"-->
+<!--                     (change)="onItemChange($event)">-->
+<!--              <input type="radio" name="html" value="4"-->
+<!--                     (change)="onItemChange($event)">-->
+<!--              <input type="radio" name="html" value="3.5"-->
+<!--                     (change)="onItemChange($event)">-->
+<!--              <input type="radio" name="html" value="3"-->
+<!--                     (change)="onItemChange($event)">-->
+<!--              <input type="radio" name="html" value="2.5"-->
+<!--                     (change)="onItemChange($event)">-->
+<!--              <input type="radio" name="html" value="2"-->
+<!--                     (change)="onItemChange($event)">-->
+<!--              <input type="radio" name="html" value="1.5"-->
+<!--                     (change)="onItemChange($event)">-->
+<!--              <input type="radio" name="html" value="1"-->
+<!--                     (change)="onItemChange($event)">-->
+<!--              <input type="radio" name="html" value="0.5"-->
+<!--                     (change)="onItemChange($event)">-->
+<!--            </div>-->
+<!--          </div>-->
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Latitude" [(ngModel)]="camp_lat" name="camp_latitude"
+                   disabled/>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Longitude" [(ngModel)]="camp_lng" name="camp_longitude"
+                   disabled/>
+          </div>
+          <button (click)="save()" type="button" class="btn btn-success">Add</button>
+          <button (click)="home()" type="button" class="btn btn-secondary">Return</button>
+        </form>
+      </div>
+
+      <div class="col-lg-5">
+        <agm-map
+          [latitude]="lat"
+          [longitude]="lng"
+          [zoom]="zoom"
+          [disableDefaultUI]="false"
+          (mapReady)="mapClicked($event)">
+          <agm-marker>
+            <agm-info-window>
+              <strong>InfoWindow content</strong>
+            </agm-info-window>
+          </agm-marker>
+        </agm-map>
+      </div>
+    </div>
+  </div>
+</section>

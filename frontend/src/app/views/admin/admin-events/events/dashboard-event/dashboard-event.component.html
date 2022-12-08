@@ -1,0 +1,91 @@
+<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+    <input class="form-control form-control-dark w-100 searchInput" type="text" placeholder="Search" aria-label="Search">
+    <div class="navbar-nav">
+        <div class="nav-item text-nowrap">
+            <a class="nav-link px-3" href="#">Filtrer</a>
+        </div>
+    </div>
+</header>
+<div class="container-fluid ">
+
+    <div class="row">
+        <main class="">
+            <div class="chartjs-size-monitor">
+                <div class="chartjs-size-monitor-expand">
+                    <div class=""></div>
+                </div>
+                <div class="chartjs-size-monitor-shrink">
+                    <div class=""></div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2">Dashboard/events</h1>
+                <div class="btn-toolbar mb-2 mb-md-0">
+                    <div class="btn-group me-2">
+                        <button type="button" class="btn btn-sm btn-outline-secondary" (click)="add()">Ajouter</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary">Exporter</button>
+                    </div>
+                    <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+            This week
+          </button>
+                </div>
+            </div>
+
+
+            <h2>Section title</h2>
+            <div class="table-responsive">
+                <table class="table table-hover table-striped table-sm ">
+                    <thead>
+                        <tr>
+                            <th scope="col"><select class="custom-select" name="category" id="category" ng-model="categoryS">
+                              <option selected value="Categorie">Categorie</option>
+                              <option value="pêche">pêche</option>
+                              <option value="Chasse des oiseaux">Chasse des oiseaux</option>
+                              <option value="Chasse dans les deserts">Chasse dans les deserts</option>
+                              <option value="Chasse dans les forets">Chasse dans les forets</option>
+                            </select>
+                                <th scope="col">Type</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Date debut</th>
+                                <th scope="col">Date Fin</th>
+                                <th scope="col">Location</th>
+                                <th scope="col">status</th>
+                                <th></th>
+                                <th></th>
+
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let event of eventList" class="bg-transparent">
+                        <tr *ngIf="(categoryS == '' || event.category == categoryS )">
+                            <td>{{event.category}}</td>
+                            <td>{{event.type}}</td>
+                            <td>{{event.name}}</td>
+                            <td>{{event.startDate}}</td>
+                            <td>{{event.endDate}}</td>
+                            <td>{{event.location}}</td>
+                            <td>{{event.status}}</td>
+                            <td padding-right="20px">
+                                <a type="button" (click)="popup = true; initId(event._id,event.name);"><img width="20" height="20" src='../../../../../../assets/img/39-trash-outline (1).gif' /></a>
+                            </td>
+                            <td padding-right="20px">
+                                <a type="button" (click)="initId(event._id,event.name); update(); "><img width="20" height="20" src='../../../../../../assets/img/50-file-outline.gif' /></a>
+                            </td>
+                            <div class="position-absolute top-50 start-50 translate-middl bg-transparent" *ngIf="popup" tabindex="-1" role="dialog" id="popup">
+                                <div class="cookiesContent" id="cookiesPopup">
+                                    <button class="close" (click)="popup = false;initId('','');">✖</button>
+                                    <img id="popupIcon" src="../../../../../../assets/img/39-trash-outline (1).gif" alt="cookies-img" />
+                                    <p>Voulez vous vraiment supprimer l'evenement {{currentName}}</p>
+                                    <button class="accept" (click)="delete()">That's fine!</button>
+                                </div>
+                            </div>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+</div>

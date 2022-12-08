@@ -1,0 +1,154 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <title>Snippet - BBBootstrap</title>
+  <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css' rel='stylesheet'>
+  <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet'>
+  <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+  
+
+
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+
+    <!-- Topbar Search -->
+    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+      <div class="input-group">
+        <!-- <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."> -->
+        <div class="input-group-append">
+          <button class="btn btn-primary" type="button">
+            <i class="fa fa-search fa-sm"></i>
+          </button>
+        </div>
+      </div>
+    </form>
+
+    <ul class="navbar-nav ml-auto">
+
+      <li class="nav-item dropdown no-arrow d-sm-none">
+        <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          <i class="fa fa-search fa-fw"></i>
+        </a>
+
+        <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
+          <form class="form-inline mr-auto w-100 navbar-search">
+            <div class="input-group">
+              <input type="text" class="form-control bg-light border-0 small" placeholder="Search for...">
+              <div class="input-group-append">
+                <button class="btn btn-primary" type="button">
+                  <i class="fa fa-search fa-sm"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </li>
+
+
+
+
+      <div class="topbar-divider d-none d-sm-block"></div>
+
+      <li class="nav-item dropdown no-arrow">
+        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
+          <img class="img-profile rounded-circle" src="https://i.imgur.com/uIgDDDd.jpg">
+        </a>
+
+        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+          <a class="dropdown-item" href="#">
+            <i class="fa fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+            Profile
+          </a>
+          <a class="dropdown-item" href="#">
+            <i class="fa fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+            Settings
+          </a>
+          <a class="dropdown-item" href="#">
+            <i class="fa fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+            Activity Log
+          </a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+            <i class="fa fa-sign-out fa-sm fa-fw mr-2 text-gray-400"></i>
+            Logout
+          </a>
+        </div>
+      </li>
+
+    </ul>
+
+  </nav>
+
+  <section class="py-7 py-md-0 bg-login" id="login">
+    <div class="container">
+      <div class="row vh-md-100">
+
+        <div class="col-md-10 col-sm-10 col-12 mx-auto my-auto text-center">
+          <div class="card-body p-md-5">
+            <div class="row justify-content-center">
+
+              <div class="container rounded mt-5 bg-white p-md-5">
+                <div class="h2 font-weight-bold">Liste des utilisateurs</div>
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Prenom</th>
+                        <th scope="col">Age</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Type de compte</th>
+                        <th scope="col">Valide</th>
+                        <th scope="col">Admin</th>
+                        <th scope="col">Editer le compte</th>
+                        <th scope="col">Supprimer le compte</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="bg-blue" *ngFor="let user of users">
+                        <td class="pt-2">
+                          <div class="pl-lg-5 pl-md-3 pl-1 name"> {{user.Nom}} </div>
+                        </td>
+                        <td class="pt-3 mt-1">{{user.Prenom}}</td>
+                        <td class="pt-3 mt-1">{{user.Age}}</td>
+                        <td class="pt-3">{{user.Email}}</td>
+                        <td class="pt-3">{{user.type}}</td>
+                        <td class="pt-3">{{user.isValidated}}</td>
+                        <td class="pt-3">{{user.isAdmin}}</td>
+                        <td class="pt-3"><button type="button" class="btn btn-primary" (click)="update([user._id])">Editer</button></td>
+                        <td class="pt-3"><button class="btn btn-danger" (click)="delete([user._id])">Supprimer</button></td>
+
+                      </tr>
+                      <tr id="spacing-row">
+                        <td></td>
+                      </tr>
+
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+</body>
+
+</html>
